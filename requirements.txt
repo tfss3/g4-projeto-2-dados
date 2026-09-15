@@ -1,5 +1,10 @@
+black
+pymongo
+python-dotenv
 certifi==2026.7.22
 charset-normalizer==3.4.9
+jupyter
+ipykernel
 idna==3.18
 #numpy==2.5.1
 #pandas==3.0.5
