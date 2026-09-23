@@ -1,4 +1,5 @@
 import json
+import sqlite3
 
 from src.connect_mongodb import get_mongo_client
 
@@ -27,4 +28,21 @@ class Load:
         print(
             f"Dados inseridos com sucesso "
             f"na coleção '{collection_name}'!"
+        )
+
+    def load_sqlite(self, data: list[dict], db_name: str, table_name: str) -> None:
+        conn = sqlite3.connect(f"{db_name}.db")
+        cursor = conn.cursor()
+
+        if data:
+            columns = data[0].keys()
+            placeholders = ", ".join("?" * len(columns))
+            insert_query = f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES ({placeholders})"
+            cursor.executemany(insert_query, [tuple(d.values()) for d in data])
+            conn.commit()
+
+        conn.close()
+        print(
+            f"Dados inseridos com sucesso "
+            f"na tabela '{table_name}' do banco '{db_name}'!"
         )
