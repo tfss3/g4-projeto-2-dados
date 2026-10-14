@@ -1,4 +1,10 @@
+from xmlrpc import client
 import requests
+import os
+from dotenv import load_dotenv
+import requests
+from src.connect_mongodb import get_mongo_client
+
 
 class Extract():
 
@@ -11,4 +17,10 @@ class Extract():
         response = requests.get(url)
         data = response.json()
 
+        return data
+    
+    def extract_collection_from_mongo(self, db_name, collection_name):
+        client = get_mongo_client()
+        db = client[db_name]
+        data = list(db[collection_name].find())
         return data

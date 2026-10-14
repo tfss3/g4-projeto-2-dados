@@ -7,9 +7,17 @@ jupyter
 ipykernel
 idna==3.18
 #numpy==2.5.1
+numpy
 #pandas==3.0.5
+pandas
 python-dateutil==2.9.0.post0
 #requests==2.34.2
 requests
 six==1.17.0
 #urllib3==2.7.0
+urllib3
+sqlalchemy 
+psycopg2-binary
+dotenv
+sqlalchemy
+
