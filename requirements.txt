@@ -16,8 +16,9 @@ requests
 six==1.17.0
 #urllib3==2.7.0
 urllib3
-sqlalchemy 
+sqlalchemy
 psycopg2-binary
 dotenv
 sqlalchemy
+openpyxl
 
