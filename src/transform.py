@@ -5,6 +5,8 @@ class Transform:
         pass
 
     def transform_pnadc(self, data):
+        if not data:
+            raise ValueError("Nenhum dado encontrado. Verifique se a coleção MongoDB foi populada.")
         serie = data[0]['resultados'][0]['series'][0]['serie']
         df = pd.DataFrame.from_dict(serie, orient='index', columns=['valor'])
         df.index.name= 'periodo'
