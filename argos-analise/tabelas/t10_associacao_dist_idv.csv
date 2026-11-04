@@ -1,0 +1,10 @@
+escopo,n_ovts,rho_spearman,p_valor,intensidade,sentido
+Todos,2868,-0.08126860253722701,1.3152821527658637e-05,desprezível,IDV cai com a distância
+I,274,-0.07235665598050613,0.23255400416107885,desprezível,IDV cai com a distância
+II,420,-0.06465191013491763,0.1860333447458701,desprezível,IDV cai com a distância
+III,321,0.06406497443144304,0.25240940429479475,desprezível,IDV sobe com a distância
+IV,272,-0.31044285577569947,1.731552442336665e-07,moderada,IDV cai com a distância
+V,518,-0.008774098840023606,0.8420933880503882,desprezível,IDV cai com a distância
+VI,425,-0.11320986765124981,0.019568653890084123,fraca,IDV cai com a distância
+VII,340,-0.09063866454340039,0.0952015192049625,desprezível,IDV cai com a distância
+VIII,298,-0.08782169254144218,0.13038386924986398,desprezível,IDV cai com a distância
