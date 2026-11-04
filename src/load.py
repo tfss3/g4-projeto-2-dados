@@ -23,7 +23,7 @@ def carregar(df: pd.DataFrame, caminho_db: Path, tabela: str, SCHEMA) -> int:
             df.to_sql(tabela, conexao, if_exists="append", index=False)
         return conexao.execute(f"SELECT COUNT(*) FROM {tabela}").fetchone()[0]
 
-def carregar_neon(self, df, nome_tabela):
+def carregar_neon(self, df: pd.DataFrame, nome_tabela: str):
     df.to_sql(nome_tabela, self.engine, if_exists="replace")
     self.engine.dispose()
     print(f"Dados salvos no Neon com sucesso na tabela'{nome_tabela}'!")
