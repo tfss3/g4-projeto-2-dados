@@ -1,0 +1,16 @@
+# Dependências da pipeline (main.py + src/)
+# Instalar com: pip install -r requirements.txt
+# Python >= 3.11 (exigido pelo pandas 3)
+
+# Leitura e tratamento das planilhas (src/extract.py, src/transform.py, src/load.py)
+# pandas 3 é necessário: transform.py usa select_dtypes(include=["object", "str"])
+pandas==3.0.6
+# Engine usada pelo pd.read_excel(engine="openpyxl") em src/extract.py
+openpyxl==3.1.5
+
+# Carga no Neon (src/load.py)
+SQLAlchemy==2.0.50
+python-dotenv==1.2.4
+# Driver Postgres usado pelo SQLAlchemy; src/load.py converte postgresql:// da
+# URL em NEON_DB para postgresql+psycopg:// (psycopg 3) automaticamente
+psycopg[binary]==3.3.6
