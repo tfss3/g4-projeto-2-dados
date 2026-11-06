@@ -68,7 +68,7 @@ def georreferenciamento() -> None:
 
 
 def salvar(tratado, caminho_db: Path, tabela: str, criar_schema, nome_aba: str) -> None:
-    total = transform.carregar(tratado, caminho_db, tabela, criar_schema(tabela))
+    total = carregar.carregar(tratado, caminho_db, tabela, criar_schema(tabela))
     print(f"Aba '{nome_aba.strip()}' -> tabela '{tabela}' com {total} registros em {caminho_db}")
 
 

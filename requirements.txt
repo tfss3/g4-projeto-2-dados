@@ -11,6 +11,6 @@ openpyxl==3.1.5
 # Carga no Neon (src/load.py)
 SQLAlchemy==2.0.50
 python-dotenv==1.2.4
-# Driver Postgres usado pelo SQLAlchemy; a URL em NEON_DB deve começar com
-# postgresql+psycopg:// para usar este driver (psycopg 3)
+# Driver Postgres usado pelo SQLAlchemy; src/load.py converte postgresql:// da
+# URL em NEON_DB para postgresql+psycopg:// (psycopg 3) automaticamente
 psycopg[binary]==3.3.6
