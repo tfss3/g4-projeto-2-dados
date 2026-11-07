@@ -1,0 +1,9 @@
+pandas>=2.2
+numpy>=1.26
+scipy>=1.11
+openpyxl>=3.1
+matplotlib>=3.8
+# MongoDB / Atlas
+pymongo>=4.6
+# opcional: rodar as consultas sem servidor (python mongo/consultas_agregacao.py --simulado)
+mongomock>=4.1

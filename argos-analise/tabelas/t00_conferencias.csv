@@ -1,0 +1,17 @@
+conferência,resultado,detalhe
+fato_leitura tem 1 linha por OVT e ciclo,OK,31455 linhas
+toda leitura tem OVT no cadastro,OK,
+A + leituras sem resultado = total de leituras,OK,
+soma de ovos por DS = soma geral,OK,6.109.375
+soma de ovos por ciclo = soma geral,OK,
+soma de ovos por bairro = soma geral,OK,
+soma de ovos por faixa = soma geral,OK,
+dentro + fora do raio cobrem todas as leituras (400 m),OK,
+nenhuma proximidade tem distância negativa,OK,
+"A, P, O por DS das observações somam o total",OK,
+soma de ovos DS × faixa = ovos das OVTs com coordenada,OK,
+soma de ovos ciclo × faixa = ovos das OVTs com coordenada,OK,
+soma de ovos bairro × ciclo = soma geral,OK,
+T13 e T14 somadas por faixa = T06,OK,
+OVTs com DS diferente no cadastro e nas observações,AVISO,"2 OVTs (SJS1005, MGR5013): contagem de OVTs por DS usa o cadastro; A, P, O usam as observações"
+OVTs sem nenhuma leitura válida,AVISO,3 OVTs ficam de fora de T10 (associação distância × IDV)

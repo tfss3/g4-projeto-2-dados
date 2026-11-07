@@ -1,0 +1,17 @@
+medida,valor,observação
+Ciclos de coleta (15 dias),12,ciclos 1 a 12 de 2026
+Ovitrampas (OVT) no cadastro,2871,1 linha por OVT
+Leituras OVT × ciclo,31455,grão da tabela fato_leitura
+"Leituras sem resultado (F, E, R, D)",982,"ficam fora de A, P e O"
+Leituras com ovos preenchidos pela média do bairro,1011,regra do grupo (13/10)
+A · armadilhas examinadas,30473,
+P · armadilhas positivas,29977,
+O · ovos contados,6109375,inclui os preenchidos pela média
+IPO · positividade (%),98.37,quase toda armadilha tem ovos: pouco discrimina
+IDO · ovos por armadilha positiva,203.8,
+IDV · ovos por armadilha examinada,200.48,
+Locais de EDL,378,1 linha por local
+Estações EDL nesses locais,1429,
+Locais de EDL ligados a um bairro das OVTs (pelo nome),324 de 378,normalização do texto; 77 bairros com EDL
+OVTs que só entram a partir do ciclo 10,333,todas no DS V (3 leituras cada): a composição da amostra muda no ciclo 10
+OVTs com DS diferente no cadastro e nas observações,2,SJS1005 e MGR5013 (alerta 'longe do bairro'); indicadores usam o DS das observações

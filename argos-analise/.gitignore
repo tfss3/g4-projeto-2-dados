@@ -1,0 +1,24 @@
+# segredos: nunca subir a string de conexão do Atlas
+.env
+.env.*
+*.pem
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# sistema / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+~$*.xlsx

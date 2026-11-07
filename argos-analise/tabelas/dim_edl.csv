@@ -1,0 +1,379 @@
+id_edl,ds,ds_num,nome,tipo,secao,logradouro,bairro,lat,lon,fonte_coord,precisao_local,status_coord,qtd_edl,dt_instalacao,precisao_data
+DS1-L007,I,1,SAMU,Outros,,"Rua Dom Bosco, 687",Boa Vista,-8.059653,-34.89366,planilha,coordenada da planilha,original,6,,
+DS1-L008,I,1,EMLURB,Outros,,"Av. Carlos de Lima Cavalcante, 09",Boa Vista,-8.056652,-34.895435,planilha,coordenada da planilha,original,4,,
+DS1-L009,I,1,PROCAPE,Outros,,"Avenida dos Palmares, 104",Santo Amaro II,-8.048981,-34.886878,planilha,coordenada da planilha,original,6,,
+DS1-L010,I,1,TV Tribuna,Construção,,"Rua 24 de Agosto, 108",Santo Amaro II,-8.04962,-34.876751,planilha,coordenada da planilha,original,6,,
+DS1-L011,I,1,Museu do trem,Outros,,"Rua Padre Floriano, S/N",São José II,-8.067246,-34.883423,planilha,coordenada da planilha,corrigida,4,,
+DS1-L012,I,1,Metro do Recife,Outros,,"Rua Padre Floriano, S/N",São José II,-8.068332,-34.884515,planilha,coordenada da planilha,corrigida,5,,
+DS1-L013,I,1,16° Batalhão da Polícia Militar,Outros,,"Rua Coração de Maria, 206",São José I,-8.071478,-34.878459,planilha,coordenada da planilha,corrigida,6,,
+DS1-L014,I,1,Prefeitura da Cidade do Recife,Outros,,"Rua Martin Luter King, 925",Bairro do Recife,-8.054824,-34.872554,planilha,coordenada da planilha,corrigida,10,,
+DS1-L018,I,1,Atacado dos Presentes,Construção,Ponto Estratégico Distrito,"Av. Conde da Boa Vista, 385",Boa Vista,-8.060791,-34.885205,planilha,coordenada da planilha,original,6,,
+DS1-L019,I,1,Da Mangueira (ACUMULADOR),Ferro Velho,Ponto Estratégico Distrito,"Rua Buarque Macedo, 211",Santo Amaro I,-8.0450051,-34.8771525,planilha,coordenada da planilha,original,2,,
+DS1-L020,I,1,ACUMULADOR,Outros,Ponto Estratégico Distrito,"Rua Tauá, 45 (Próximo à Praça do Dominó)",Santo Amaro II,-8.04223,-34.88224,planilha,coordenada da planilha,original,3,,
+DS1-L021,I,1,Pátio de Veículos SDS,Outros,Ponto Estratégico Distrito,"Rua Coelho Leite, 570",Santo Amaro II,-8.0487172,-34.8791772,planilha,coordenada da planilha,original,6,,
+DS1-L022,I,1,Antiga CONTAX – Galpão Fechado,Outros,Ponto Estratégico Distrito,"Rua Almeida Cunha, 40",Santo Amaro II,-8.05474,-34.88535,planilha,coordenada da planilha,original,3,,
+DS1-L023,I,1,Defesa Civil do Recife,Outros,Ponto Estratégico Distrito,"Rua Afonso Pena, 550",Santo Amaro II,-8.051734,-34.885421,planilha,coordenada da planilha,original,3,,
+DS1-L024,I,1,Antiga Fábrica Matarazzo,Outros,Ponto Estratégico Distrito,"Rua Largo dos Coelhos, 36",Coelhos,-8.0693053,-34.8890532,planilha,coordenada da planilha,original,10,,
+DS1-L025,I,1,Não tem,Reciclagem,Ponto Estratégico Distrito,"Travessa do Gusmão, 178/A",São José II,-8.0704,-34.885912,planilha,coordenada da planilha,corrigida,8,,
+DS1-L026,I,1,ATI,Outros,Ponto Estratégico Distrito,"Rua Rio Capibaribe, 147",São José I,-8.067128,-34.88476,planilha,coordenada da planilha,original,10,2026-03-01,mes
+DS1-L027,I,1,Abrigo Irmã Dulce dos Pobres,Outros,Ponto Estratégico Distrito,"Travessa do Gusmão, S/N",São José II,-8.0718312,-34.8866991,planilha,coordenada da planilha,original,10,,
+DS1-L031,I,1,Estacionamento Cais do Recife,Outros,Outros Equipamentos,"Travessa do Amorim , 75",B. do Recife,-8.0652854,-34.8730363,planilha,coordenada da planilha,original,5,2026-04-01,mes
+DS1-L032,I,1,Livraria Jaqueira/anexo do Est.,Outros,Outros Equipamentos,"Av. Cais da Alfandega, 35",B. do Recife,-8.0657659,-34.873408,planilha,coordenada da planilha,original,4,2026-04-01,mes
+DS1-L033,I,1,COMPESA,Outros,Outros Equipamentos,"Pte. Gov. Paulo Guerra, 1253",Cabanga,-8.0798848,-34.8929737,planilha,coordenada da planilha,original,10,2026-04-01,mes
+DS1-L034,I,1,Movimento Pró-Criança,Outros,Outros Equipamentos,"Rua dos Coelhos, 317",Coelhos,-8.066852,-34.889152,planilha,coordenada da planilha,original,10,2026-04-01,mes
+DS1-L035,I,1,Procuradoria R. da República,Outros,Outros Equipamentos,"Rua Frei Matias Teves, 65",Ilha do Leite,-8.0661377,-34.8955641,planilha,coordenada da planilha,original,5,2026-04-01,mes
+DS1-L036,I,1,Sede DSI,Outros,Outros Equipamentos,"Rua Mário Domingues, 70",Boa Vista I,-8.0600648,-34.8959466,planilha,coordenada da planilha,original,5,2026-04-01,mes
+DS1-L037,I,1,Empresarial Burle Marx,Outros,Outros Equipamentos,"Av. Gov. Ag. Magalhães, 2615",Boa Vista II,-8.046106,-34.8902188,planilha,coordenada da planilha,original,6,2026-04-01,mes
+DS1-L038,I,1,Biblioteca Pública,Outros,Outros Equipamentos,"Rua João Lira, S/N",Santo Amaro II,-8.0556397,-34.8805799,planilha,coordenada da planilha,original,10,2026-04-01,mes
+DS1-L039,I,1,ETEPAC,Outros,Outros Equipamentos,"Rua do Pombal, 702/752",Santo Amaro II,-8.0479222,-34.8814981,planilha,coordenada da planilha,original,10,2026-04-01,mes
+DS1-L040,I,1,Antigo Grau Técnico,Outros,Outros Equipamentos,"Rua do Progresso, 350",Soledade,-8.0582233,-34.891756,planilha,coordenada da planilha,original,7,2026-04-01,mes
+DS1-L041,I,1,COMPESA,Outros,Outros Equipamentos,"AV. JAYME DA FONTE, 222",SANTO AMARO I,-8.0417866,-34.8764032,endereco,endereço,localizada pelo endereço,11,2026-07-01,mes
+DS1-L042,I,1,VILA NAVAL - CASA DA GUARDA,Outros,Outros Equipamentos,"Rua Dona Leonor Porto, 274",Santo Amaro I,-8.0411963,-34.8717698,endereco,logradouro,localizada pelo endereço,1,2026-07-01,mes
+DS1-L043,I,1,VILA NAVAL - PAIOL,Outros,Outros Equipamentos,"Rua Dona Leonor Porto, 277",Santo Amaro I,-8.0413981,-34.8716416,endereco,logradouro,localizada pelo endereço,1,2026-07-01,mes
+DS1-L044,I,1,VILA NAVAL - CLUBE MARISCO,Outros,Outros Equipamentos,"AV. CRUZ CABUGÁ, 1650",Santo Amaro I,-8.0406055,-34.8720553,endereco,logradouro,localizada pelo endereço,5,2026-07-01,mes
+DS1-L045,I,1,Parque Vila do Papel,Outros,Outros Equipamentos,"Rua Gal. Hélio Albuquerque Melo, S/N",São José II,-8.0739141,-34.8934948,planilha,coordenada da planilha,original,2,2026-08-01,mes
+DS1-L046,I,1,AACD,Outros,Outros Equipamentos,"Rua Adv. José Paulo Cavalcante, 155",Joana Bezerra,-8.071888,-34.893898,planilha,coordenada da planilha,original,11,2026-08-01,mes
+DS1-L047,I,1,Edf. Centro Médico do Recife,Outros,Outros Equipamentos,"Rua do Paissandu, 667",Paissandu,-8.0619766,-34.8992299,planilha,coordenada da planilha,original,2,2026-08-01,mes
+DS1-L050,I,1,Policlínica PANCENTRO,,Unidades De Saúde / Pontos De Apoio,Rua 1º de Março. 90,SANTO ANTONIO,-8.0641112,-34.877234,planilha,coordenada da planilha,corrigida,2,2026-01-14,dia
+DS1-L051,I,1,USF São José do Coque,,Unidades De Saúde / Pontos De Apoio,"Av. Central , 10",JOANA BEZERRA,-8.0729469,-34.8962413,planilha,coordenada da planilha,corrigida,2,2026-01-14,dia
+DS1-L052,I,1,USF Berilo Pernambucano,,Unidades De Saúde / Pontos De Apoio,"Rua Guarapirama, 65",JOANA BEZERRA,-8.0715809,-34.8999561,planilha,coordenada da planilha,corrigida,2,2026-01-14,dia
+DS1-L053,I,1,USF Coelhos,,Unidades De Saúde / Pontos De Apoio,"Rua Gal. Joaquim Inácio, 200",BOA VISTA,-8.0632224,-34.8930287,planilha,coordenada da planilha,corrigida,2,2026-01-14,dia
+DS1-L054,I,1,USF Stª Terezinha,,Unidades De Saúde / Pontos De Apoio,Rua Artemis. 09,SANTO AMARO,-8.0397213,-34.8769795,planilha,coordenada da planilha,corrigida,2,2026-01-14,dia
+DS1-L055,I,1,Polic Waldemar de Oliveira,,Unidades De Saúde / Pontos De Apoio,"Rua do Pombal, 115",SANTO AMARO,-8.0522207,-34.8848918,planilha,coordenada da planilha,corrigida,2,2026-01-14,dia
+DS1-L059,I,1,UPINHA Pilar,,Demais Unidades De Saúde,"Rua do Brum, S/N",RECIFE,-8.056911,-34.871277,planilha,coordenada da planilha,corrigida,2,,
+DS1-L060,I,1,USF Cabanga,,Demais Unidades De Saúde,"Rua Escritor Souza Barros, 273",Cabanga,-8.079616,-34.90006,planilha,coordenada da planilha,corrigida,2,,
+DS1-L061,I,1,USF Santo Amaro I,,Demais Unidades De Saúde,"Rua Anchieta, 520",Santo Amaro I,-8.041517,-34.880479,planilha,coordenada da planilha,corrigida,2,,
+DS1-L062,I,1,USF Santo Amaro I,,Demais Unidades De Saúde,"Rua Buarque de Macedo, 65",Santo Amaro I,-8.0458,-34.87826,planilha,coordenada da planilha,corrigida,2,,
+DS1-L063,I,1,USF Santo Amaro III,,Demais Unidades De Saúde,"Av. Norte, 1271",Santo Amaro II,-8.04359,-34.88346,planilha,coordenada da planilha,corrigida,2,,
+DS2-L007,II,2,COMPESA ALTO DO CÉU,PRÉDIO PUBLICO,,"RUA  MAJOR DAVINO, S/N",FUNDÃO,-8.0131397,-34.8923286,endereco,logradouro,corrigida,15,,
+DS2-L008,II,2,FABRICA DE ÁGUA MINERAL,FÁBRICA,,"RUA MAMEDE COELHO, 230",LINHA DO TIRO,-8.0036768,-34.9017475,planilha,coordenada da planilha,corrigida,2,,
+DS2-L009,II,2,ESTÁDIO DO ARRUDA,ESTÁDIO DE FUTEBOL,,"AV. BEBERIBE, 1285",ARRUDA,-8.0263334,-34.89312,planilha,coordenada da planilha,corrigida,9,,
+DS2-L012,II,2,DEPÓSITO DE RECICLAGEM,RECICLÁVEIS,Ponto Estratégico Distrito,"R. PEDRO RODRIGUES DE BARROS, 179",ARRUDA,-8.0255801,-34.8861804,planilha,coordenada da planilha,corrigida,3,,
+DS2-L013,II,2,MATERIAL RECICLÁVEL,RECICLÁVEIS,Ponto Estratégico Distrito,"RUA CORONEL LUCIANO DE MELO, 70",BEBERIBE,-8.002534,-34.8984017,planilha,coordenada da planilha,corrigida,3,,
+DS2-L014,II,2,ANTIGO DEPÓSITO DO STYLUS,DEPOSITO,Ponto Estratégico Distrito,"RUA IGUATÚ, 254",CAMPINA DO BARRETO,-8.0195806,-34.883422,planilha,coordenada da planilha,corrigida,8,,
+DS2-L015,II,2,DEPÓSITO DE RECICLAGEM,RECICLÁVEIS,Ponto Estratégico Distrito,"RUA CORONEL MÁRIO LIBÓRIO, 236",CAMPINA DO BARRETO,-8.0176148,-34.8814137,planilha,coordenada da planilha,corrigida,4,,
+DS2-L016,II,2,FERRO VELHO,FERRO VELHO,Ponto Estratégico Distrito,"RUA DOS PEIXINHOS, 817",CAMPINA DO BARRETO,-8.0151158,-34.8839795,planilha,coordenada da planilha,corrigida,4,,
+DS2-L017,II,2,OFICINA DO FERNANDO,OFICINA,Ponto Estratégico Distrito,"RUA FARIAS NEVES, 698",CAMPO GRANDE – ÁREA 1,-8.0254763,-34.8779634,planilha,coordenada da planilha,corrigida,3,,
+DS2-L018,II,2,DEPÓSITO DE RECICLAGEM,DEPÓSITO,Ponto Estratégico Distrito,"RUA RAMIZ GALVÃO, 394",ARRUDA,-8.025248,-34.896899,planilha,coordenada da planilha,corrigida,5,,
+DS2-L019,II,2,CASA DO ACUMULADOR,ACUMULADOR,Ponto Estratégico Distrito,"RUA NÁDIA, 55",CAJUEIRO,-8.012412,-34.881598,planilha,coordenada da planilha,original,2,,
+DS2-L020,II,2,LUIZ PEÇAS USADAS,FERRO VELHO,Ponto Estratégico Distrito,"RUA ODORICO MENDES, 658",CAMPO GRANDE – ÁREA 1,-8.0379751,-34.8795445,planilha,coordenada da planilha,corrigida,5,,
+DS2-L021,II,2,FERRO VELHO DO PADRE,FERRO VELHO,Ponto Estratégico Distrito,"RUA ODORICO MENDES, 751",CAMPO GRANDE – ÁREA 1,-8.0388156,-34.8791074,planilha,coordenada da planilha,corrigida,7,,
+DS2-L022,II,2,FERRO VELHO DO NEM,FERRO VELHO,Ponto Estratégico Distrito,"RUA ODORICO MENDES, 719",CAMPO GRANDE – ÁREA 1,-8.0383738,-34.8793298,planilha,coordenada da planilha,corrigida,6,,
+DS2-L023,II,2,FERRO VELHO,FERRO VELHO,Ponto Estratégico Distrito,"RUA FARIAS NEVES, 293",CAMPO GRANDE – ÁREA 1,-8.0316256,-34.879409,endereco,bairro,localizada pelo endereço,3,,
+DS2-L024,II,2,MATERIAL DE RECICLÁVEL,DEPÓSITO,Ponto Estratégico Distrito,"RUA FARIAS NEVES, 1115 A",CAMPO GRANDE – ÁREA 1,-8.0245888,-34.8783745,planilha,coordenada da planilha,corrigida,5,,
+DS2-L025,II,2,SUCATA DE SR VICENTE,FERRO VELHO,Ponto Estratégico Distrito,"R. CEL. URBANO DE SENA, 381",FUNDÃO,-8.0169931,-34.8871138,planilha,coordenada da planilha,corrigida,5,,
+DS2-L026,II,2,DEPÓSITO DE RECICLADO,DEPÓSITO,Ponto Estratégico Distrito,"RUA PROF. JOSÉ AMARINO DO REIS, 1355",LINHA DO TIRO,-8.0107727,-34.9074476,planilha,coordenada da planilha,corrigida,1,,
+DS2-L027,II,2,FERRO VELHO,FERRO VELHO,Ponto Estratégico Distrito,"RUA ALTO DA SERRINHA, 368",LINHA DO TIRO,-8.0126721,-34.9117945,planilha,coordenada da planilha,corrigida,4,,
+DS2-L028,II,2,FERRO VELHO,FERRO VELHO,Ponto Estratégico Distrito,"AV. CORREIA DE BRITO, 1230",PEIXINHOS,-8.0187078,-34.8731466,endereco,logradouro,corrigida,6,,
+DS2-L029,II,2,FERRO VELHO,FERRO VELHO,Ponto Estratégico Distrito,"AV. CORREIA DE BRITO, 3231",PEIXINHOS,-8.0205502,-34.8736807,planilha,coordenada da planilha,corrigida,3,,
+DS2-L030,II,2,OFICINA,OFICINA,Ponto Estratégico Distrito,"RUA JARDIM BRASILIA, 275 A",PEIXINHOS,-8.017298,-34.8753784,planilha,coordenada da planilha,corrigida,2,,
+DS2-L031,II,2,OFICINA,OFICINA,Ponto Estratégico Distrito,"RUA HERCULÂNDIA, 125 B",ÁGUA FRIA,-8.0217927,-34.8875757,planilha,coordenada da planilha,corrigida,5,,
+DS2-L032,II,2,OFICINA MECÂNICA,OFICINA,Ponto Estratégico Distrito,"AV BEBERIBE, 1722",ÁGUA FRIA,-8.0219645,-34.8941444,endereco,logradouro,localizada pelo endereço,3,,
+DS2-L035,II,2,GEVACZ,OUTROS,Outros Equipamentos,"AV. ANTONIO DA COSTA AZEVEDO, 1135",PEIXINHOS,-8.0190517,-34.8740913,endereco,logradouro,localizada pelo endereço,11,2026-05-16,dia
+DS2-L036,II,2,COMPAZ EDUARDO CAMPOS,OUTROS,Outros Equipamentos,"AV ANIBAL BENEVOLO, S/N",LINHA DO TIRO,-8.0105676,-34.9021879,endereco,logradouro,localizada pelo endereço,5,2026-05-29,dia
+DS2-L037,II,2,MERCADO PÚBLICO DA ENCRUZILHADA,OUTROS,Outros Equipamentos,"RUA DR. JOSÉ MARIA, S/N",ENCRUZILHADA,-8.03696,-34.88703,planilha,coordenada da planilha,original,4,2026-06-02,dia
+DS2-L038,II,2,ACADEMIA DA CIDADE - JOVEM CAP,OUTROS,Outros Equipamentos,"PRAÇA FABIANO DA HORA - RUA CEL. URBANO RIBEIRO DE SENA, S/N",CAMPINA DO BARRETO,-8.01393,-34.8831,planilha,coordenada da planilha,original,2,2026-06-01,dia
+DS2-L043,II,2,USF ALTO DO CAPITÃO,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA TUBIRAÇABA, S/N",DOIS UNIDOS,-7.9999923,-34.9139749,endereco,nome,localizada pelo endereço,4,2026-01-26,dia
+DS2-L044,II,2,USF CLUBE DELEGADOS,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA JOÃO CAVALVANTI PETRIBU, S/N",DOIS UNIDOS,-7.9915759,-34.9174389,endereco,nome,localizada pelo endereço,3,2026-01-26,dia
+DS2-L045,II,2,USF ALTO DO CÉU,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"R. CAPITÃO SALGUEIRO, 267",PORTO DA MADEIRA,-8.0097014,-34.8914569,endereco,logradouro,localizada pelo endereço,1,2026-01-26,dia
+DS2-L046,II,2,USF MONTEIRO DE MORAES,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"AV. BEBERIBE, 4510",BEBERIBE,-8.004053,-34.8968267,endereco,logradouro,localizada pelo endereço,1,2026-01-27,dia
+DS2-L047,II,2,USF TIA REGINA,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"R. CORRÉGO DO DEODATO, 99",ÁGUA FRIA,-8.0140634,-34.8993393,endereco,logradouro,localizada pelo endereço,2,2026-01-26,dia
+DS2-L048,II,2,UPINHA DO CHIÉ,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"AV. AGAMENON MAGALHÃES, S/N",CAMPO GRANDE,-8.0359655,-34.8703703,endereco,logradouro,localizada pelo endereço,2,2026-01-27,dia
+DS2-L049,II,2,USF CHÃO DE ESTRELA,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA ELIAS GOMES, S/N",CAMPINA DO BARRETO,-8.0192873,-34.8809382,endereco,logradouro,localizada pelo endereço,1,2026-01-27,dia
+DS2-L050,II,2,DS II - SEDE,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA ANTÔNIO RANGEL, 113",ENCRUZILHADA,-8.03641,-34.88779,planilha,coordenada da planilha,corrigida,2,2026-06-01,dia
+DS2-L051,II,2,USF LUIZ WILSON,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA CHÃ DE ALEGRIA, S/N",BOMBA DO HEMETÉRIO,-8.02099,-34.90435,planilha,coordenada da planilha,original,2,2026-05-28,dia
+DS2-L052,II,2,USF+ BIANOR TEODÓSIO,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"AVENIDA HILDEBRANDO DE VASCONCELOS, S/N",DOIS UNIDOS,-7.99294,-34.91248,planilha,coordenada da planilha,original,1,2026-03-19,dia
+DS2-L055,II,2,USF ALTO DO MARACANÃ,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA SUBIDA MEDALHA MILAGROSA, 153",DOIS UNIDOS,-8.0038605,-34.9084501,endereco,nome,localizada pelo endereço,2,2026-03-19,dia
+DS2-L056,II,2,UPINHA ALTO DO PASCOAL,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"AV ANIBAL BENEVOLO, S/N",ALTO SANTA TEREZINHA,-8.0102021,-34.9028848,endereco,bairro,localizada pelo endereço,1,2026-03-19,dia
+DS2-L057,II,2,UPINHA FERNANDA WANDERLEY,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA URIEL DE HOLANDA, 300",LINHA DO TIRO,-8.0052322,-34.9000781,endereco,endereço,localizada pelo endereço,2,2026-03-19,dia
+DS2-L058,II,2,USF BRYON SARINHO,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA NAZARÉ, 293",ÁGUA FRIA,-8.0171936,-34.895813,endereco,logradouro,localizada pelo endereço,1,2026-03-19,dia
+DS2-L059,II,2,USF IRMÃ TEREZINHA,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA DA CONSOLAÇÃO, 09",PEIXINHOS,-8.020391,-34.877927,endereco,nome,localizada pelo endereço,1,2026-03-19,dia
+DS2-L060,II,2,USF+ EDUARDO CAMPOS,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA JACOB, 162",BOMBA DO HEMETÉRIO,-8.02386,-34.89989,planilha,coordenada da planilha,original,1,2026-05-28,dia
+DS2-L061,II,2,CAPS VICENTE ARAUJO,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA COUTO MAGALHÃES, 48",ROSARINHO,-8.03,-34.89633,planilha,coordenada da planilha,original,1,2026-05-28,dia
+DS2-L062,II,2,UCI GUILHERME ABATH,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA CARLOS FERNANDES, 73",HIPODROMO,-8.03334,-34.88803,planilha,coordenada da planilha,original,2,2026-05-28,dia
+DS2-L063,II,2,USF ILHA DO JOANEIRO,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA MARECHAL DEODORO, 688",CAMPO GRANDE,-8.03542,-34.88287,planilha,coordenada da planilha,original,1,2026-05-28,dia
+DS2-L064,II,2,CAPS JOSÉ CARLOS SOUTO,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA DJALMA FARIAS, 135",TORREÃO,-8.03997,-34.88519,planilha,coordenada da planilha,original,2,2026-05-28,dia
+DS2-L065,II,2,POLICLÍNICA SALOMÃO KELNER,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA ESTRADA VELHA DE ÁGUA FRIA, 1652",ÁGUA FRIA,-8.02084,-34.89573,planilha,coordenada da planilha,original,6,2026-05-28,dia
+DS2-L066,II,2,USF. JOSÉ SEVERIANO,UNIDADE DE SAÚDE,Demais Unidades De Saúde,RUA JERÔNIMO VILELA,CAMPO GRANDE,-8.02494,-34.88271,planilha,coordenada da planilha,original,1,2026-06-02,dia
+DS2-L067,II,2,POLICLINICA AMAURI COUTINHO,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA IGUATU, S/N",CAMPINA DO BARRETO,-8.01582,-34.88243,planilha,coordenada da planilha,original,4,2026-06-02,dia
+DS2-L068,II,2,USF. ALTO DOS COQUEIROS,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"CÓRREGO DA JAQUEIRA, 160",LINHA DO TIRO,-8.00759,-34.90144,planilha,coordenada da planilha,original,1,2026-05-22,dia
+DS3-L007,III,3,Sem nome (Dois Irmãos),FERRO VELHO,,"ESTRADA DOS MACACOS, 40B",Dois Irmãos,-7.9942062,-34.9398246,planilha,coordenada da planilha,original,5,,
+DS3-L008,III,3,Sem nome (Dois Irmãos),OFICINA,,"BR 101, 10",Dois Irmãos,-7.9949443,-34.9391429,planilha,coordenada da planilha,original,9,,
+DS3-L009,III,3,DEPÓSITO DE PNEUS,DEPÓSITO,,"ESTRADA DOS MACACOS, 40",Dois Irmãos,-7.9936716,-34.940301,endereco,logradouro,localizada pelo endereço,3,,
+DS3-L010,III,3,Sem nome (Dois Irmãos),OFICINA,,"ESTRADA DOS MACACOS, 40A",Dois Irmãos,-7.9942718,-34.9395097,planilha,coordenada da planilha,original,5,,
+DS3-L011,III,3,RAINHA DA SUCATA,FERRO VELHO,,"RUA DOM MANOEL DE MEDEIROS,530",Sítio dos pintos,-8.0222805,-34.9558709,planilha,coordenada da planilha,original,4,,
+DS3-L012,III,3,SUCATA DETRAN,FERRO VELHO,,"BR 101, 95",Dois Irmãos,-8.0225482,-34.9430187,planilha,coordenada da planilha,original,6,,
+DS3-L013,III,3,FERRO VELHO DONA GRAÇA,FERRO VELHO,,ARMANDO DOS SANTOS 7/A,SITIO DOS PINTOS,-8.0066297,-34.9605285,planilha,coordenada da planilha,original,4,,
+DS3-L014,III,3,CLUBE NAUTICO,ESTÁDIO DE FUTEBOL,,"CONSELHEIRO ROSA E SILVA, 1086",Aflitos,-8.0403981,-34.8967671,planilha,coordenada da planilha,original,6,,
+DS3-L015,III,3,MATERNIDADE BARROS LIMA,HOSPITAL,,"Avenida Norte, 6465",CASA AMARELA,-8.0210343,-34.9235993,endereco,endereço,localizada pelo endereço,2,2026-05-11,dia
+DS3-L016,III,3,CEMITÉRIO DE CASA AMARELA,CEMITÉRIO,,"Largo de Casa Amarela, 123",CASA AMARELA,-8.0261832,-34.9183561,endereco,logradouro,localizada pelo endereço,2,2026-05-06,dia
+DS3-L019,III,3,RECICLADOS,DEP. RECICLÁVEL,Ponto Estratégico Distrito,"AV. DA RECUPERAÇÃO, 500",Dois Irmãos,-8.0168358,-34.9420213,planilha,coordenada da planilha,original,3,,
+DS3-L020,III,3,HOSPITAL AGAMENON MAGALHÃES,,Ponto Estratégico Distrito,"ESTRADA DO ARRAIAL, 2723",CASA AMARELA,-8.0309751,-34.9074977,endereco,endereço,localizada pelo endereço,6,2026-05-14,dia
+DS3-L024,III,3,IBAMA - SEDE,OUTROS,Outros Equipamentos,"Av. Dezessete de Agosto, 1057",CASA FORTE,-8.033945,-34.9218895,endereco,logradouro,localizada pelo endereço,12,2026-05-07,dia
+DS3-L025,III,3,INCRA - SEDE,OUTROS,Outros Equipamentos,"Av. Conselheiro Rosa e Silva, 950",AFLITOS,-8.0429846,-34.8973963,endereco,logradouro,localizada pelo endereço,7,2026-05-14,dia
+DS3-L026,III,3,FUNDAÇÃO JOAQUIM NABUCO,OUTROS,Outros Equipamentos,"Av. Dezessete de Agosto, 2187",POÇO DA PANELA,-8.0304392,-34.9257507,endereco,endereço,localizada pelo endereço,20,2026-05-06,dia
+DS3-L027,III,3,SEMENTEIRA DA PREFEITURA DO RECIFE,OUTROS,Outros Equipamentos,"Rua Redentor, 82",CASA AMARELA,-8.0246343,-34.917753,endereco,bairro,localizada pelo endereço,5,2026-05-06,dia
+DS3-L028,III,3,SÍTIO TRINDADE,OUTROS,Outros Equipamentos,"Estrada do Arraial, 3259",CASA AMARELA,-8.02875,-34.9117622,endereco,endereço,localizada pelo endereço,4,2026-05-06,dia
+DS3-L029,III,3,RETÍFICA PADRÃO,OUTROS,Outros Equipamentos,"Av. Norte Miguel Arraes de Alencar, 5841",CASA AMARELA,-8.0215694,-34.9174542,endereco,logradouro,localizada pelo endereço,4,2026-05-06,dia
+DS3-L030,III,3,UFRPE,OUTROS,Outros Equipamentos,"Rua Dom Manuel de Medeiros, S/N",DOIS IRMÃOS,-8.0162757,-34.9509066,endereco,nome,localizada pelo endereço,13,2026-05-13,dia
+DS3-L031,III,3,VILA DIGITAL - FUNDAJ,OUTROS,Outros Equipamentos,"Rua Dois Irmãos, 11",APIPUCOS,-8.0191825,-34.9409418,endereco,logradouro,localizada pelo endereço,10,2026-05-08,dia
+DS3-L032,III,3,FUNDAJ - APIPUCOS,OUTROS,Outros Equipamentos,"Rua Dois Irmãos, 92",APIPUCOS,-8.0200442,-34.9364669,endereco,logradouro,localizada pelo endereço,20,2026-05-08,dia
+DS3-L033,III,3,FUNDAJ - DERBY,OUTROS,Outros Equipamentos,"Rua Henrique Dias, 609",DERBY,-8.0594482,-34.899963,endereco,endereço,localizada pelo endereço,8,2026-05-15,dia
+DS3-L034,III,3,HOSPITAL DA RESTAURAÇÃO,OUTROS,Outros Equipamentos,"Av. Agamenon Magalhães, S/N",DERBY,-8.0570847,-34.898101,endereco,logradouro,localizada pelo endereço,6,2026-05-14,dia
+DS3-L035,III,3,CLUBE PORTUGUÊS,OUTROS,Outros Equipamentos,"Av. Conselheiro Rosa e Silva, 172",GRAÇAS,-8.0501273,-34.8955644,endereco,endereço,localizada pelo endereço,8,2026-05-14,dia
+DS3-L036,III,3,CLUBE ALEMÃO,OUTROS,Outros Equipamentos,"Estrada do Encanamento, 216",PARNAMIRIM,-8.0318077,-34.9144067,endereco,logradouro,localizada pelo endereço,6,2026-05-15,dia
+DS3-L037,III,3,FUNASA,OUTROS,Outros Equipamentos,"R. do Futuro, 600",AFLITOS,-8.0392007,-34.8967064,endereco,bairro,localizada pelo endereço,2,2026-05-14,dia
+DS3-L038,III,3,HOSPITAL DO SERVIDOR,OUTROS,Outros Equipamentos,"Av. Conselheiro Rosa e Silva, s/n",ESPINHEIRO,-8.0479492,-34.8968779,endereco,logradouro,localizada pelo endereço,6,2026-05-14,dia
+DS3-L039,III,3,PARQUE ESTADUAL DE DOIS IRMÃOS,OUTROS,Outros Equipamentos,"Praça Farias Neves, s/n",DOIS IRMÃOS,-8.0158786,-34.9431968,endereco,nome,localizada pelo endereço,4,2026-05-11,dia
+DS3-L040,III,3,SEMENTEIRA APIPUCOS,OUTROS,Outros Equipamentos,"Avenida Apipucos, 223",APIPUCOS,-8.0147469,-34.9393153,endereco,logradouro,localizada pelo endereço,5,2026-05-13,dia
+DS3-L041,III,3,HOSPITAL CORREIA PICANÇO,OUTROS,Outros Equipamentos,"R. Padre Roma, 149",TAMARINEIRA,-8.0344005,-34.9045314,endereco,endereço,localizada pelo endereço,5,2026-05-15,dia
+DS3-L042,III,3,LAFEPE,OUTROS,Outros Equipamentos,"R. Dois Irmãos, 1117",DOIS IRMÃOS,-8.0174724,-34.943104,endereco,endereço,localizada pelo endereço,12,2026-05-11,dia
+DS3-L043,III,3,LANAGRO - LABORATÓRIO FEDERAL DE DEFESA AGROPECUÁRIA,OUTROS,Outros Equipamentos,"R. Manuel de Medeiros, s/n",DOIS IRMÃOS,-8.015858,-34.9464781,endereco,logradouro,localizada pelo endereço,8,2026-05-11,dia
+DS3-L044,III,3,CENTRO MÉDICO ERMÍRIO DE MORAES,OUTROS,Outros Equipamentos,"Av. Dezessete de Agosto, 2388",CASA FORTE,-8.0370665,-34.9145485,endereco,logradouro,localizada pelo endereço,7,2026-05-13,dia
+DS3-L047,III,3,UPINHA PADRE JOSÉ EDWALDO GOMES,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA ENG. JAÍR FURTANO MEIRELES, 321",POÇO DA PANELA,-8.0351063,-34.9238704,endereco,bairro,localizada pelo endereço,2,2026-01-21,dia
+DS3-L048,III,3,USF+ JOAQUIM DA COSTA CARVALHO,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA SIRIJI, S/N",ALTO DO MANDU,-8.0257603,-34.9282556,endereco,logradouro,localizada pelo endereço,3,2026-01-21,dia
+DS3-L049,III,3,USF+ PROFESSOR MARIO RAMOS,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA ÓSCAR DE BARROS, 175",CASA AMARELA,-8.0234273,-34.916463,endereco,logradouro,localizada pelo endereço,1,2026-01-21,dia
+DS3-L052,III,3,US União das vilas,UNIDADE DE SAÚDE,Demais Unidades De Saúde,Rua da Hora (mais próxima da coordenada),ESPINHEIRO,-8.0428691,-34.8912789,endereco,bairro,localizada pelo endereço,2,2026-03-26,dia
+DS3-L053,III,3,USF Sítio dos Pintos,UNIDADE DE SAÚDE,Demais Unidades De Saúde,Rua Professor Cláudio Selva (mais próxima da coordenada),SÍTIO DOS PINTOS,-8.0120526,-34.9521875,endereco,nome,localizada pelo endereço,1,2026-03-26,dia
+DS3-L054,III,3,US Francisco Pignatari,UNIDADE DE SAÚDE,Demais Unidades De Saúde,Rua Taquaratinga (mais próxima da coordenada),CASA AMARELA,-8.0246343,-34.917753,endereco,bairro,localizada pelo endereço,1,2026-03-26,dia
+DS3-L055,III,3,US Sítio São Braz,UNIDADE DE SAÚDE,Demais Unidades De Saúde,Trilha do Açude do Prata (mais próxima da coordenada),DOIS IRMÃOS,-8.0043519,-34.952855,endereco,bairro,localizada pelo endereço,2,2026-03-26,dia
+DS3-L056,III,3,USF Apipucos,UNIDADE DE SAÚDE,Demais Unidades De Saúde,Rua Itatiaia (mais próxima da coordenada),APIPUCOS,-8.0190214,-34.9381275,endereco,bairro,localizada pelo endereço,1,2026-03-26,dia
+DS4-L007,IV,4,SECRETARIA DE EDUCAÇÃO PE,Órgão Público,,"Av. Afonso Olindense, 1513",VÁRZEA BAIXA,-8.04365,-34.958693,planilha,coordenada da planilha,original,6,,
+DS4-L008,IV,4,PARQUE DE EXPOSIÇÃO DE ANIMAIS,Parques e Áreas de Lazer,,"Av.caxangá, 2200",CORDEIRO 1,-8.0429826,-34.9239069,planilha,coordenada da planilha,original,5,,
+DS4-L009,IV,4,Estação de tratamento da Compesa,Estações de Tratamento e Abastecimento,,"Av. Maurício de Nassau, 2",CORDEIRO 1,-8.040954,-34.925289,planilha,coordenada da planilha,original,7,,
+DS4-L010,IV,4,INSTITUTO PADRE VENÂNCIO,Casa de acolhimento,,"Av. Afonso Olindense, 1764",VARZEA BAIXA,-8.047075,-34.959432,planilha,coordenada da planilha,original,10,,
+DS4-L011,IV,4,PREDIO DA SUDENE,Prédio Público,,"Av. Profº Moraes Rego, 873",CDU,-8.0398574,-34.9426852,endereco,bairro,localizada pelo endereço,20,,
+DS4-L012,IV,4,HOSPITAL GETULIO VARGAS,Serviços de Saúde,,"Avenida Gal. San Martin, S/N",CORDEIRO 1,-8.0511193,-34.928542,endereco,bairro,localizada pelo endereço,11,,
+DS4-L013,IV,4,CAMITÉRIO DA VÁRZEA,CEMITÉRIO,,"Rua Prof. Artur de Sá, 1953",VARZEA CDU,,,sem posição,,invalida,2,,
+DS4-L016,IV,4,Oficina Minha Garagem,Oficina,Ponto Estratégico Distrito,"Rua três de março, 180",IPUTINGA 2,-8.0326306,-34.9441243,planilha,coordenada da planilha,original,4,,
+DS4-L017,IV,4,Thiago Auto Peças,Oficina,Ponto Estratégico Distrito,"Rua do Bambu, 25",VÁRZEA BRASILIT,-8.0338551,-34.9524671,planilha,coordenada da planilha,original,4,,
+DS4-L018,IV,4,R.R. CONSTRUTORA,Marmoraria,Ponto Estratégico Distrito,"Rua Dr. Paulo Correia, 4877",VÁRZEA BRASILIT,-8.0358785,-34.948416,planilha,coordenada da planilha,original,9,,
+DS4-L019,IV,4,TEM TEM - COZINHAS PROFISSIONAIS,Outros,Ponto Estratégico Distrito,"Rua Dr. Flavio F.S Maroso,333",TORRÕES,-8.0670884,-34.9386755,planilha,coordenada da planilha,original,4,,
+DS4-L020,IV,4,Cooperativa Recicla Torre,Reciclagem,Ponto Estratégico Distrito,"Rua Eliezer Olimpio de Moura, 100",TORRE,-8.0444054,-34.91297,planilha,coordenada da planilha,original,3,,
+DS4-L021,IV,4,Kipeças,Ferro velho,Ponto Estratégico Distrito,"Avenida Caxangá, 2689",CORDEIRO 2,-8.0452067,-34.93072,planilha,coordenada da planilha,original,3,,
+DS4-L022,IV,4,FERRO VELHO DO JOÃO CARLOS,Ferro Velho,Ponto Estratégico Distrito,"Rua Clotilde de Oliveira, 251",CORDEIRO 1,-8.052039,-34.923925,planilha,coordenada da planilha,original,4,2026-04-13,dia
+DS4-L023,IV,4,Capotaria Casa da Marly,Oficina,Ponto Estratégico Distrito,"Rua Manoel Bezerra, 314-A",MADALENA,-8.054789,-34.911147,planilha,coordenada da planilha,original,4,2026-04-13,dia
+DS4-L024,IV,4,OFICINA DE FAUSTO,Oficina,Ponto Estratégico Distrito,"Rua Barão Lopes Neto, 117",IPUTINGA 1,-8.035182,-34.9299376,planilha,coordenada da planilha,original,2,2026-04-13,dia
+DS4-L025,IV,4,Ferro Velho Do Hulk,Ferro Velho,Ponto Estratégico Distrito,"Travessa Washington Duarte Espindola, 1173",TORRÕES 1,-8.064726,-34.939244,planilha,coordenada da planilha,original,6,2026-04-13,dia
+DS4-L026,IV,4,Ferro Velho Do Antônio,Ferro Velho,Ponto Estratégico Distrito,"Travessa Washington Duarte Espindola, 1164",TORRÕES 1,-8.064812,-34.938803,planilha,coordenada da planilha,original,4,2026-04-13,dia
+DS4-L027,IV,4,OFICINA DO FELIPE,Oficina,Ponto Estratégico Distrito,"R. Dr. Flávio Ferreira da Silva Marojo, 570",TORRÕES 2,-8.0665132,-34.9371745,planilha,coordenada da planilha,original,3,,
+DS4-L028,IV,4,Oficina Daniel,Oficina,Ponto Estratégico Distrito,"Rua João Crescêncio, 67.",MADALENA,-8.0561879,-34.91213,endereco,logradouro,localizada pelo endereço,5,2026-04-13,dia
+DS4-L031,IV,4,Reciclagem do Severino,RECICLAGEM,Outros Equipamentos,"Av. General San Martin, 879",PRADO,-8.0574225,-34.924648,endereco,logradouro,localizada pelo endereço,2,,
+DS4-L032,IV,4,LAR PADRE ZEGRI,OUTROS,Outros Equipamentos,Av.Visconde de Albuquerque,MADALENA,-8.0581422,-34.9071402,endereco,logradouro,localizada pelo endereço,6,2026-05-21,dia
+DS4-L033,IV,4,IGREJA CATÓLICA DA TORRE,,Outros Equipamentos,RUA CONDE DE IRAJÁ S/N,TORRE,-8.0461384,-34.9083074,endereco,logradouro,localizada pelo endereço,3,2026-06-11,dia
+DS4-L034,IV,4,JOCKEY CLUB DE PERNAMBUCO,,Outros Equipamentos,"RUA CARLOS GOMES, 640",PRADO,-8.0633976,-34.9133757,endereco,logradouro,localizada pelo endereço,4,2026-06-11,dia
+DS4-L035,IV,4,IGREJA BATISTA MEMORIAL DO CORDEIRO,,Outros Equipamentos,"RUA GREGÓRIO JUNIOR, 137",ZUMBI,-8.0526963,-34.9193772,endereco,logradouro,localizada pelo endereço,2,2026-06-11,dia
+DS4-L036,IV,4,HOSPITAL ALTINO VENTURA,,Outros Equipamentos,"AV. MAURICIO DE NASSAU, 2075",IPUTINGA,-8.0368386,-34.9372705,endereco,endereço,localizada pelo endereço,2,2026-06-11,dia
+DS4-L037,IV,4,HOSPITAL BARÃO DE LUCENA,,Outros Equipamentos,"AV. CAXANGÁ, 3860",IPUTINGA,-8.0381639,-34.9386887,endereco,endereço,localizada pelo endereço,5,2026-06-11,dia
+DS4-L038,IV,4,DEPARTAMENTO DE MECÂNICA / MNT,,Outros Equipamentos,"RUA PROFESSOR MORAES REGO, 1235",CDU - UFPE,,,sem posição,,invalida,2,2026-06-12,dia
+DS4-L039,IV,4,DEPERTAMENTO DE ANTIBIÓTICO,,Outros Equipamentos,"RUA PROFESSOR MORAES REGO, 1235",CDU - UFPE,,,sem posição,,invalida,3,2026-06-12,dia
+DS4-L040,IV,4,SINFRA - SETOR DE INFRA ESTRUTURA,,Outros Equipamentos,"RUA PROFESSOR MORAES REGO, 1235",CDU - UFPE,,,sem posição,,invalida,2,2026-06-12,dia
+DS4-L045,IV,4,USF Casarão do Cordeiro,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"R. Odete Monteiro, 450",Cordeiro 1,-8.0441578,-34.9213938,planilha,coordenada da planilha,original,3,2025-11-27,dia
+DS4-L046,IV,4,Sede do DS IV,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"Rua Cantora Clara Nunes, 183",Torre,-8.0445932,-34.9177895,planilha,coordenada da planilha,original,2,2025-11-27,dia
+DS4-L047,IV,4,Policlínica Lessa de Andrade,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"Estrada dos Remédios, 2416",Madalena,-8.0586561,-34.9070396,planilha,coordenada da planilha,original,7,2025-12-30,dia
+DS4-L048,IV,4,US José Dustan,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"Av. Mauricio de Nassau, s/n",Iputinga 1,-8.0386277,-34.9309364,planilha,coordenada da planilha,original,6,2025-12-30,dia
+DS4-L049,IV,4,USF Sitio Wanderley,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"R. Hemetério Maciel, s/n",Várzea Brasilit,-8.0391713,-34.9506596,planilha,coordenada da planilha,original,3,2025-12-30,dia
+DS4-L050,IV,4,Assoc. de Moradores,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"Rua Nova Aliança, s/n",Iputinga 2,-8.0307386,-34.9326411,planilha,coordenada da planilha,original,2,2025-12-30,dia
+DS4-L051,IV,4,Centro Integrado de Saúde,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"R. Lindolfo Collor,160",Cordeiro 2,-8.0531488,-34.9396986,planilha,coordenada da planilha,original,5,,
+DS4-L052,IV,4,USF Joaquim Cavalcante,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"Avenida Do Forte, S/N",Torrões,-8.0588579,-34.9315129,endereco,logradouro,localizada pelo endereço,3,2026-03-17,dia
+DS4-L053,IV,4,USF+ Emocy Krause,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"Rua Praça Gregório Bezerra, S/N",Torre,-8.0425107,-34.9074638,endereco,bairro,localizada pelo endereço,2,2026-03-16,dia
+DS4-L054,IV,4,USF+ Vila Arraes,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"Avenida Afonso Olindense, S/N",Várzea,-8.0323388,-34.955763,endereco,logradouro,localizada pelo endereço,2,2026-03-16,dia
+DS4-L055,IV,4,USF+ Olinto de Oliveira,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"Rua São Francisco De Paula, 47",Caxangá,-8.0306775,-34.9558033,endereco,logradouro,localizada pelo endereço,2,2026-03-16,dia
+DS4-L058,IV,4,USF Sítio das Palmeiras,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"Rua Felixlândia, 176",Cordeiro,-8.0510917,-34.9371457,endereco,logradouro,localizada pelo endereço,1,2026-03-16,dia
+DS4-L059,IV,4,USF Sinos,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"Rua Dos Sinos, 35",Engenho do Meio,-8.0565946,-34.9424194,endereco,bairro,localizada pelo endereço,2,2026-03-16,dia
+DS4-L060,IV,4,USF Crosirof,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"Rua Edvaldo Maranhão Ferreira, 135",Engenho do Meio,-8.0565946,-34.9424194,endereco,bairro,localizada pelo endereço,2,2026-03-16,dia
+DS4-L061,IV,4,USF+ Brasilit,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"Rua Emiliano Braga, S/N",Várzea,-8.0393719,-34.9436343,endereco,logradouro,localizada pelo endereço,2,2026-03-16,dia
+DS4-L062,IV,4,Cen de Conv Recomeço Fátima Caio,UNIDADE DE SAÚDE,Demais Unidades De Saúde,Rua Antonio Romano S/N,Caxangá,-8.0303613,-34.949151,endereco,bairro,localizada pelo endereço,4,2026-03-16,dia
+DS4-L063,IV,4,USF+ Jardim Teresopólis,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"Rua Professor Josué De Castro, 156",Várzea,-8.0343765,-34.9758608,endereco,nome,localizada pelo endereço,1,2026-03-16,dia
+DS4-L064,IV,4,USF Barreiras,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"Rua Água Clara, 145",Várzea,-8.0249029,-34.96369,endereco,logradouro,localizada pelo endereço,1,2026-03-16,dia
+DS4-L065,IV,4,CAPS Espaço vida,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"Estrada Do Forte Do Arraial Novo Do Bom Jesus, 620",Cordeiro,-8.0525004,-34.92864,endereco,logradouro,localizada pelo endereço,2,2026-03-17,dia
+DS4-L066,IV,4,USF Macaé,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"Rua Macae, 125",Torrões,-8.0620433,-34.9379309,endereco,logradouro,localizada pelo endereço,2,2026-03-17,dia
+DS4-L067,IV,4,Caps Ad Eulâmpio Cordeiro,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"Rua Rondônia, 100",Zumbi,-8.0542375,-34.9191586,endereco,logradouro,localizada pelo endereço,3,2026-03-17,dia
+DS4-L068,IV,4,USF Carangueijo,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"Rua Tabaiares, 297",Ilha do Retiro,-8.0648938,-34.9053952,endereco,logradouro,localizada pelo endereço,2,2026-03-17,dia
+DS4-L069,IV,4,USF Sítio do Cardoso,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"Rua Menezes Drumont, 99",Madalena,-8.0537581,-34.9083686,endereco,bairro,localizada pelo endereço,2,2026-03-17,dia
+DS5-L007,V,5,IPAN,DEPÓSITO DE RECICLAGEM,,RUA: FRANCISCO CONTE N° 52,ESTÂNCIA,-8.0803258,-34.9304547,planilha,coordenada da planilha,corrigida,8,,
+DS5-L008,V,5,PAN DE AREIAS,HOSPITAL,,"AV. RECIFE, 801",AREIAS,-8.1001627,-34.9256068,endereco,endereço,localizada pelo endereço,7,2026-04-15,dia
+DS5-L012,V,5,REGALIA,BORRACHARIA,Ponto Estratégico Distrito,BR – 101 N°01,JARDIM SÃO PAULO - 1,-8.0858487,-34.9448074,planilha,coordenada da planilha,corrigida,2,,
+DS5-L013,V,5,ARLINDO CROSS,TRANSPORTADORA,Ponto Estratégico Distrito,AV. CENTRAL N° 6356,JARDIM SÃO PAULO - 1,-8.0862508,-34.9413976,planilha,coordenada da planilha,corrigida,10,,
+DS5-L014,V,5,DO BETO,BORRACHARIA,Ponto Estratégico Distrito,BR – 101 N/102,JARDIM SÃO PAULO - 1,-8.081657,-34.9430628,planilha,coordenada da planilha,corrigida,2,,
+DS5-L015,V,5,24 HORAS,BORRACHARIA,Ponto Estratégico Distrito,BR - 101 Nº 42,JARDIM SÃO PAULO - 2,-8.0798539,-34.9433337,planilha,coordenada da planilha,corrigida,4,,
+DS5-L016,V,5,LEANDRO,BORRACHARIA,Ponto Estratégico Distrito,AV: GENERAL SAN MARTIN  N° 171,SAN MARTIN,-8.0666506,-34.9275319,planilha,coordenada da planilha,corrigida,2,,
+DS5-L017,V,5,LR MOTO,BORRACHARIA,Ponto Estratégico Distrito,RUA: LEANDRO BARRETO N°188,JARDIM SÃO PAULO - 2,-8.0817403,-34.9445287,planilha,coordenada da planilha,corrigida,2,,
+DS5-L018,V,5,DO LEONILDO,FERRO VELHO,Ponto Estratégico Distrito,RUA: JOSÉ DA BOMBA N° 105,AFOGADOS - 1,-8.0678878,-34.9093828,planilha,coordenada da planilha,corrigida,3,,
+DS5-L019,V,5,DO CLEITON,DEPÓSITO DE RECICLAGEM,Ponto Estratégico Distrito,RUA: MAESTRO NELSON FERREIRA Nº 401,AFOGADOS - 3,-8.0850986,-34.9171938,planilha,coordenada da planilha,corrigida,1,,
+DS5-L020,V,5,DO MIGUEL,DEPÓSITO DE RECICLAGEM,Ponto Estratégico Distrito,RUA: BEETHOVEN N° 25,SAN MARTIN,-8.0655607,-34.9242403,planilha,coordenada da planilha,corrigida,6,,
+DS5-L021,V,5,GOMES E LIRA,FERRO VELHO,Ponto Estratégico Distrito,RUA: MIZAEL DE MENDONÇA N°447,SAN MARTIN,-8.0778787,-34.9387606,planilha,coordenada da planilha,corrigida,4,,
+DS5-L022,V,5,CORDEIRO,FERRO VELHO,Ponto Estratégico Distrito,RUA: GUARAMIRIM N° 60,JIQUIÁ - 1,-8.0820734,-34.9246517,planilha,coordenada da planilha,corrigida,4,,
+DS5-L023,V,5,TEM TUDO,FERRO VELHO,Ponto Estratégico Distrito,RUA: ROCHA POMBO Nº 734-1,ESTÂNCIA,-8.078677,-34.9329596,planilha,coordenada da planilha,corrigida,4,,
+DS5-L024,V,5,DEPÓSITO DE MATERIAL,DEPÓSITO DE MATERIAL,Ponto Estratégico Distrito,RUA: DOM ATONIO VIÇOSO Nº 136,BARRO - 1,-8.093908333333333,-34.94228277777778,planilha,coordenada da planilha,corrigida,2,,
+DS5-L025,V,5,OFICINA,OFICINA,Ponto Estratégico Distrito,RUA: CAPITÃO PORCIANO Nº 151,BARRO - 1,-8.0946447,-34.9433979,planilha,coordenada da planilha,corrigida,2,,
+DS5-L026,V,5,ELIETE,ACUMULADOR,Ponto Estratégico Distrito,RUA: DEOCLECIO Nº 118,BARRO - 1,-8.0937605,-34.9391585,planilha,coordenada da planilha,corrigida,3,,
+DS5-L027,V,5,DO GILSON,DEPÓSITO DE RECICLAGEM,Ponto Estratégico Distrito,RUA: BOM JESUS S/N,BARRO - 1,-8.0987298,-34.9408223,planilha,coordenada da planilha,corrigida,4,,
+DS5-L028,V,5,RECICLAVEIS DO DOUGLAS,DEPÓSITO DE RECICLAVEIS,Ponto Estratégico Distrito,RUA: PROFESSOR RUTILHO Nº 52,COQUEIRAL,-8.0883766,-34.9664705,planilha,coordenada da planilha,corrigida,2,,
+DS5-L029,V,5,ACUMULADOR,ACUMULADOR,Ponto Estratégico Distrito,RUA: APRIGIO GUIMARÂES N° 605-B,TEJIPIÓ,-8.0875991,-34.9617864,planilha,coordenada da planilha,corrigida,3,,
+DS5-L030,V,5,CALÇO,BORRACHARIA,Ponto Estratégico Distrito,RUA SÃO MIGUEL 2125,AFOGADOS,-8.0807259,-34.9155622,endereco,logradouro,localizada pelo endereço,2,2026-04-15,dia
+DS5-L031,V,5,DO GERALDO,FERRO VELHO,Ponto Estratégico Distrito,"RUA TURIAÇU, 576",AFOGADOS,-8.0827618,-34.9159411,endereco,logradouro,localizada pelo endereço,2,2026-04-15,dia
+DS5-L032,V,5,BRASIL PEÇAS USADAS,OFICINA,Ponto Estratégico Distrito,"RUA QUITÉRIO INÁCIO MELO, 234",AFOGADOS,-8.0812884,-34.9091655,endereco,logradouro,localizada pelo endereço,4,2026-04-15,dia
+DS5-L033,V,5,DEPÓSITO DE PNEUS,DEPÓSITO DE PNEUS,Ponto Estratégico Distrito,"RUA JOSÉ BARATA, 300",JIQUIÁ - 1,-8.0875245,-34.9245208,endereco,bairro,localizada pelo endereço,4,2026-04-15,dia
+DS5-L034,V,5,MERCADO DE AREIAS,MERCADO PUBLICO,Ponto Estratégico Distrito,"AV. DRº JOSÉ RUFINO, 1122",AREIAS,-8.0890881,-34.9340124,endereco,nome,localizada pelo endereço,7,2026-04-15,dia
+DS5-L035,V,5,DO ÍNDIO,BORRACHARIA,Ponto Estratégico Distrito,"RUA AGUATI, 222 A",JARDIM SÃO PAULO,-8.0810225,-34.9441452,endereco,logradouro,localizada pelo endereço,3,2026-04-15,dia
+DS5-L036,V,5,DO VADO,FERRO VELHO,Ponto Estratégico Distrito,"RUA LINHA NOVA, 001",COQUEIRAL,-8.0896544,-34.9681347,endereco,logradouro,localizada pelo endereço,3,2026-04-15,dia
+DS5-L040,V,5,MG. SARAIVA,TRANSPORTADORA,Outros Equipamentos,RUA CONTUGUMBA Nº 180,AFOGADOS,-8.0691436,-34.9074812,planilha,coordenada da planilha,corrigida,4,2026-07-02,dia
+DS5-L041,V,5,ANTIGO GRAVO GAMA,HOSPITAL,Outros Equipamentos,RUA DO ROSÁRIO S/N,AFOGADOS,-8.0819788,-34.909951,endereco,logradouro,localizada pelo endereço,2,2026-07-14,dia
+DS5-L042,V,5,DO EDSON,OFICINA,Outros Equipamentos,"RUA PAPA JOÃO VINTE E TRÊS, Nº30",TEJIPIÓ,-8.091742,-34.9615246,endereco,logradouro,localizada pelo endereço,2,2026-07-02,dia
+DS5-L043,V,5,OFICINA,OFICINA,Outros Equipamentos,"RUA QUEIRA DEUS, Nº94",TEJIPIÓ,-8.0925665,-34.9618336,endereco,logradouro,localizada pelo endereço,2,2026-07-08,dia
+DS5-L044,V,5,DO RUBEM,FERRO VELHO,Outros Equipamentos,"RUA 11 DE AGOSTO, Nº05",CURADO,-8.0807906,-34.9696671,endereco,logradouro,localizada pelo endereço,2,2026-07-02,dia
+DS5-L045,V,5,COMPESA,COMPESA,Outros Equipamentos,"RUA 11 DE AGOSTO, Nº564",CURADO,-8.0807906,-34.9696671,endereco,logradouro,localizada pelo endereço,3,2026-07-02,dia
+DS5-L046,V,5,ARMAZÉM GALERIA,ARM. DE CONSTRUÇÃO,Outros Equipamentos,"AV. LIBERDADE, Nº 972",CURADO,-8.0818944,-34.9620844,endereco,logradouro,localizada pelo endereço,3,2026-07-02,dia
+DS5-L047,V,5,OTÁVIO DE FREITAS,HOSPITAL,Outros Equipamentos,"RUA APRIGIO GUIMARÃES, Nº600",SANCHO,-8.0875637,-34.957395,endereco,logradouro,localizada pelo endereço,10,2026-06-18,dia
+DS5-L051,V,5,USF Vila São Miguel,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Rua: Emília Torreão Nº 145,AFOGADOS,-8.08199,-34.9096182,endereco,logradouro,localizada pelo endereço,2,2026-01-12,dia
+DS5-L052,V,5,Maternidade Bandeira Filho,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Rua. Londrina S/N,AFOGADOS,-8.0791129,-34.9103577,endereco,logradouro,localizada pelo endereço,6,2026-01-12,dia
+DS5-L053,V,5,USF San Martin,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Rua: Comendador Franco Ferreira Nº876,SAN MARTIN,-8.0683045,-34.9276199,endereco,logradouro,localizada pelo endereço,2,2026-01-12,dia
+DS5-L054,V,5,USF Mangueira II,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Rua: Feliciano Castilho n° 64,MANGUEIRA,-8.0753904,-34.9205937,endereco,endereço,localizada pelo endereço,2,2026-01-12,dia
+DS5-L055,V,5,Upinha Dia Novo Jiquiá,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,"Rua Biguaçú, Av. Central, 10",JIQUIA,-8.0875245,-34.9245208,endereco,bairro,localizada pelo endereço,2,2026-01-12,dia
+DS5-L056,V,5,USF Jiquiá I E II,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Rua Padre Roque nº36,JIQUIA,-8.0878484,-34.9261303,endereco,logradouro,localizada pelo endereço,2,2026-01-12,dia
+DS5-L057,V,5,USF Iraque,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Rua: Mearim n° 55,ESTÂNCIA,-8.0906714,-34.9278938,endereco,endereço,localizada pelo endereço,2,2026-01-12,dia
+DS5-L058,V,5,USF Chico Mendes,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Rua: Trav. Do Campo,CAÇOTE,-8.1010559,-34.9326892,endereco,bairro,localizada pelo endereço,2,2026-01-12,dia
+DS5-L059,V,5,C. S (UBT) Gaspar Regueira,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Rua: Padre Diogo Rodrigues n° 744,BARRO,-8.0886688,-34.9380147,endereco,logradouro,localizada pelo endereço,2,2026-01-13,dia
+DS5-L060,V,5,USF Planeta dos Macacos 1,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Rua 4 de Setembro nº145,CURADO,-8.0817892,-34.9534866,endereco,logradouro,localizada pelo endereço,1,2026-01-14,dia
+DS5-L061,V,5,C.S (UBT) Bido Krause,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Av. 11 de Agosto s/n,CURADO,-8.0752233,-34.9793157,endereco,bairro,localizada pelo endereço,8,2026-01-14,dia
+DS5-L062,V,5,USF Coqueiral 1 e 2,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Rua: Maria Teresa nº174,COQUIERAL,,,sem posição,,invalida,2,2026-01-14,dia
+DS5-L063,V,5,USF Planeta dos Macacos II,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Rua João Carlos Pereira da Mota,JARDIM SÃO PAULO,-8.078022,-34.95045,planilha,coordenada da planilha,corrigida,2,2026-01-13,dia
+DS5-L064,V,5,USF Josué de Castro,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Av. Coração de Jesus Nº 100,BARRO,-8.1106695,-34.9529624,endereco,logradouro,localizada pelo endereço,2,2026-01-13,dia
+DS5-L065,V,5,Upinha de Jardim São Paulo,Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Praça de Jardim São Paulo S/N,JARDIM SÃO PAULO,-8.0815803,-34.938343,endereco,logradouro,localizada pelo endereço,2,2026-01-15,dia
+DS5-L066,V,5,Centro Médico Psicopedagógico Infantil (CEMPI),Unidade de saúde,Unidades De Saúde / Pontos De Apoio,Av. São Paulo Nº677,JARDIM SÃO PAULO,-8.080792,-34.9420633,endereco,bairro,localizada pelo endereço,2,2026-01-13,dia
+DS5-L069,V,5,Policlinica Agamenonm Magalhães,,Demais Unidades De Saúde,"AV. SUL, S/N",AFOGADOS,-8.0802715,-34.9041798,endereco,logradouro,localizada pelo endereço,5,2026-03-19,dia
+DS5-L070,V,5,UPAE Mustardinha,,Demais Unidades De Saúde,"R. Maj. Mario Portela,279",MUSTARDINHA,-8.0691191,-34.9169246,endereco,logradouro,localizada pelo endereço,5,2026-03-19,dia
+DS5-L071,V,5,USF Mustardinha,,Demais Unidades De Saúde,"R. Maj. Mario Portela, 472",MUSTARDINHA,-8.0676793,-34.9157628,endereco,logradouro,localizada pelo endereço,1,2026-03-19,dia
+DS5-L072,V,5,USF Novo Prado,,Demais Unidades De Saúde,"R. Isaac Markman, 100",BONGI,-8.0657633,-34.9174573,endereco,logradouro,localizada pelo endereço,1,2026-03-19,dia
+DS5-L073,V,5,USF Mangueira I,,Demais Unidades De Saúde,"R. Jupiáçara, 35",SAN MARTIN,-8.0752926,-34.9249972,endereco,logradouro,localizada pelo endereço,1,2026-03-19,dia
+DS5-L074,V,5,Posto de Saúde CEASA PAM,,Demais Unidades De Saúde,"R. S D 5519, 25 (BR 101)",CURADO,-8.0752233,-34.9793157,endereco,bairro,localizada pelo endereço,1,2026-03-19,dia
+DS5-L075,V,5,USF Parque dos Milagres,,Demais Unidades De Saúde,,,,,sem posição,,invalida,1,2026-03-19,dia
+DS5-L076,V,5,USF Pantanal,,Demais Unidades De Saúde,"Rua Bandeirante Raposo Tavares,100",BARRO,-8.107194,-34.9581682,endereco,endereço,localizada pelo endereço,1,2026-03-19,dia
+DS5-L077,V,5,USF Jardim Uchôa,,Demais Unidades De Saúde,"R. Jupiracy, 130",AREIAS,-8.1010043,-34.9379279,endereco,logradouro,localizada pelo endereço,1,2026-03-19,dia
+DS5-L078,V,5,USF Vila Tamandaré,,Demais Unidades De Saúde,"R. Dias Cardoso, 11",ESTÂNCIA,-8.0863713,-34.929106,endereco,bairro,localizada pelo endereço,1,2026-03-19,dia
+DS6-L007,VI,6,FERRO VELHO,FERRO VELHO,,"RUA BADEJO, 153",BRASÍLIA TEIMOSA,-8.081275,-34.87798111111111,planilha,coordenada da planilha,corrigida,3,,
+DS6-L008,VI,6,FARMÁCIA DISTRITAL,OUTROS,,RUA SARGENTO SILVINO DELMAR HOLMBACH 110,IMBIRIBEIRA III,-8.10747,-34.90978694444444,planilha,coordenada da planilha,corrigida,10,,
+DS6-L009,VI,6,D.E.R.,OUTROS,,AV. MARECHAL MASC. DE MORAES 4223,IMBIRIBEIRA II,-8.121829166666668,-34.914116944444444,planilha,coordenada da planilha,corrigida,14,,
+DS6-L010,VI,6,D.I.N.I.T,OUTROS,,"RUA ANTONIO DE GOES,Nº826",PINA,-8.0963033,-34.8946884,endereco,nome,localizada pelo endereço,5,2026-06-15,dia
+DS6-L013,VI,6,FERRO VELHO,FERRO VELHO,Ponto Estratégico Distrito,AV. MONACO 399,IMBIRIBEIRA I,-8.099467500000001,-34.91451611111111,planilha,coordenada da planilha,corrigida,5,,
+DS6-L014,VI,6,COOPERATIVA PRÓ-RECIFE,RECICLAGEM,Ponto Estratégico Distrito,"RUA ANTÔNIO CARDOSO DA FONTE, 483",IMBIRIBEIRA I,-8.097771111111111,-34.91960805555555,planilha,coordenada da planilha,corrigida,4,,
+DS6-L015,VI,6,FERRO VELHO,FERRO VELHO,Ponto Estratégico Distrito,AV. MONACO 443,IMBIRIBEIRA I,-8.099389166666667,-34.914836944444446,planilha,coordenada da planilha,corrigida,5,,
+DS6-L016,VI,6,ACUMULADOR,ACUMULADOR,Ponto Estratégico Distrito,AVENIDA NICOLAU COPERNICO 1223,IMBIRIBEIRA I,-8.0893401,-34.9162415,endereco,logradouro,corrigida,4,,
+DS6-L017,VI,6,DEPÓSITO FERRO VELHO,FERRO VELHO,Ponto Estratégico Distrito,AVENIDA NICOLAU COPERNICO 1225,IMBIRIBEIRA I,-8.0893401,-34.9162415,endereco,logradouro,corrigida,3,,
+DS6-L018,VI,6,ACUMULADOR,ACUMULADOR,Ponto Estratégico Distrito,"RUA BULGÁRIA, 30",IMBIRIBEIRA II,-8.1039417,-34.9141183,planilha,coordenada da planilha,original,2,,
+DS6-L019,VI,6,ACUMULADOR,ACUMULADOR,Ponto Estratégico Distrito,RUA ITAPEVA 12,IMBIRIBEIRA II,-8.105683888888889,-34.91473805555555,planilha,coordenada da planilha,corrigida,2,,
+DS6-L020,VI,6,FERRO VELHO,FERRO VELHO,Ponto Estratégico Distrito,"RUA CARLOS PEREIRA FALCÃO, 1235",BOA VIAGEM II,-8.126315277777778,-34.898650833333335,planilha,coordenada da planilha,corrigida,10,,
+DS6-L024,VI,6,COLÔNIA DOS PESCADORES Z1 DO PINA,OUTROS,Outros Equipamentos,"RUA MARECHAL HERMES, Nº 1",BRASÍLIA TEIMOSA,-8.088565,-34.880205,planilha,coordenada da planilha,corrigida,2,2026-06-10,dia
+DS6-L025,VI,6,COMPAZ ATRIZ LEDA ALVES,OUTROS,Outros Equipamentos,"RUA JOSÉ RODRIGUES, 586",PINA II,-8.094973,-34.889458,planilha,coordenada da planilha,corrigida,1,2026-06-09,dia
+DS6-L026,VI,6,GERALDÃO,OUTROS,Outros Equipamentos,"AV. MAL. MASCARENHAS DE MORAIS, 7787",IMBIRIBEIRA,-8.102517,-34.9097,planilha,coordenada da planilha,corrigida,10,2026-06-10,dia
+DS6-L027,VI,6,CENTRO SOCIAL URBANO (CSU) - Afrânio Godoy,OUTROS,Outros Equipamentos,"RUA MANOEL SERAFIM COUTO, S/N",IMBIRIBEIRA,-8.087535,-34.904632,planilha,coordenada da planilha,corrigida,2,2026-06-10,dia
+DS6-L028,VI,6,CENTRO UNIVERSITÁRIO UNIVERSO RECIFE,OUTROS,Outros Equipamentos,"AV. MARECHAL MASCARENHAS DE MORAIS, 2159",IMBIRIBEIRA,-8.1030051,-34.9101457,planilha,coordenada da planilha,corrigida,5,2026-06-11,dia
+DS6-L029,VI,6,ANTIGA SEDE DO DISTRITO SANITÁRIO VI,OUTROS,Outros Equipamentos,"RUA JEAN EMILE FAVRE, N° 1636",IPSEP,-8.114322,-34.922872,planilha,coordenada da planilha,corrigida,1,2026-06-09,dia
+DS6-L030,VI,6,REVENDEDORA,OUTROS,Outros Equipamentos,"RUA BLUMENAU, Nº 443",IPSEP,-8.107712,-34.920994,planilha,coordenada da planilha,corrigida,1,2026-06-10,dia
+DS6-L031,VI,6,SERRALHARIA,OUTROS,Outros Equipamentos,"RUA BLUMENAU, N° 60",IPSEP,-8.111462,-34.917783,planilha,coordenada da planilha,corrigida,1,2026-06-11,dia
+DS6-L035,VI,6,PSF+  BERNARD VAN LEER,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"AV. FRANCISCO VALPASSOS, S/N",BRASILIA TEIMOSA,-8.0827799,-34.8789567,endereco,bairro,localizada pelo endereço,4,,
+DS6-L036,VI,6,POLICLÍNICA DO PINA,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,AV. REPÚBLICA DO LÍBANO N° 355,PINA,-8.0867507,-34.8909739,endereco,logradouro,localizada pelo endereço,5,,
+DS6-L037,VI,6,USF DR. GUILHERME JOSÉ ROBALINHO,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,RUA DO PATROCÍNIO Nº 264,PINA,-8.0879281,-34.8910077,endereco,logradouro,localizada pelo endereço,1,,
+DS6-L038,VI,6,USF JÁDER DE ANDRADE - ENTRA APULSO,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,RUA CORONEL ANÍZIO RODRIGUES COELHO Nº 8,BOA VIAGEM,-8.1218,-34.907186,endereco,logradouro,localizada pelo endereço,1,,
+DS6-L039,VI,6,CENTRO DE SAÚDE DOM MIGUEL DE LIMA VALVERDE,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,RUA FELICIANO JOSÉ DE FARIAS Nº 195,BOA VIAGEM,-8.1328031,-34.9047984,endereco,logradouro,localizada pelo endereço,1,,
+DS6-L040,VI,6,CENTRO DE SAÚDE PROFESSOR DJAIR BRINDEIRO,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,RUA COSMORAMA S/N,BOA VIAGEM,-8.1380766,-34.9099085,endereco,logradouro,localizada pelo endereço,2,,
+DS6-L041,VI,6,PSF SITIO GRANDE,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"AV. LUXEMBURGO, N°254",IMBIRIBEIRA,-8.1025967,-34.9119474,endereco,logradouro,localizada pelo endereço,1,,
+DS6-L042,VI,6,USF+ COMUNIDADE DO BEM,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"ESTR. VELHA DO FRIGORÍFICO, Nº 252",IMBIRIBEIRA,-8.103934,-34.9097844,endereco,logradouro,localizada pelo endereço,3,,
+DS6-L043,VI,6,PSF VILA DO IPSEP,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA VIRGINIA HERACLITO, S/N",IPSEP,-8.1102316,-34.9198993,endereco,bairro,localizada pelo endereço,1,,
+DS6-L047,VI,6,USF - CENTRO DE SAÚDE DJALMA DE HOLANDA CAVALCANTE,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA DELFIM, Nº 87",BRASILIA TEIMOSA,-8.0801936,-34.8775595,endereco,logradouro,localizada pelo endereço,3,,
+DS6-L048,VI,6,CAPS INFANTIL MARCELA LUCENA,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA MARQUÊS DE ALEGRETE, Nº 42",PINA,-8.0867432,-34.8901497,endereco,logradouro,localizada pelo endereço,2,,
+DS6-L049,VI,6,USF+ DANCING DAYS,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA DANCING DAYS, Nº 109",IMBIRIBEIRA,-8.1038912,-34.9201051,endereco,logradouro,localizada pelo endereço,2,,
+DS6-L050,VI,6,DISTRITO SANITÁRIO VI,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA GENERAL GOES MONTEIRO, Nº 308",IMBIRIBEIRA,-8.0928208,-34.9097032,endereco,logradouro,localizada pelo endereço,2,,
+DS6-L051,VI,6,CENTRO DE SAÚDE ROMILDO GOMES,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA JALISCO, SN",IMBIRIBEIRA,-8.1163712,-34.9120375,endereco,logradouro,localizada pelo endereço,3,,
+DS6-L052,VI,6,USF ILHA DE DEUS,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA SÃO JOSÉ, SN",IMBIRIBEIRA,-8.085996,-34.9042757,endereco,logradouro,localizada pelo endereço,2,,
+DS6-L053,VI,6,USF CAFESÓPOLIS,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"AV. MAL. MASCARENHAS DE MORAIS, 6997B",IMBIRIBEIRA,-8.0989823,-34.9098446,endereco,nome,localizada pelo endereço,1,,
+DS6-L054,VI,6,USF BEIRA DO RIO,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA RIBEIRO DE BRITO, Nº 1361",BOA VIAGEM II,-8.12317,-34.90843,planilha,coordenada da planilha,corrigida,3,2026-01-21,dia
+DS7-L007,VII,7,RENOVADORA DE PNEUS,BORRACHARIA,,BR 101 - S/N,GUABIRABA,-7.9617167,-34.915385,planilha,coordenada da planilha,corrigida,4,,
+DS7-L008,VII,7,IMPÉRIO DA SUCATA,FERRO VELHO,,"ESTRADA DOS MACACOS, 310",GUABIRABA,-7.9953088,-34.95418,planilha,coordenada da planilha,corrigida,5,,
+DS7-L009,VII,7,RECICLAGEM,DEPOSITO RECICLAGEM,,"AV PADRE MOSCA DE CARVALHO, 357",GUABIRABA,-7.96408,-34.924713,planilha,coordenada da planilha,corrigida,3,,
+DS7-L010,VII,7,NORTE GUINCHO DO GILDO,FERRO VELHO,,"AV VER. OTÁCILO DE AZEVEDO, 1412",BREJO DE BEBERIBE,-8.00627,-34.9131817,planilha,coordenada da planilha,corrigida,4,,
+DS7-L011,VII,7,NORTE GUINCHO DO GILDO,FERRO VELHO,,"RUA DES. HERACLITO CAVALCANTE, 125",MANGABEIRA,-8.025735,-34.8993217,planilha,coordenada da planilha,corrigida,7,,
+DS7-L015,VII,7,EMLURB - ILUMINAÇÃO,OUTROS,Ponto Estratégico Distrito,"AV. NORTE, 5400",MORRO DA CONCEIÇÃO,-8.0228683,-34.9140033,planilha,coordenada da planilha,corrigida,12,,
+DS7-L016,VII,7,ACUMULADOR SR. JOAB,ACUMULADOR,Ponto Estratégico Distrito,"RUA LOANDA, 55",VASCO DA GAMA 2,-8.0182933,-34.9211092,planilha,coordenada da planilha,corrigida,2,,
+DS7-L017,VII,7,TRANSPOSRTADORA TEIXEIRA,TRANSPORTADORA,Ponto Estratégico Distrito,"AV. NORTE, 6700",VASCO DA GAMA 2,-8.0203,-34.92494,planilha,coordenada da planilha,corrigida,5,,
+DS7-L018,VII,7,OFICINA DE REFRIGERAÇÃO,OUTROS,Ponto Estratégico Distrito,RUA DOURADINHA 120B,VASCO DA GAMA 1,-8.0047917,-34.916935,planilha,coordenada da planilha,corrigida,5,,
+DS7-L019,VII,7,DEPÓSITO DE  RECICLAVÉIS,DEPOSITO RECICLAGEM,Ponto Estratégico Distrito,"RUA DES. HERACLITO CAVALCANTE, 795",VASCO DA GAMA 1,-8.0065361,-34.9130358,planilha,coordenada da planilha,corrigida,2,,
+DS7-L020,VII,7,FERRO VELHO,FERRO VELHO,Ponto Estratégico Distrito,"RUA CORONEL PILAR, 310",PASSARINHO 2,-7.9871433,-34.9172983,planilha,coordenada da planilha,corrigida,4,,
+DS7-L024,VII,7,ARMAZÉM JENIPAPO,ARMAZÉM,Outros Equipamentos,"ESTRADA DOS MACACOS, 74",GUABIRABA,-7.9933974,-34.9411549,endereco,logradouro,corrigida,1,,
+DS7-L025,VII,7,DEFESA CIVIL,OUTROS,Outros Equipamentos,"RUA MONTE CELESTE, 67",BREJO DA GUABIRABA,-7.9929455,-34.9353677,planilha,coordenada da planilha,corrigida,4,,
+DS7-L026,VII,7,ASSEMBLEIA DE DEUS,IGREJA,Outros Equipamentos,"AV. RIO BOTAFOGO, 113",GUABIRABA,-7.97022,-34.92886,planilha,coordenada da planilha,corrigida,1,,
+DS7-L027,VII,7,Centro de Treinamento do Retrô,OUTROS,Outros Equipamentos,Estrada de Pau Ferro n. 1000,PAU FERRO,-7.970635,-34.9737,planilha,coordenada da planilha,corrigida,1,,
+DS7-L028,VII,7,Barraca de Sr. Ivanildo,OUTROS,Outros Equipamentos,"Trav. Evaristo da Veiga, 212",PAU FERRO,-7.9727783,-34.9708867,planilha,coordenada da planilha,corrigida,1,,
+DS7-L029,VII,7,Associação,OUTROS,Outros Equipamentos,"rua do pica pau, 23",Passarinho 2,-7.9793737,-34.9154951,planilha,coordenada da planilha,corrigida,1,,
+DS7-L030,VII,7,Grupo de mulheres de passarinho,OUTROS,Outros Equipamentos,rua galo de Campina 155,passarinho 2,-7.9797501,-34.91865667,planilha,coordenada da planilha,corrigida,1,,
+DS7-L034,VII,7,USF SANTA TEREZA,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA ALTO SANTA TEREZA, 746",PASSARINHO,-7.986251,-34.9268525,endereco,logradouro,localizada pelo endereço,1,2026-01-28,dia
+DS7-L035,VII,7,USF MARIA EDUARDA,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA SANTA TEREZA, 746",PASSARINHO,-7.986251,-34.9268525,endereco,logradouro,localizada pelo endereço,3,2026-01-28,dia
+DS7-L036,VII,7,US GILBERTO FREIRE,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"ESTRADA DA MUMBECA, S/N",GUABIRABA,-7.9429727,-35.0020675,endereco,logradouro,localizada pelo endereço,1,2026-01-28,dia
+DS7-L037,VII,7,US MARIO MONTEIRO DE MELO,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA NOVA DESCOBERTA, 99",NOVA DESCOBERTA,-8.0011769,-34.9234976,endereco,logradouro,localizada pelo endereço,1,2026-01-28,dia
+DS7-L038,VII,7,US VILA BOA VISTA,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"R VEREADOR ATACÍLIO DE AZEVEDO, 4598",BREJO DE BEBERIBE,-7.9983782,-34.924309,endereco,bairro,localizada pelo endereço,2,2026-01-28,dia
+DS7-L039,VII,7,US ROSA BORGES,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"R SENADOR MILTON DE CAMPOS, 59-1",VASCO DA GAMA,-8.0153129,-34.922026,endereco,logradouro,localizada pelo endereço,4,2026-01-28,dia
+DS7-L040,VII,7,US BRUNO MAIA,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA ALTO DO REFÚGIO, S/N",NOVA DESCOBERTA,-7.9978842,-34.9269695,endereco,logradouro,localizada pelo endereço,2,2026-01-28,dia
+DS7-L041,VII,7,US MAGABEIRA,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA DA MAGABEIRA, 364",MANGABEIRA,-8.0243874,-34.9029783,endereco,bairro,localizada pelo endereço,1,2026-01-28,dia
+DS7-L042,VII,7,USF ALCIDES CODICEIRA,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"PRAÇA VISCONDE DE SÁ, 375",ALTO JOSÉ BONIFÁCIO,-8.0129991,-34.9127978,endereco,bairro,localizada pelo endereço,1,2026-01-28,dia
+DS7-L046,VII,7,USF+ HELIO MENDOÇA,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"AV. DA RECUPERAÇÃO, 6526",GUABIRABA,-7.9908928,-34.9362054,endereco,logradouro,localizada pelo endereço,2,2026-03-18,dia
+DS7-L047,VII,7,USF+ MACAXEIRA/BURITY,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA MARIA CANDIDA, 47",MACAXEIRA,-8.0116721,-34.9314863,endereco,logradouro,localizada pelo endereço,1,2026-03-18,dia
+DS7-L048,VII,7,USF SÍTIO DOS MACACOS,UNIDADE DE SAÚDE,Demais Unidades De Saúde,ESTRADA DOS MACACOS,GUABIRABA,-7.997357,-34.9565002,endereco,logradouro,localizada pelo endereço,1,2026-03-18,dia
+DS7-L049,VII,7,USF+ MOACYR ANDRE GOMES,UNIDADE DE SAÚDE,Demais Unidades De Saúde,AV. NORTE 5400,MORRO DA CONCEIÇÃO,-8.0226693,-34.9134785,endereco,logradouro,localizada pelo endereço,2,2026-03-18,dia
+DS7-L050,VII,7,USF ALTO DA BRASILEIRA,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"ALTO DA BRASILEIRA, 1002",NOVA DESCOBERTA,-8.0012727,-34.9355706,endereco,endereço,localizada pelo endereço,2,2026-03-18,dia
+DS7-L051,VII,7,USF ALTO DO EUCALIPTO,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA CAMBURIU, S/N",VASCO DA GAMA,-8.008553,-34.9194274,endereco,nome,localizada pelo endereço,2,2026-03-19,dia
+DS7-L052,VII,7,POLICLINICA CLEMENTINO FRAGA,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA JAPARATUBA, 260",VASCO DA GAMA,-8.0193866,-34.9198052,endereco,endereço,localizada pelo endereço,3,2026-03-19,dia
+DS8-L007,VIII,8,TRÓPICO ENGENHARIA *,OFICINA,,"AV PRESIDENTE DUTRA,50",IBURA 01,-8.12371,-34.9156,planilha,coordenada da planilha,corrigida,9,,
+DS8-L008,VIII,8,ANTIGA FREVO DISTRIBUIDORA,GALPÃO,,"AV. JORNALISTA EDSON RÉGIS, 733",IBURA 01,-8.1118,-34.9331,planilha,coordenada da planilha,corrigida,10,,
+DS8-L009,VIII,8,ANDALUZ,INDÚSTRIA,,"AV. JORNALISTA EDSON RÉGIS, 809",IBURA 01,-8.11073,-34.934,planilha,coordenada da planilha,corrigida,8,,
+DS8-L012,VIII,8,NÃO TEM,FERRO VELHO,Ponto Estratégico Distrito,"RUA FLORES DO ORIENTE, 86",JORDÃO 01,-8.13308,-34.92961,planilha,coordenada da planilha,corrigida,2,,
+DS8-L013,VIII,8,Sem nome (JORDÃO),,Ponto Estratégico Distrito,"RUA FLORES DO ORIENTE, 199",JORDÃO,-8.132609,-34.9339783,endereco,logradouro,localizada pelo endereço,3,,
+DS8-L014,VIII,8,NÃO TEM,BORRACHARIA,Ponto Estratégico Distrito,"BR 101 SUL, 04",JORDÃO 02,-8.1331867,-34.9400643,endereco,bairro,localizada pelo endereço,2,,
+DS8-L015,VIII,8,NÃO TEM,FERRO VELHO,Ponto Estratégico Distrito,"RUA PRESIDENTE KENNEDY, 88",JORDÃO 02,-8.13693,-34.94702,planilha,coordenada da planilha,corrigida,4,,
+DS8-L016,VIII,8,NÃO TEM,ACUMULADOR(A),Ponto Estratégico Distrito,"SEGUNDA TRAV. ESTRELA D'OESTE, 30",COHAB 02,-8.12934,-34.94483,planilha,coordenada da planilha,corrigida,2,,
+DS8-L017,VIII,8,BORRACHARIA PAI E FILHO,BORRACHARIA,Ponto Estratégico Distrito,"BR 101 SUL, 23",COHAB 02,-8.13679,-34.9477,planilha,coordenada da planilha,corrigida,3,,
+DS8-L018,VIII,8,OLIVEIRA PNEUS,BORRACHARIA,Ponto Estratégico Distrito,"BR 101 SUL, 21",COHAB 02,-8.13075,-34.9453,planilha,coordenada da planilha,corrigida,3,,
+DS8-L019,VIII,8,NÃO TEM,RECICLÁVEIS,Ponto Estratégico Distrito,"BR 101 SUL, 483",COHAB 02,-8.135081,-34.9478,planilha,coordenada da planilha,corrigida,5,,
+DS8-L020,VIII,8,NÃO TEM,ACUMULADOR(A),Ponto Estratégico Distrito,"RUA FLORIANO BARBOSA DE OLIVEIRA, 22",COHAB 02,-8.1242976,-34.9487336,endereco,bairro,localizada pelo endereço,2,,
+DS8-L021,VIII,8,NÃO TEM,RECICLÁVEIS,Ponto Estratégico Distrito,"RUA CAMPO ALEGRE, 523",COHAB 03,-8.12244,-34.959,planilha,coordenada da planilha,corrigida,3,,
+DS8-L022,VIII,8,NÃO TEM,ACUMULADOR(A),Ponto Estratégico Distrito,"2 DE SETEMBRO, 185",COHAB 04,-8.11236,-34.95316,planilha,coordenada da planilha,corrigida,2,,
+DS8-L023,VIII,8,NÃO TEM (Próximo a Fonte de Água VIDDA),RECICLÁVEIS,Ponto Estratégico Distrito,"RUA SÃO MARCOS, 64",COHAB 01,-8.11622,-34.9445,planilha,coordenada da planilha,corrigida,4,,
+DS8-L024,VIII,8,Sem nome (COHAB),,Ponto Estratégico Distrito,"RUA CAMPO ALEGRE, 48",COHAB,-8.1220273,-34.9590479,endereco,logradouro,localizada pelo endereço,2,,
+DS8-L025,VIII,8,NÃO TEM,ACUMULADOR(A),Ponto Estratégico Distrito,"RUA DAS AZEITONAS, 40",IBURA 01,-8.110627,-34.931899,planilha,coordenada da planilha,corrigida,2,,
+DS8-L026,VIII,8,NÃO TEM,ACUMULADOR(A),Ponto Estratégico Distrito,"RUA CANATIBA, 21",IBURA 01,-8.112011,-34.930918,planilha,coordenada da planilha,corrigida,2,,
+DS8-L027,VIII,8,NÃO TEM,TERRENO BALDIO,Ponto Estratégico Distrito,"RUA RIO MOXOTÓ, 500",IBURA 01,-8.11158,-34.9353,planilha,coordenada da planilha,corrigida,3,,
+DS8-L028,VIII,8,NÃO TEM,RECICLAGEM,Ponto Estratégico Distrito,"RUA BREJO DA CRUZ, 326",IBURA 03,-8.12618,-34.943,planilha,coordenada da planilha,corrigida,4,,
+DS8-L029,VIII,8,NÃO TEM (Próximo ao viaduto da BR 101 - sentido Barro),FERRO VELHO,Ponto Estratégico Distrito,"BR 101 SUL, 12",IBURA 03,-8.1203,-34.9426,planilha,coordenada da planilha,corrigida,2,,
+DS8-L030,VIII,8,Sem nome (IBURA 03),ACUMULADOR,Ponto Estratégico Distrito,"RUA PARAÚNA,16",IBURA 03,-8.1223529,-34.9321458,endereco,bairro,localizada pelo endereço,2,,
+DS8-L031,VIII,8,Sem nome (IBURA),,Ponto Estratégico Distrito,"RUA CARNIJÓ, 165",IBURA,-8.1094233,-34.9388316,endereco,logradouro,localizada pelo endereço,3,,
+DS8-L032,VIII,8,Sem nome (IBURA),,Ponto Estratégico Distrito,"RUA RIO TAMBADO, 132",IBURA,-8.1223529,-34.9321458,endereco,bairro,localizada pelo endereço,2,,
+DS8-L035,VIII,8,CRAS,,Outros Equipamentos,"AV. DOIS RIOS, 521",IBURA,-8.1126642,-34.9382022,endereco,endereço,localizada pelo endereço,3,2026-06-01,dia
+DS8-L036,VIII,8,ESCOLA PASTOR J. M. SOBRINHO,ESCOLA,Outros Equipamentos,"RUA SILVA JARDIM, 145",JORDÃO,-8.1394839,-34.9286811,endereco,logradouro,localizada pelo endereço,2,2026-06-01,dia
+DS8-L037,VIII,8,ESCOLA PROFESSOR ADALTO PONTES,ESCOLA,Outros Equipamentos,"RUA SERTÂNIA, 35",JORDÃO,-8.1355066,-34.9447243,endereco,logradouro,localizada pelo endereço,2,2026-06-01,dia
+DS8-L038,VIII,8,ESCOLA VILA DOS MILAGRES,ESCOLA,Outros Equipamentos,"RUA N. SRª DO CARMO, 340 BR 101",COHAB,-8.1128556,-34.9459878,endereco,nome,localizada pelo endereço,2,2026-06-01,dia
+DS8-L039,VIII,8,ESCOLA DOIS RIOS,ESCOLA,Outros Equipamentos,"RUA IRMÃ MARIA EVANGELISTA, 83",COHAB,-8.1269481,-34.9446632,endereco,logradouro,localizada pelo endereço,2,2026-06-01,dia
+DS8-L040,VIII,8,ESCOLA PROFº ORLANDO PARAHYM,ESCOLA,Outros Equipamentos,"RUA SOLDADO VIRGILIO LÚCIO, 855",COHAB,-8.1267049,-34.9467075,endereco,logradouro,localizada pelo endereço,2,2026-06-01,dia
+DS8-L041,VIII,8,ESCOLA TRÊS CARNEIROS,ESCOLA,Outros Equipamentos,"RUA LAGOA NOVA,12",COHAB,-8.1252246,-34.9590024,endereco,logradouro,localizada pelo endereço,2,2026-06-01,dia
+DS8-L042,VIII,8,COCO VERDE DO ANDRÉ,COMERCIO,Outros Equipamentos,"RUA VALE DO ITAJAÍ, 392",COHAB,-8.1330236,-34.9508299,endereco,logradouro,localizada pelo endereço,2,2026-06-01,dia
+DS8-L043,VIII,8,DEPÓSITO DE GAS,COMERCIO,Outros Equipamentos,"CAPITÃO VICENTE CURADO, 126",COHAB,-8.1293,-34.946,planilha,coordenada da planilha,corrigida,2,2026-06-01,dia
+DS8-L044,VIII,8,ESC. M. SEVERINA B TEIXEIRA,ESCOLA,Outros Equipamentos,Rua Maria Adelaide Castelo Branco (mais próxima da coordenada),COHAB,-8.1242976,-34.9487336,endereco,bairro,localizada pelo endereço,2,2026-07-01,mes
+DS8-L045,VIII,8,ESC. M. FUTURO FELIZ,ESCOLA,Outros Equipamentos,Rua Maria Adelaide Castelo Branco (mais próxima da coordenada),COHAB,-8.1242976,-34.9487336,endereco,bairro,localizada pelo endereço,2,2026-07-01,mes
+DS8-L046,VIII,8,ESC. M. JOSÉ MUCIO MONTEIRO,ESCOLA,Outros Equipamentos,Rua Maria Adelaide Castelo Branco (mais próxima da coordenada),COHAB,-8.1242976,-34.9487336,endereco,bairro,localizada pelo endereço,2,2026-07-01,mes
+DS8-L047,VIII,8,ESC. M. SERRA DA PRATA,ESCOLA,Outros Equipamentos,Rua Maria Adelaide Castelo Branco (mais próxima da coordenada),COHAB,-8.1242976,-34.9487336,endereco,bairro,localizada pelo endereço,2,2026-07-01,mes
+DS8-L052,VIII,8,USF RIO DA PRATA,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,RUA RIO DA PRATA 455,IBURA 2,-8.1186,-34.937,planilha,coordenada da planilha,corrigida,2,,
+DS8-L053,VIII,8,USF ALTO DA BELA VISTA,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,RUA DEMERVAL LOBÃO,IBURA 3,-8.1236,-34.9414,planilha,coordenada da planilha,corrigida,2,,
+DS8-L054,VIII,8,USF JORDÃO BAIXO,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA JOSÉ MARTORANO, 100",JORDÃO 2,-8.1301,-34.9393,planilha,coordenada da planilha,corrigida,2,,
+DS8-L055,VIII,8,USF+ PROF S. IVO RABELO,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"AV. CAMPINA GRANDE, 199",CAHAB 1,-8.1196,-34.9478,planilha,coordenada da planilha,corrigida,3,,
+DS8-L056,VIII,8,USF+ DESMB. J M DE FREITAS,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA CAPITAO VICENTE CURADO, 33",COHAB 2,-8.132,-34.9482,planilha,coordenada da planilha,corrigida,2,,
+DS8-L057,VIII,8,USF JANE MAGALHÃES,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"AV. SANTA FÉ, 240",COHAB 4,-8.1172,-34.9552,planilha,coordenada da planilha,corrigida,4,,
+DS8-L058,VIII,8,USF JORDÃO ALTO,UNIDADE DE SAÚDE,Unidades De Saúde / Pontos De Apoio,"RUA LAGOA NOVA, S/N",COHAB,-8.1252246,-34.9590024,endereco,logradouro,localizada pelo endereço,3,,
+DS8-L061,VIII,8,UPA-E,UNIDADE DE SAÚDE,Demais Unidades De Saúde,AV. DOIS RIOS 170,IBURA 1,-8.1097,-34.9366,planilha,coordenada da planilha,corrigida,5,,
+DS8-L062,VIII,8,USF CIDADE OPERÁRIA,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA EMILIO M FONSECA, S/N",IBURA 2,-8.1255,-34.9369,planilha,coordenada da planilha,corrigida,2,,
+DS8-L063,VIII,8,USF ÁGUA VIVA,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA PORTO NACIONAL, 07",IBURA 3,-8.1258,-34.9418,planilha,coordenada da planilha,corrigida,2,,
+DS8-L064,VIII,8,PSF JAQUEIRA,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"RUA FLORES DO ORIENTE, 56",JORDÃO 1,-8.1344,-34.9338,planilha,coordenada da planilha,corrigida,2,,
+DS8-L065,VIII,8,POLICLINICA ARNALDO MARQUES,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"AV. DOIS RIOS, S/N",COHAB 1,-8.1204,-34.9441,planilha,coordenada da planilha,corrigida,6,,
+DS8-L066,VIII,8,USF ALDEMIR FERRAZ UR3,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"AV. BABILÔNIA, S/N",COHAB 1,-8.1125,-34.9497,planilha,coordenada da planilha,corrigida,2,,
+DS8-L067,VIII,8,USF UR 10 - ILDA RODRIGUES,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"R. MONTE ALEGRE, 132",COHAB,-8.1364511,-34.9517524,endereco,logradouro,localizada pelo endereço,4,,
+DS8-L068,VIII,8,USF UR 12,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"R. FRANISCO MIRANDA, 16",COHAB,-8.1272685,-34.9559209,endereco,nome,localizada pelo endereço,3,,
+DS8-L069,VIII,8,USF PAZ E AMOR,UNIDADE DE SAÚDE,Demais Unidades De Saúde,"R. Sen. Pompéu, 40",IBURA,-8.1160755,-34.9299322,endereco,nome,localizada pelo endereço,3,,
+DS8-L070,VIII,8,USF LAGOA ENCANTADA,UNIDADE DE SAÚDE,Demais Unidades De Saúde,RUA DOUTOR BENÍGNO J DE VASCONCELOS,COHAB,-8.1219539,-34.9502383,endereco,nome,localizada pelo endereço,2,,
