@@ -11,15 +11,11 @@ psycopg==3.3.6
 psycopg-binary==3.3.6
 python-dateutil==2.9.0.post0
 python-dotenv==1.2.4
-<<<<<<< Updated upstream
-# Driver Postgres usado pelo SQLAlchemy; a URL em NEON_DB deve começar com
-# postgresql+psycopg:// para usar este driver (psycopg 3)
 psycopg[binary]==3.3.6
-=======
 s3transfer==0.19.3
 six==1.17.0
 SQLAlchemy==2.0.50
 typing_extensions==4.16.0
 tzdata==2026.6
 urllib3==2.8.0
->>>>>>> Stashed changes
+
