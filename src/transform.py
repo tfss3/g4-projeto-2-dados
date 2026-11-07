@@ -1,8 +1,5 @@
 import pandas as pd
-from contextlib import closing
-from pathlib import Path
 import re
-import sqlite3
 import unicodedata as uni
 
 ROMANOS = {"1": "I", "2": "II", "3": "III", "4": "IV", "5": "V", "6": "VI", "7": "VII", "8": "VIII"}
@@ -360,15 +357,3 @@ def transformar_georef(df: pd.DataFrame, ds: str) -> pd.DataFrame:
     df = df.drop_duplicates()
     return df[["ds", "bairro", "id_ovt", "latitude", "longitude", "coordenadas_original",
                "endereco", "qt", "agente", "matricula", "data"]]
-
-
-def carregar(df: pd.DataFrame, caminho_db: Path, tabela: str, SCHEMA) -> int:
-    """Recria a tabela a partir do df. A planilha é a fonte da verdade, então
-    rodar de novo substitui os dados em vez de duplicá-los. Tudo acontece numa
-    única transação: se a inserção falhar, a tabela anterior é preservada."""
-    caminho_db.parent.mkdir(parents=True, exist_ok=True)
-    with closing(sqlite3.connect(caminho_db)) as conexao:
-        with conexao:
-            conexao.executescript(f"BEGIN; DROP TABLE IF EXISTS {tabela}; {SCHEMA}")
-            df.to_sql(tabela, conexao, if_exists="append", index=False)
-        return conexao.execute(f"SELECT COUNT(*) FROM {tabela}").fetchone()[0]
