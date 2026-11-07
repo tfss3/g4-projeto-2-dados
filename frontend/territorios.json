@@ -1,0 +1,346 @@
+[
+  {
+    "district": "I",
+    "name": "BOA VISTA"
+  },
+  {
+    "district": "I",
+    "name": "CABANGA"
+  },
+  {
+    "district": "I",
+    "name": "COELHOS"
+  },
+  {
+    "district": "I",
+    "name": "ILHA DO LEITE"
+  },
+  {
+    "district": "I",
+    "name": "ILHA JOANA BEZERRA"
+  },
+  {
+    "district": "I",
+    "name": "PAISSANDÚ"
+  },
+  {
+    "district": "I",
+    "name": "RECIFE ANTIGO"
+  },
+  {
+    "district": "I",
+    "name": "SANTO AMARO"
+  },
+  {
+    "district": "I",
+    "name": "SANTO ANTONIO"
+  },
+  {
+    "district": "I",
+    "name": "SOLEDADE"
+  },
+  {
+    "district": "I",
+    "name": "SÃO JOSÉ"
+  },
+  {
+    "district": "II",
+    "name": "ALTO SANTA TEREZINHA"
+  },
+  {
+    "district": "II",
+    "name": "ARRUDA"
+  },
+  {
+    "district": "II",
+    "name": "BEBERIBE"
+  },
+  {
+    "district": "II",
+    "name": "BOMBA DO HEMETÉRIO"
+  },
+  {
+    "district": "II",
+    "name": "CAJUEIRO"
+  },
+  {
+    "district": "II",
+    "name": "CAMPINA DO BARRETO"
+  },
+  {
+    "district": "II",
+    "name": "CAMPO GRANDE"
+  },
+  {
+    "district": "II",
+    "name": "DOIS UNIDOS"
+  },
+  {
+    "district": "II",
+    "name": "ENCRUZILHADA"
+  },
+  {
+    "district": "II",
+    "name": "FUNDÃO"
+  },
+  {
+    "district": "II",
+    "name": "HIPÓDROMO"
+  },
+  {
+    "district": "II",
+    "name": "LINHA DO TIRO"
+  },
+  {
+    "district": "II",
+    "name": "PEIXINHOS"
+  },
+  {
+    "district": "II",
+    "name": "PONTO DE PARADA"
+  },
+  {
+    "district": "II",
+    "name": "PORTO DA MADEIRA"
+  },
+  {
+    "district": "II",
+    "name": "ROSARINHO"
+  },
+  {
+    "district": "II",
+    "name": "TORREÃO"
+  },
+  {
+    "district": "II",
+    "name": "ÁGUA FRIA"
+  },
+  {
+    "district": "III",
+    "name": "AFLITOS"
+  },
+  {
+    "district": "III",
+    "name": "ALTO DO MANDÚ"
+  },
+  {
+    "district": "III",
+    "name": "APIPUCOS"
+  },
+  {
+    "district": "III",
+    "name": "CASA AMARELA"
+  },
+  {
+    "district": "III",
+    "name": "CASA FORTE"
+  },
+  {
+    "district": "III",
+    "name": "DERBY"
+  },
+  {
+    "district": "III",
+    "name": "DOIS IRMÃOS"
+  },
+  {
+    "district": "III",
+    "name": "ESPINHEIRO"
+  },
+  {
+    "district": "III",
+    "name": "GRAÇAS"
+  },
+  {
+    "district": "III",
+    "name": "JAQUEIRA"
+  },
+  {
+    "district": "III",
+    "name": "MONTEIRO"
+  },
+  {
+    "district": "III",
+    "name": "PARNAMIRIM"
+  },
+  {
+    "district": "III",
+    "name": "POÇO DA PANELA"
+  },
+  {
+    "district": "III",
+    "name": "SANTANA"
+  },
+  {
+    "district": "III",
+    "name": "SÍTIO DOS PINTOS"
+  },
+  {
+    "district": "III",
+    "name": "TAMARINEIRA"
+  },
+  {
+    "district": "IV",
+    "name": "ENGENHO DO MEIO"
+  },
+  {
+    "district": "IV",
+    "name": "ILHA DO RETIRO"
+  },
+  {
+    "district": "IV",
+    "name": "VÁRZEA"
+  },
+  {
+    "district": "IV",
+    "name": "ZUMBI"
+  },
+  {
+    "district": "V",
+    "name": "AFOGADOS"
+  },
+  {
+    "district": "V",
+    "name": "AREIAS"
+  },
+  {
+    "district": "V",
+    "name": "BARRO"
+  },
+  {
+    "district": "V",
+    "name": "BONGI"
+  },
+  {
+    "district": "V",
+    "name": "CAÇOTE"
+  },
+  {
+    "district": "V",
+    "name": "COQUEIRAL"
+  },
+  {
+    "district": "V",
+    "name": "CURADO"
+  },
+  {
+    "district": "V",
+    "name": "ESTÂNCIA"
+  },
+  {
+    "district": "V",
+    "name": "JARDIM SÃO PAULO"
+  },
+  {
+    "district": "V",
+    "name": "JIQUIÁ"
+  },
+  {
+    "district": "V",
+    "name": "MANGUEIRA"
+  },
+  {
+    "district": "V",
+    "name": "MUSTARDINHA"
+  },
+  {
+    "district": "V",
+    "name": "SAN MARTIN"
+  },
+  {
+    "district": "V",
+    "name": "SANCHO"
+  },
+  {
+    "district": "V",
+    "name": "TEJIPIÓ"
+  },
+  {
+    "district": "V",
+    "name": "TOTÓ"
+  },
+  {
+    "district": "VI",
+    "name": "BOA VIAGEM"
+  },
+  {
+    "district": "VI",
+    "name": "BRASÍLIA TEIMOSA"
+  },
+  {
+    "district": "VI",
+    "name": "IMBIRIBEIRA"
+  },
+  {
+    "district": "VI",
+    "name": "IPSEP"
+  },
+  {
+    "district": "VI",
+    "name": "PINA"
+  },
+  {
+    "district": "VII",
+    "name": "ALTO JOSÉ BONIFÁCIO"
+  },
+  {
+    "district": "VII",
+    "name": "ALTO JOSÉ DO PINHO"
+  },
+  {
+    "district": "VII",
+    "name": "BREJO DA GUABIRABA"
+  },
+  {
+    "district": "VII",
+    "name": "BREJO DE BEBERIBE"
+  },
+  {
+    "district": "VII",
+    "name": "CORREGO DO JENIPAPO"
+  },
+  {
+    "district": "VII",
+    "name": "GUABIRABA"
+  },
+  {
+    "district": "VII",
+    "name": "MACAXEIRA"
+  },
+  {
+    "district": "VII",
+    "name": "MANGABEIRA"
+  },
+  {
+    "district": "VII",
+    "name": "MORRO DA CONCEIÇÃO"
+  },
+  {
+    "district": "VII",
+    "name": "NOVA DESCOBERTA"
+  },
+  {
+    "district": "VII",
+    "name": "PASSARINHO"
+  },
+  {
+    "district": "VII",
+    "name": "PAU FERRO"
+  },
+  {
+    "district": "VII",
+    "name": "VASCO DA GAMA"
+  },
+  {
+    "district": "VIII",
+    "name": "COHAB"
+  },
+  {
+    "district": "VIII",
+    "name": "IBURA"
+  },
+  {
+    "district": "VIII",
+    "name": "JORDÃO"
+  }
+]
