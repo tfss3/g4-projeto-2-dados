@@ -5,17 +5,17 @@ import src.sqlite_schema as SCHEMA
 import src.load as carregar
 
 
-CAMINHO_XLSX = "dados/Total Ovtrampas.xlsx"
+CAMINHO_XLSX = "Dados_2026/Total Ovtrampas.xlsx"
 ABA = "CICLO 1"
 CAMINHO_DB = Path("saida/total_ovt.db")
 TABELA = "ovt"
 criar_tabela = SCHEMA.criar_tabela()
 
-CAMINHO_XLSX_EDL = "dados/TOTAL DE EDL POR DS.xlsx"
+CAMINHO_XLSX_EDL = "Dados_2026/TOTAL DE EDL POR DS.xlsx"
 ABA_RESUMO_EDL = "TOTAL DE PE E EDL"
 CAMINHO_DB_EDL = Path("saida/edl_por_ds.db")
 
-CAMINHO_XLSX_GEO = "dados/Georreferenciamento OVT 2026 ATUALIZAÇÃO.xlsx"
+CAMINHO_XLSX_GEO = "Dados_2026/Georreferenciamento OVT 2026 ATUALIZAÇÃO.xlsx"
 LINHA_CABECALHO_GEO = 2  # as duas primeiras linhas são título
 CAMINHO_DB_GEO = Path("saida/georreferenciamento_ovt.db")
 
