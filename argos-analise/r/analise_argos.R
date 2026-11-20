@@ -1,8 +1,8 @@
 # ARGOS GeoVigilância · Grupo 4 · análise em R (tidyverse)
 #
 # Reproduz em R as principais tabelas de análise (por ciclo, por DS, por faixa de distância,
-# dentro × fora do raio, associação distância × IDV) e gera 12 gráficos com ggplot2
-# (g1 a g9 em barras e linha; g3, g10, g11 e g12 são mapas de calor).
+# dentro × fora do raio, associação distância × IDV) e gera 11 gráficos com ggplot2
+# (barras e linha; os gráficos com filtro por distrito, ciclo e bairro estão em graficos/barras_com_filtros.html).
 #
 # Como rodar (a partir da pasta do projeto, a que tem a pasta "tabelas"):
 #   install.packages("tidyverse")        # só na primeira vez
@@ -127,14 +127,6 @@ g2 <- ggplot(t06, aes(faixa_dist, IDV, fill = amostra)) +
   tema + theme(axis.text.x = element_text(angle = 20, hjust = 1), legend.position = "top")
 ggsave("graficos_r/g2_idv_por_faixa.png", g2, width = 8, height = 3.8, dpi = 150)
 
-# g3 · mapa de calor DS × ciclo
-g3 <- ggplot(t04, aes(factor(ciclo), fct_rev(ds), fill = IDV)) +
-  geom_tile() +
-  geom_text(aes(label = round(IDV)), size = 2.8) +
-  scale_fill_gradient(low = "#FFF7E0", high = "#B7410E") +
-  labs(title = "IDV por distrito sanitário e ciclo", x = "ciclo", y = "distrito sanitário") + tema
-ggsave("graficos_r/g3_idv_ds_x_ciclo.png", g3, width = 8, height = 3.9, dpi = 150)
-
 # g4 · dentro × fora de 400 m, por DS (associação, não eficácia)
 g4 <- ggplot(t07_ds, aes(ds_rotulo, IDV, fill = grupo_400m)) +
   geom_col(position = "dodge") +
@@ -144,7 +136,7 @@ g4 <- ggplot(t07_ds, aes(ds_rotulo, IDV, fill = grupo_400m)) +
   tema + theme(legend.position = "top")
 ggsave("graficos_r/g4_dentro_fora_por_ds.png", g4, width = 8, height = 3.8, dpi = 150)
 
-# ---- 5. mais gráficos: barras (g5 a g9) e mapas de calor (g10 a g12) --------
+# ---- 5. mais gráficos de barras (g5 a g9) e barras por filtro (g10 a g12) --------
 idv_geral <- sum(fato$O) / sum(fato$A)          # esperado: 200.48
 ler_tab  <- function(nome) read_csv(file.path("tabelas", nome), show_col_types = FALSE)
 
@@ -216,44 +208,45 @@ g9 <- ggplot(t09, aes(ciclo, pct_sem_resultado)) +
   labs(title = "Leituras sem resultado por ciclo (F, E, R, D e REC)", x = "ciclo (15 dias) · 2026", y = "% de leituras sem resultado") + tema
 ggsave("graficos_r/g9_sem_resultado_por_ciclo.png", g9, width = 8, height = 3.6, dpi = 150)
 
-# mapa de calor genérico: texto em itálico com * quando a célula tem poucas armadilhas
-mapa_calor <- function(dados, x, y, minimo, titulo, xlab, ylab, nota, tam = 2.8) {
-  dados <- dados %>% mutate(pouca = A < minimo,
-                            txt = paste0(round(IDV), if_else(pouca, "*", "")),
-                            claro = IDV > median(IDV, na.rm = TRUE) * 1.2)
-  ggplot(dados, aes({{ x }}, {{ y }}, fill = IDV)) +
-    geom_tile() +
-    geom_text(aes(label = txt, fontface = if_else(pouca, "italic", "plain"), color = claro), size = tam, show.legend = FALSE) +
-    scale_color_manual(values = c("TRUE" = "white", "FALSE" = "#222222")) +
-    scale_fill_gradient(low = "#FFF7E0", high = "#B7410E") +
-    labs(title = titulo, x = xlab, y = ylab, caption = nota) + tema + theme(panel.grid = element_blank())
-}
+# Barras por filtro: no HTML o filtro é um menu; aqui cada filtro vira um painel (facet_wrap).
+# * (e barra clara) = recorte com poucas armadilhas examinadas: leia com cautela.
 rot_faixa <- function(x) sub("acima de ", ">", x)
-nota_cel  <- "* itálico = célula com menos de 100 armadilhas examinadas: leia com cautela"
+barras_painel <- function(dados, x, painel, minimo, titulo, xlab, nota, ncol = 4) {
+  dados <- dados %>% mutate(pouca = A < minimo)
+  ggplot(dados, aes({{ x }}, IDV, fill = pouca)) +
+    geom_col() +
+    geom_text(aes(label = round(IDV)), vjust = -0.3, size = 2.4, color = "#222222") +
+    scale_fill_manual(values = c("FALSE" = azul, "TRUE" = "#A9B8CC"), guide = "none") +
+    facet_wrap(vars({{ painel }}), ncol = ncol) +
+    labs(title = titulo, x = xlab, y = "IDV (ovos por armadilha)", caption = nota) +
+    tema + theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7), strip.text = element_text(face = "bold"))
+}
+nota_cel <- "barra clara = menos armadilhas examinadas que o mínimo do gráfico: leia com cautela"
 
-# g10 · mapa de calor DS × faixa de distância
+# g10 · IDV por faixa de distância, um painel por distrito sanitário
 t13 <- indicadores(ok, ds, faixa_dist)                          # DS II 600–1.000 m (A = 45) e DS VIII > 1.000 m (A = 12) são pequenas
-g10 <- mapa_calor(t13, faixa_dist, fct_rev(ds), 100, "IDV por distrito sanitário e distância até a EDL mais próxima",
-                  "distância até a EDL mais próxima", "distrito sanitário", nota_cel) +
+g10 <- barras_painel(t13, faixa_dist, ds, 300, "IDV por faixa de distância até a EDL mais próxima, por distrito sanitário",
+                     "distância até a EDL mais próxima", nota_cel) +
   scale_x_discrete(labels = rot_faixa, drop = FALSE)
-ggsave("graficos_r/g10_heatmap_ds_x_faixa.png", g10, width = 8.6, height = 4.2, dpi = 150)
+ggsave("graficos_r/g10_faixa_por_ds.png", g10, width = 10, height = 6, dpi = 150)
 
-# g11 · mapa de calor ciclo × faixa de distância
-t14 <- indicadores(ok, ciclo, faixa_dist)
-g11 <- mapa_calor(t14, faixa_dist, fct_rev(factor(ciclo)), 100, "IDV por ciclo e distância até a EDL mais próxima",
-                  "distância até a EDL mais próxima", "ciclo", nota_cel) +
+# g11 · IDV por faixa de distância, um painel por ciclo
+t14 <- indicadores(ok, ciclo, faixa_dist) %>% mutate(ciclo = factor(ciclo, levels = 1:12, labels = paste("ciclo", 1:12)))
+g11 <- barras_painel(t14, faixa_dist, ciclo, 100, "IDV por faixa de distância até a EDL mais próxima, por ciclo",
+                     "distância até a EDL mais próxima", nota_cel) +
   scale_x_discrete(labels = rot_faixa, drop = FALSE)
-ggsave("graficos_r/g11_heatmap_ciclo_x_faixa.png", g11, width = 8.6, height = 5.4, dpi = 150)
+ggsave("graficos_r/g11_faixa_por_ciclo.png", g11, width = 10, height = 7, dpi = 150)
 
-# g12 · mapa de calor bairro × ciclo (bairros com >= 300 armadilhas no ano; do maior para o menor IDV)
+# g12 · IDV por ciclo, um painel por bairro (bairros com >= 300 armadilhas no ano; 12 maiores IDV do ano)
 t15 <- indicadores(fato, bairro, ciclo) %>%
   group_by(bairro) %>% filter(sum(A) >= 300) %>% mutate(idv_ano = sum(O) / sum(A)) %>% ungroup() %>%
   mutate(bairro = str_to_title(bairro))
-t15$bairro <- fct_reorder(t15$bairro, t15$idv_ano)               # maior IDV do ano no topo (o eixo y cresce de baixo para cima)
-g12 <- mapa_calor(t15, factor(ciclo, levels = 1:12), bairro, 30,
-                  paste0("IDV por bairro e ciclo (", n_distinct(t15$bairro), " bairros com ≥ 300 armadilhas no ano)"),
-                  "ciclo", "bairro (do maior para o menor IDV no ano)",
-                  "exploratório: cada célula tem poucas armadilhas (mediana ≈ 50) · * = menos de 30 armadilhas", tam = 2.3)
-ggsave("graficos_r/g12_heatmap_bairro_x_ciclo.png", g12, width = 9, height = 8.6, dpi = 150)
+top12 <- t15 %>% distinct(bairro, idv_ano) %>% slice_max(idv_ano, n = 12) %>% pull(bairro)
+t15 <- t15 %>% filter(bairro %in% top12) %>% mutate(bairro = factor(bairro, levels = top12))
+g12 <- barras_painel(t15, factor(ciclo, levels = 1:12), bairro, 30,
+                     "IDV por ciclo nos 12 bairros de maior IDV no ano (bairros com ≥ 300 armadilhas)",
+                     "ciclo", "exploratório: poucas armadilhas por bairro e ciclo · barra clara = menos de 30 armadilhas")
+ggsave("graficos_r/g12_ciclo_por_bairro.png", g12, width = 10, height = 7, dpi = 150)
+# para ver outro bairro, troque o filtro: t15 <- ... %>% filter(bairro == "Boa Viagem")
 
 message("Gráficos salvos em graficos_r/")

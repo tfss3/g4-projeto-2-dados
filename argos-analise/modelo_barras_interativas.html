@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARGOS · barras com filtros</title>
+<style>
+:root{
+  color-scheme: light;
+  --page:#f6f6f3; --surface:#fdfdfb; --ink:#111110; --ink-2:#4f4e4a; --muted:#6b6964;
+  --grid:#e3e2dc; --axis:#c3c2b7; --ring:rgba(17,17,16,0.10); --chip:#ecebe5;
+  --dentro:#2a78d6; --fora:#eb6834; --banda:rgba(110,108,98,.16);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --page:#0f0f0e; --surface:#1a1a19; --ink:#f5f5f2; --ink-2:#c3c2b7; --muted:#8a8882;
+    --grid:#2c2c2a; --axis:#3d3d3a; --ring:rgba(255,255,255,0.10); --chip:#2a2a28;
+    --dentro:#3987e5; --fora:#e2652f; --banda:rgba(255,255,255,.09);
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:22px;margin:0 0 6px}
+h2{font-size:18px;margin:0 0 4px;line-height:1.25}
+.lead{color:var(--ink-2);margin:0 0 4px}
+.card{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:16px;margin-top:16px}
+.tag{display:inline-block;font-size:11px;font-weight:650;padding:1px 6px;border-radius:5px;background:var(--chip);color:var(--ink-2);margin-right:6px;vertical-align:1px}
+.q{font-size:12px;color:var(--muted);margin:0 0 6px}
+.nota{font-size:12px;color:var(--muted);margin:8px 0 0}
+.ctl{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:end;margin:4px 0 10px}
+.ctl label{display:block;font-size:12px;color:var(--ink-2);margin-bottom:4px}
+select{font:inherit;padding:5px 8px;border-radius:8px;border:1px solid var(--axis);background:var(--surface);color:var(--ink);max-width:100%}
+.seg{display:inline-flex;border:1px solid var(--axis);border-radius:8px;overflow:hidden}
+.seg button{all:unset;cursor:pointer;padding:6px 14px;font-size:13px;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface);font-weight:600}
+.seg button:focus-visible,select:focus-visible{outline:2px solid var(--dentro);outline-offset:2px}
+.ctl label.chk{display:flex;gap:6px;align-items:center;margin:0;padding-bottom:6px;font-size:13px}
+.grafico{overflow-x:auto}
+.grafico svg{display:block;width:100%;height:auto;min-width:640px}
+@media(max-width:700px){.grafico::after{content:"↔ deslize para os lados para ver o gráfico inteiro";display:block;position:sticky;left:0;font-size:12px;color:var(--ink-2);padding:6px 0 0}}
+.grafico svg text{font-family:inherit;font-size:12.5px;fill:var(--ink-2)}
+details{margin-top:10px} summary{cursor:pointer;color:var(--ink-2);font-size:13px}
+.tab{overflow-x:auto;margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:5px 8px;border-bottom:1px solid var(--grid);text-align:right;white-space:nowrap}
+th:first-child,td:first-child,th.t,td.t{text-align:left}
+th{color:var(--ink-2);font-weight:600}
+.vazio{padding:28px;text-align:center;color:var(--ink-2);border:1px dashed var(--axis);border-radius:8px}
+#tt{position:fixed;pointer-events:none;opacity:0;transition:opacity .08s;background:var(--ink);color:var(--surface);padding:7px 10px;border-radius:8px;font-size:12.5px;line-height:1.4;max-width:280px;z-index:10}
+</style>
+</head>
+<body>
+<main>
+  <h1>ARGOS · barras com filtros</h1>
+  <p class="lead">Ovitrampas (OVT) e estações disseminadoras de larvicida (EDL), Recife, ciclos 1 a 12 de 2026. Escolha o distrito sanitário, o ciclo ou o bairro e o indicador (IDV, IPO ou IDO).</p>
+  <p class="lead">Cada barra soma armadilhas examinadas (A), positivas (P) e ovos (O) das leituras do recorte e só depois divide. Leitura descritiva: a diferença entre barras não prova efeito da EDL.</p>
+  <div id="cards"></div>
+</main>
+<div id="tt" role="tooltip"></div>
+
+<script>
+const D = __DADOS__;
+
+const IND = {
+  IDV: {rot: "IDV", unid: "ovos por armadilha", dica: "Ovos ÷ armadilhas examinadas"},
+  IPO: {rot: "IPO", unid: "%", dica: "Positivas ÷ examinadas × 100"},
+  IDO: {rot: "IDO", unid: "ovos por armadilha positiva", dica: "Ovos ÷ positivas"},
+};
+const NS = "http://www.w3.org/2000/svg";
+const RAIO = D.raio;
+const fN = (v, c = 1) => v == null ? "—" : v.toLocaleString("pt-BR", {minimumFractionDigits: c, maximumFractionDigits: c});
+const fI = v => v.toLocaleString("pt-BR");
+const esc = t => String(t).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const el = (t, a = {}, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
+const txt = (p, x, y, s, a = {}) => { const t = el("text", Object.assign({x, y}, a), p); t.textContent = s; return t; };
+const ind = (s, k) => k === "IPO" ? (s.A > 0 ? 100 * s.P / s.A : null) : k === "IDO" ? (s.P > 0 ? s.O / s.P : null) : (s.A > 0 ? s.O / s.A : null);
+
+function ticks(max, n = 5) {
+  const bruto = max / n, p = Math.pow(10, Math.floor(Math.log10(bruto))), f = bruto / p;
+  const passo = (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p, t = [];
+  for (let v = 0; v <= max + 1e-9; v += passo) t.push(v);
+  return t;
+}
+
+const tt = document.getElementById("tt");
+function mostrar(html, ev) {
+  tt.innerHTML = html; tt.style.opacity = 1;
+  const w = tt.offsetWidth, h = tt.offsetHeight;
+  tt.style.left = Math.max(8, Math.min(innerWidth - w - 8, ev.clientX + 14)) + "px";
+  tt.style.top = Math.max(8, Math.min(innerHeight - h - 8, ev.clientY + 14)) + "px";
+}
+const esconder = () => { tt.style.opacity = 0; };
+
+/* ---- os quatro gráficos ------------------------------------------------ */
+const DS_OPC = [["Todos", "Todos os DS"]].concat(D.ordem_ds.map(d => [d, "DS " + d]));
+const CARDS = [
+  {id: "c1", tag: "V1", dados: D.c1, tipo: "faixa", min: 300, filtro: "Distrito sanitário", opcoes: DS_OPC,
+   titulo: "IPO, IDO e IDV por distância até a EDL mais próxima, por distrito sanitário",
+   pergunta: "Em cada distrito, os indicadores mudam conforme a distância até a EDL mais próxima aumenta?",
+   quem: v => v === "Todos" ? "todo o Recife" : "DS " + v, todo: v => v === "Todos" ? "todo o Recife" : "todo o DS " + v,
+   nota: "Cada barra junta todas as leituras (ciclos 1 a 12) das OVTs daquela faixa de distância. A linha tracejada é o valor de todo o recorte. O eixo começa em zero."},
+  {id: "c2", tag: "V2", dados: D.c2, tipo: "faixa", min: 100, filtro: "Ciclo", opcoes: [["Todos", "Todos os ciclos"]].concat(D.ciclos.map(c => [String(c), "Ciclo " + c])),
+   titulo: "IPO, IDO e IDV por distância até a EDL mais próxima, por ciclo",
+   pergunta: "Em cada ciclo, os indicadores mudam conforme a distância até a EDL mais próxima aumenta?",
+   quem: v => v === "Todos" ? "ciclos 1 a 12" : "ciclo " + v, todo: v => v === "Todos" ? "todos os ciclos" : "todo o ciclo " + v,
+   nota: "Cada barra junta as leituras daquele ciclo nas OVTs da faixa de distância. Com um ciclo só, as faixas mais distantes têm poucas armadilhas."},
+  {id: "c3", tag: "V3", dados: D.c3, tipo: "ciclo", min: 100, filtro: "Distrito sanitário", opcoes: DS_OPC,
+   titulo: "IPO, IDO e IDV a cada ciclo, por distrito sanitário",
+   pergunta: "Como o indicador evoluiu a cada ciclo em cada distrito?",
+   quem: v => v === "Todos" ? "todo o Recife" : "DS " + v, todo: v => v === "Todos" ? "todo o Recife" : "todo o DS " + v,
+   nota: "Cada barra é um ciclo de 15 dias. As 333 OVTs do DS V só entram no ciclo 10, então o DS V muda de tamanho nesse ciclo."},
+  {id: "c4", tag: "V4", dados: D.c4, tipo: "ciclo", min: 30, filtro: "Bairro", bairros: true,
+   titulo: "IPO, IDO e IDV a cada ciclo, por bairro",
+   pergunta: "Como o indicador evoluiu a cada ciclo em cada bairro?",
+   quem: v => D.bairros[v].rot, todo: v => "todo o bairro " + D.bairros[v].nome,
+   nota: "Exploratório: cada barra tem poucas armadilhas (em geral menos de 100). Os bairros com menos de 300 armadilhas no ano ficam num grupo separado da lista."},
+];
+
+CARDS.push({id: "c5", tag: "V5", dados: D.c5, tipo: "rank", min: 300, filtro: "Distrito sanitário", opcoes: DS_OPC,
+   titulo: "Ranking de bairros por IPO, IDO e IDV, por distrito sanitário",
+   pergunta: "Quais bairros têm os maiores e os menores valores em cada distrito?",
+   quem: v => v === "Todos" ? "bairros de todo o Recife" : "bairros do DS " + v, todo: v => v === "Todos" ? "todo o Recife" : "todo o DS " + v,
+   nota: "Barras ordenadas do maior para o menor. Azul = bairro acima do valor do recorte (linha tracejada), laranja = abaixo. Por padrão só entram bairros com 300 armadilhas ou mais no ano; marque a caixa para ver os demais, em tom claro e com *."});
+
+CARDS.push({id: "c6", tag: "V6", dados: D.c6.s, tipo: "serie", min: 0, filtro: "Distrito sanitário", opcoes: DS_OPC,
+   titulo: "Série por ciclo, dentro e fora do raio de 400 m, com o período das instalações das EDL",
+   pergunta: "Os indicadores mudam nos ciclos depois que as EDL começam a ser instaladas?",
+   quem: v => v === "Todos" ? "todo o Recife" : "DS " + v, todo: v => v === "Todos" ? "todo o Recife" : "todo o DS " + v, nota: ""});
+
+const estado = {};
+function montar() {
+  const raiz = document.getElementById("cards");
+  CARDS.forEach(c => {
+    estado[c.id] = {f: null, ind: "IDV", peq: false};
+    const sec = document.createElement("section"); sec.className = "card"; sec.setAttribute("aria-labelledby", c.id + "-t");
+    sec.innerHTML = `<h2 id="${c.id}-t"><span class="tag">${c.tag}</span>${esc(c.titulo)}</h2>
+      <p class="q">${esc(c.pergunta)}</p>
+      <div class="ctl">
+        <div><label for="${c.id}-f">${esc(c.filtro)}</label><select id="${c.id}-f"></select></div>
+        <div><label id="${c.id}-li">Indicador</label><div class="seg" role="group" aria-labelledby="${c.id}-li">
+          ${Object.keys(IND).map(k => `<button data-k="${k}" title="${IND[k].dica}">${k}</button>`).join("")}</div></div>
+        ${c.tipo === "rank" ? `<div><label class="chk"><input type="checkbox" id="${c.id}-peq"> Incluir bairros de amostra pequena (&lt; ${c.min} armadilhas)</label></div>` : ""}
+      </div>
+      <div class="grafico" id="${c.id}-g"></div>
+      <p class="nota" id="${c.id}-n">${esc(c.nota)}</p>
+      <details><summary>Ver tabela equivalente</summary><div class="tab" id="${c.id}-t2"></div></details>`;
+    raiz.appendChild(sec);
+    const sel = sec.querySelector("select");
+    if (c.bairros) {
+      const og = (rot, ids) => { const g = document.createElement("optgroup"); g.label = rot;
+        ids.forEach(id => { const o = document.createElement("option"); o.value = id; o.textContent = D.bairros[id].rot; g.appendChild(o); }); return g; };
+      const ids = Object.keys(D.bairros), adeq = ids.filter(i => D.bairros[i].adequada), peq = ids.filter(i => !D.bairros[i].adequada);
+      sel.appendChild(og("Amostra adequada (≥ 300 armadilhas no ano)", adeq));
+      sel.appendChild(og("Amostra pequena (< 300 armadilhas no ano)", peq));
+      estado[c.id].f = adeq[0];
+    } else {
+      c.opcoes.forEach(([v, r]) => { const o = document.createElement("option"); o.value = v; o.textContent = r; sel.appendChild(o); });
+      estado[c.id].f = c.opcoes[0][0];
+    }
+    sel.value = estado[c.id].f;
+    sel.addEventListener("change", () => { estado[c.id].f = sel.value; desenhar(c); });
+    sec.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => { estado[c.id].ind = b.dataset.k; desenhar(c); }));
+    const peq = sec.querySelector("#" + c.id + "-peq");
+    if (peq) peq.addEventListener("change", () => { estado[c.id].peq = peq.checked; desenhar(c); });
+    desenhar(c);
+  });
+}
+
+function desenharRank(c) {
+  const st = estado[c.id], k = st.ind, linhas = c.dados[st.f];
+  document.getElementById(c.id + "-g").closest("section").querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === k));
+  const box = document.getElementById(c.id + "-g"); box.innerHTML = "";
+  const geral = {A: 0, P: 0, O: 0}; linhas.forEach(r => { geral.A += r.A; geral.P += r.P; geral.O += r.O; });
+  const vGeral = ind(geral, k);
+  const itens = linhas.map(r => Object.assign({}, r, {v: ind(r, k), pequena: r.A < c.min}))
+    .filter(b => b.v != null && (st.peq || !b.pequena)).sort((a, b) => b.v - a.v || a.k.localeCompare(b.k));
+  if (!itens.length) { box.innerHTML = `<div class="vazio">Nenhum bairro com ${c.min} armadilhas ou mais neste recorte. Marque a caixa para incluir os de amostra pequena.</div>`; document.getElementById(c.id + "-t2").innerHTML = ""; return; }
+
+  const W = 980, rh = 26, m = {l: 215, r: 70, t: 84, b: 60}, iw = W - m.l - m.r, H = m.t + itens.length * rh + m.b;
+  const xmax = k === "IPO" ? 100 : Math.max(...itens.map(b => b.v), vGeral || 0) * 1.1;
+  const X = v => m.l + v / xmax * iw, suf = k === "IPO" ? "%" : "";
+  const svg = el("svg", {viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `${k} · ${c.quem(st.f)}`}, box);
+  el("rect", {x: 0, y: 0, width: W, height: H, fill: "var(--surface)"}, svg);
+  txt(svg, 16, 26, `${k} por bairro · ${c.quem(st.f)}`, {style: "font-size:15px;font-weight:650;fill:var(--ink)"});
+  [["var(--dentro)", `Acima de ${c.todo(st.f)}`], ["var(--fora)", `Abaixo de ${c.todo(st.f)}`]].forEach(([cor, t], j) => {
+    const x = 16 + j * 230; el("rect", {x, y: 40, width: 14, height: 14, rx: 2, fill: cor}, svg); txt(svg, x + 20, 52, t, {style: "fill:var(--ink)"});
+  });
+  if (vGeral != null) {
+    el("line", {x1: 490, x2: 512, y1: 47, y2: 47, stroke: "var(--ink)", "stroke-dasharray": "5 4", "stroke-width": 1.6}, svg);
+    txt(svg, 518, 52, `${k} de ${c.todo(st.f)}: ${fN(vGeral)}${suf}`, {style: "fill:var(--ink)"});
+  }
+  const yb = m.t + itens.length * rh;
+  ticks(xmax).forEach(t => { el("line", {x1: X(t), x2: X(t), y1: m.t - 4, y2: yb, stroke: "var(--grid)"}, svg); txt(svg, X(t), yb + 18, fN(t, 0), {"text-anchor": "middle"}); });
+  txt(svg, m.l + iw / 2, H - 12, `${k} (${IND[k].unid})`, {"text-anchor": "middle"});
+  const rot5 = [];
+  itens.forEach((b, j) => {
+    const y = m.t + j * rh, nome = (b.k.length > 24 ? b.k.slice(0, 23) + "…" : b.k) + ` (${b.ds})` + (b.pequena ? " *" : "");
+    txt(svg, m.l - 10, y + rh / 2 + 4, nome, {"text-anchor": "end", style: "fill:var(--ink)" + (b.pequena ? ";font-style:italic" : "")});
+    const g = el("g", {}, svg), cor = vGeral != null && b.v < vGeral ? "var(--fora)" : "var(--dentro)";
+    el("rect", {x: 0, y, width: W, height: rh, fill: "transparent"}, g);
+    el("rect", {x: m.l, y: y + 3, width: Math.max(1, X(Math.min(b.v, xmax)) - m.l), height: rh - 6, rx: 3, fill: cor, opacity: b.pequena ? 0.4 : 1}, g);
+    rot5.push([X(Math.min(b.v, xmax)) + 6, y + rh / 2 + 4, fN(b.v) + suf]);
+    const dica = ev => mostrar(`<b>${esc(b.k)}</b> · DS ${esc(b.ds)}<br>${fI(b.ovts)} OVTs · ${fI(b.A)} armadilhas examinadas<br>${fI(b.P)} positivas · ${fI(b.O)} ovos<br><b>${k} ${fN(b.v)}${suf}</b>` +
+      (vGeral ? ` (${b.v >= vGeral ? "+" : ""}${fN(100 * (b.v - vGeral) / vGeral)}% em relação ao recorte)` : "") + (b.pequena ? `<br><i>amostra pequena (< ${c.min} armadilhas)</i>` : ""), ev);
+    g.addEventListener("mousemove", dica); g.addEventListener("click", dica); g.addEventListener("mouseleave", esconder);
+  });
+  el("line", {x1: m.l, x2: m.l, y1: m.t - 4, y2: yb, stroke: "var(--axis)"}, svg);
+  if (vGeral != null) el("line", {x1: X(vGeral), x2: X(vGeral), y1: m.t - 4, y2: yb, stroke: "var(--ink)", "stroke-dasharray": "5 4", "stroke-width": 1.6, "pointer-events": "none"}, svg);
+  rot5.forEach(([x, y, t]) => txt(svg, x, y, t, {"pointer-events": "none", style: "font-size:12px;font-weight:650;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round"}));
+
+  const lt = itens.map(b => `<tr><td>${esc(b.k)}</td><td class="t">${esc(b.ds)}</td><td>${fI(b.ovts)}</td><td>${fI(b.A)}</td><td>${fI(b.P)}</td><td>${fI(b.O)}</td>` +
+    `<td>${fN(ind(b, "IDV"))}</td><td>${fN(ind(b, "IPO"))}</td><td>${fN(ind(b, "IDO"))}</td><td class="t">${b.pequena ? "pequena (< " + c.min + ")" : "ok"}</td></tr>`).join("");
+  document.getElementById(c.id + "-t2").innerHTML = `<table><thead><tr><th>Bairro</th><th class="t">DS</th><th>OVTs</th><th>Examinadas (A)</th><th>Positivas (P)</th><th>Ovos (O)</th><th>IDV</th><th>IPO (%)</th><th>IDO</th><th class="t">Amostra</th></tr></thead><tbody>${lt}</tbody></table>`;
+}
+
+function quantil(a, q) { const p = (a.length - 1) * q, i = Math.floor(p); return a[i] + (a[Math.min(i + 1, a.length - 1)] - a[i]) * (p - i); }
+const dataBR = d => d.slice(8, 10) + "/" + d.slice(5, 7);
+function desenharSerie(c) {
+  const st = estado[c.id], k = st.ind, ds = st.f, S = c.dados[ds], C = D.c6;
+  document.getElementById(c.id + "-g").closest("section").querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === k));
+  const cs = C.datas_ciclo.map((_, j) => j + 1), vd = S.d.map(r => ind(r, k)), vf = S.f.map(r => ind(r, k)), suf = k === "IPO" ? "%" : "";
+  const box = document.getElementById(c.id + "-g"); box.innerHTML = "";
+  const valid = vd.concat(vf).filter(v => v != null);
+  if (!valid.length) { box.innerHTML = `<div class="vazio">Sem leituras neste recorte.</div>`; return; }
+  const W = 980, H = 400, m = {l: 70, r: 96, t: 70, b: 62}, iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const ymin = k === "IPO" ? Math.max(0, Math.floor((Math.min(...valid) - 2) / 5) * 5) : 0, ymax = Math.max(...valid) * (k === "IPO" ? 1.01 : 1.12);
+  const X = q => m.l + (q - 1) / 11 * iw, Y = v => m.t + ih - (v - ymin) / (ymax - ymin) * ih;
+  const svg = el("svg", {viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `${k} por ciclo, dentro e fora de ${RAIO} m, ${c.quem(ds)}`}, box);
+  el("rect", {x: 0, y: 0, width: W, height: H, fill: "var(--surface)"}, svg);
+  txt(svg, 16, 24, `${k} por ciclo: dentro × fora do raio de ${RAIO} m · ${c.quem(ds)}`, {style: "font-size:15px;font-weight:650;fill:var(--ink)"});
+  [["var(--dentro)", `Dentro (≤${RAIO} m)`], ["var(--fora)", `Fora (>${RAIO} m)`]].forEach(([cor, t], j) => {
+    const x = m.l + j * 150; el("line", {x1: x, x2: x + 22, y1: 46, y2: 46, stroke: cor, "stroke-width": 2.4}, svg); el("circle", {cx: x + 11, cy: 46, r: 3.2, fill: cor}, svg); txt(svg, x + 28, 50, t, {style: "fill:var(--ink)"});
+  });
+  el("rect", {x: m.l + 330, y: 40, width: 18, height: 12, fill: "var(--banda)", stroke: "var(--axis)"}, svg);
+  txt(svg, m.l + 354, 50, "período das instalações (metade central das datas)", {style: "fill:var(--ink)"});
+  const dd = s => (Date.parse(s) - Date.parse(C.datas_ciclo[0])) / 864e5, dia = q => dd(C.datas_ciclo[q - 1]);
+  const pos = d => { if (d <= dia(1)) return 1; for (let q = 1; q < 12; q++) if (d <= dia(q + 1)) return q + (d - dia(q)) / (dia(q + 1) - dia(q)); return 12; };
+  const inst = C.inst[ds].map(s => pos(dd(s))).sort((a, b) => a - b);
+  if (inst.length) {
+    const a = quantil(inst, .25), b = quantil(inst, .75);
+    el("rect", {x: X(a), y: m.t, width: Math.max(4, X(b) - X(a)), height: ih, fill: "var(--banda)"}, svg);
+    txt(svg, X(a) - 6, m.t - 8, "◂ antes", {"text-anchor": "end", style: "font-size:11px;font-weight:600;fill:var(--ink-2)"});
+    txt(svg, X(b) + 6, m.t - 8, "depois ▸", {style: "font-size:11px;font-weight:600;fill:var(--ink-2)"});
+    inst.forEach(p => el("line", {x1: X(p), x2: X(p), y1: m.t + ih - 5, y2: m.t + ih, stroke: "var(--ink-2)", "stroke-width": 1.2}, svg));
+  }
+  ticks(ymax - ymin, 5).map(t => t + ymin).filter(t => t <= ymax).forEach(t => { el("line", {x1: m.l, x2: m.l + iw, y1: Y(t), y2: Y(t), stroke: "var(--grid)"}, svg); txt(svg, m.l - 10, Y(t) + 4, fN(t, 0), {"text-anchor": "end"}); });
+  txt(svg, 18, m.t + ih / 2, `${k} (${IND[k].unid})`, {transform: `rotate(-90 18 ${m.t + ih / 2})`, "text-anchor": "middle", style: "font-size:11px"});
+  cs.forEach(q => { txt(svg, X(q), m.t + ih + 20, String(q), {"text-anchor": "middle", style: "fill:var(--ink)"}); txt(svg, X(q), m.t + ih + 35, dataBR(C.datas_ciclo[q - 1]), {"text-anchor": "middle", style: "font-size:10.5px"}); });
+  txt(svg, m.l + iw / 2, H - 8, "Ciclo (data = mediana das coletas do ciclo)", {"text-anchor": "middle"});
+  [[vf, "var(--fora)", 2], [vd, "var(--dentro)", 2.6]].forEach(([v, cor, l]) => {
+    let d = ""; cs.forEach((x, j) => { if (v[j] == null) return; d += (d && v[j - 1] != null ? "L" : "M") + X(x) + " " + Y(v[j]); });
+    el("path", {d, fill: "none", stroke: cor, "stroke-width": l, "stroke-linejoin": "round"}, svg);
+    cs.forEach((x, j) => { if (v[j] != null) el("circle", {cx: X(x), cy: Y(v[j]), r: 3.4, fill: cor}, svg); });
+  });
+  const ld = vd[11], lf = vf[11];
+  if (ld != null && lf != null) { let yd = Y(ld), yf = Y(lf); if (Math.abs(yd - yf) < 16) { if (yd < yf) { yd -= 8; yf += 8; } else { yd += 8; yf -= 8; } }
+    txt(svg, X(12) + 10, yd + 4, "Dentro", {style: "fill:var(--dentro);font-weight:600"}); txt(svg, X(12) + 10, yf + 4, "Fora", {style: "fill:var(--fora);font-weight:600"}); }
+  const guia = el("line", {x1: 0, x2: 0, y1: m.t, y2: m.t + ih, stroke: "var(--ink-2)", opacity: 0}, svg);
+  cs.forEach((q, j) => {
+    const r = el("rect", {x: X(q) - iw / 22, y: m.t, width: iw / 11, height: ih, fill: "transparent"}, svg);
+    const dica = ev => { guia.setAttribute("x1", X(q)); guia.setAttribute("x2", X(q)); guia.setAttribute("opacity", .35);
+      mostrar(`<b>Ciclo ${q}</b> · mediana ${dataBR(C.datas_ciclo[q - 1])}<br>dentro: ${k} ${fN(vd[j])}${suf} (${fI(S.d[j].A)} armadilhas)<br>fora: ${k} ${fN(vf[j])}${suf} (${fI(S.f[j].A)} armadilhas)`, ev); };
+    r.addEventListener("mousemove", dica); r.addEventListener("click", dica); r.addEventListener("mouseleave", () => { guia.setAttribute("opacity", 0); esconder(); });
+  });
+  document.getElementById(c.id + "-n").textContent = `Faixa clara: do 1º ao 3º quartil das datas de instalação das EDL${ds === "Todos" ? "" : " do DS " + ds} (${inst.length} locais com data de dia exato; os traços na base são as instalações). ${C.so_mes[ds]} locais têm só o mês da instalação (não desenhados) e ${C.sem_data[ds]} não têm data. ${ds === "Todos" ? "Em todo o Recife a faixa é larga porque as instalações vão de novembro de 2025 a agosto de 2026." : ""} Leitura descritiva: não separa o efeito da EDL da sazonalidade.`;
+  const lin = cs.map((q, j) => `<tr><td>Ciclo ${q}</td><td>${dataBR(C.datas_ciclo[q - 1])}</td><td>${fI(S.d[j].A)}</td><td>${fN(vd[j])}${suf}</td><td>${fI(S.f[j].A)}</td><td>${fN(vf[j])}${suf}</td></tr>`).join("");
+  document.getElementById(c.id + "-t2").innerHTML = `<table><thead><tr><th>Ciclo</th><th>Data (mediana)</th><th>A dentro</th><th>${k} dentro</th><th>A fora</th><th>${k} fora</th></tr></thead><tbody>${lin}</tbody></table>`;
+}
+
+function desenhar(c) {
+  if (c.tipo === "rank") return desenharRank(c);
+  if (c.tipo === "serie") return desenharSerie(c);
+  const st = estado[c.id], k = st.ind, linhas = c.dados[st.f];
+  document.getElementById(c.id + "-g").closest("section").querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === k));
+  const box = document.getElementById(c.id + "-g"); box.innerHTML = "";
+  const faixa = c.tipo === "faixa";
+  const barras = linhas.map(r => {
+    const v = ind(r, k);
+    return Object.assign({}, r, {v, dentro: faixa ? r.dentro : true, pequena: r.A < c.min});
+  });
+  const geral = {A: 0, P: 0, O: 0}; linhas.forEach(r => { geral.A += r.A; geral.P += r.P; geral.O += r.O; });
+  const vGeral = ind(geral, k), ok = barras.filter(b => b.v != null);
+  if (!ok.length) { box.innerHTML = `<div class="vazio">Sem leituras neste recorte.</div>`; document.getElementById(c.id + "-t2").innerHTML = ""; return; }
+
+  const W = 980, H = 458, m = {l: 74, r: 24, t: 88, b: 96}, iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const ymax = k === "IPO" ? 100 : Math.max(...ok.map(b => b.v), vGeral || 0) * 1.15;
+  const Y = v => m.t + ih - v / ymax * ih, bw = iw / barras.length, larg = Math.min(faixa ? 84 : 52, bw * 0.62);
+  const svg = el("svg", {viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `${k} · ${c.quem(st.f)}`}, box);
+  el("rect", {x: 0, y: 0, width: W, height: H, fill: "var(--surface)"}, svg);
+  txt(svg, 16, 26, `${k} ${faixa ? "por faixa de distância (raio) até a EDL mais próxima" : "por ciclo"} · ${c.quem(st.f)}`, {style: "font-size:15px;font-weight:650;fill:var(--ink)"});
+  let lx = m.l;
+  if (faixa) {
+    [["var(--dentro)", `Dentro do raio de ${RAIO} m`], ["var(--fora)", `Fora do raio (> ${RAIO} m)`]].forEach(([cor, t], j) => {
+      const x = m.l + j * 200; el("rect", {x, y: 40, width: 14, height: 14, rx: 2, fill: cor}, svg); txt(svg, x + 20, 52, t, {style: "fill:var(--ink)"});
+    });
+    lx = m.l + 420;
+  }
+  if (vGeral != null) {
+    el("line", {x1: lx, x2: lx + 22, y1: 47, y2: 47, stroke: "var(--ink)", "stroke-dasharray": "5 4", "stroke-width": 1.6}, svg);
+    txt(svg, lx + 28, 52, `${k} de ${c.todo(st.f)}: ${fN(vGeral)}${k === "IPO" ? "%" : ""}`, {style: "fill:var(--ink)"});
+  }
+  ticks(ymax).forEach(t => { el("line", {x1: m.l, x2: W - m.r, y1: Y(t), y2: Y(t), stroke: "var(--grid)"}, svg); txt(svg, m.l - 10, Y(t) + 4, fN(t, 0), {"text-anchor": "end"}); });
+  txt(svg, 18, m.t + ih / 2, `${k} (${IND[k].unid})`, {transform: `rotate(-90 18 ${m.t + ih / 2})`, "text-anchor": "middle", style: "font-size:11px"});
+  txt(svg, m.l + iw / 2, H - 12, faixa ? "Distância até a EDL mais próxima (m)" : "Ciclo (15 dias) · 2026", {"text-anchor": "middle"});
+  if (faixa) {
+    const xr = m.l + bw * D.faixas.filter(f => f.dentro).length;
+    el("line", {x1: xr, x2: xr, y1: m.t - 4, y2: m.t + ih + 64, stroke: "var(--axis)", "stroke-dasharray": "3 3"}, svg);
+    txt(svg, xr - 8, m.t + ih + 62, `◂ dentro do raio de ${RAIO} m`, {"text-anchor": "end", style: "font-size:11px;fill:var(--dentro);font-weight:600"});
+    txt(svg, xr + 8, m.t + ih + 62, "fora do raio ▸", {style: "font-size:11px;fill:var(--fora);font-weight:600"});
+  }
+  if (vGeral != null) el("line", {x1: m.l, x2: W - m.r, y1: Y(vGeral), y2: Y(vGeral), stroke: "var(--ink)", "stroke-dasharray": "5 4", "stroke-width": 1.6, "pointer-events": "none"}, svg);
+  const rotulos = [];
+  barras.forEach((b, j) => {
+    const cx = m.l + bw * j + bw / 2;
+    txt(svg, cx, m.t + ih + 20, b.k, {"text-anchor": "middle", style: "fill:var(--ink)"});
+    txt(svg, cx, m.t + ih + 36, `${fI(b.ovts)} OVTs`, {"text-anchor": "middle", style: "font-size:11px"});
+    if (b.v == null) { txt(svg, cx, m.t + ih - 8, "sem leituras", {"text-anchor": "middle", style: "font-size:11px"}); return; }
+    const g = el("g", {}, svg), y = Y(Math.min(b.v, ymax));
+    el("rect", {x: cx - bw / 2, y: m.t, width: bw, height: ih, fill: "transparent"}, g);
+    el("rect", {x: cx - larg / 2, y, width: larg, height: Math.max(1, m.t + ih - y), rx: 3, fill: b.dentro ? "var(--dentro)" : "var(--fora)", opacity: b.pequena ? 0.4 : 1}, g);
+    rotulos.push([cx, y - 8, fN(b.v) + (k === "IPO" ? "%" : "")]);
+    if (b.pequena) txt(svg, cx, m.t + ih + 50, "amostra pequena", {"text-anchor": "middle", style: "font-size:10px;font-style:italic"});
+    const dica = ev => mostrar(`<b>${esc(faixa ? b.k + " m" : "Ciclo " + b.k)}</b>${faixa ? " · " + (b.dentro ? "dentro" : "fora") + " do raio" : ""}<br>${fI(b.ovts)} OVTs · ${fI(b.A)} armadilhas examinadas<br>${fI(b.P)} positivas · ${fI(b.O)} ovos<br><b>${k} ${fN(b.v)}${k === "IPO" ? "%" : ""}</b>` +
+      (vGeral ? ` (${b.v >= vGeral ? "+" : ""}${fN(100 * (b.v - vGeral) / vGeral)}% em relação ao recorte)` : "") + (b.pequena ? `<br><i>amostra pequena (< ${c.min} armadilhas)</i>` : ""), ev);
+    g.addEventListener("mousemove", dica); g.addEventListener("click", dica); g.addEventListener("mouseleave", esconder);
+  });
+  el("line", {x1: m.l, x2: W - m.r, y1: Y(0), y2: Y(0), stroke: "var(--axis)"}, svg);
+  rotulos.forEach(([x, y, t]) => txt(svg, x, y, t, {"text-anchor": "middle", "pointer-events": "none",
+    style: "font-size:12.5px;font-weight:650;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round"}));
+
+  // tabela equivalente
+  const linhasTab = barras.map(b => `<tr><td>${esc(faixa ? b.k + " m" : "Ciclo " + b.k)}</td>${faixa ? `<td class="t">${b.dentro ? "dentro" : "fora"}</td>` : ""}<td>${fI(b.ovts)}</td><td>${fI(b.A)}</td><td>${fI(b.P)}</td><td>${fI(b.O)}</td>` +
+    `<td>${fN(ind(b, "IDV"))}</td><td>${fN(ind(b, "IPO"))}</td><td>${fN(ind(b, "IDO"))}</td><td class="t">${b.pequena ? "pequena (< " + c.min + ")" : "ok"}</td></tr>`).join("");
+  document.getElementById(c.id + "-t2").innerHTML = `<table><thead><tr><th>${faixa ? "Faixa" : "Ciclo"}</th>${faixa ? '<th class="t">Grupo</th>' : ""}<th>OVTs</th><th>Examinadas (A)</th><th>Positivas (P)</th><th>Ovos (O)</th><th>IDV</th><th>IPO (%)</th><th>IDO</th><th class="t">Amostra</th></tr></thead><tbody>${linhasTab}</tbody></table>`;
+}
+montar();
+</script>
+</body>
+</html>

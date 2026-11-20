@@ -1,4 +1,4 @@
-# segredos: nunca subir a string de conexão do Atlas
+# segredos: nunca subir senhas ou strings de conexão
 .env
 .env.*
 *.pem

@@ -5,8 +5,7 @@ Lê o banco SQLite já limpo pelo pipeline do grupo (dados/argos.db) e gera:
 
   tabelas/   modelo dimensional (dim_*, fato_leitura) e as tabelas de análise T01..T12, em CSV
   ARGOS_tabelas_de_analise.xlsx   as mesmas tabelas em um único Excel
-  mongo/     coleções em JSON Lines (formato do mongoimport / Atlas)
-  graficos/  quatro gráficos em PNG
+  graficos/  gráficos em PNG + barras_com_filtros.html (barras com filtro de DS, ciclo e bairro)
 
 Uso:   python gerar_tabelas.py          (precisa de pandas, numpy, scipy, openpyxl, matplotlib)
 
@@ -30,12 +29,13 @@ from scipy import stats
 
 RAIZ = Path(__file__).resolve().parent
 DB = RAIZ / "dados" / "argos.db"
-TAB, MONGO, GRAF = RAIZ / "tabelas", RAIZ / "mongo", RAIZ / "graficos"
+TAB, GRAF = RAIZ / "tabelas", RAIZ / "graficos"
 XLSX = RAIZ / "ARGOS_tabelas_de_analise.xlsx"
 
 ORDEM_DS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
 FAIXAS = ["0–100 m", "100–200 m", "200–300 m", "300–400 m", "400–600 m", "600–1.000 m", "acima de 1.000 m"]
 RAIOS = (300, 400)
+RAIO_M = 400
 AMOSTRA_MIN = 300  # menos de 300 armadilhas examinadas = amostra pequena (mesmo critério do painel)
 AMOSTRA_CELULA = 100  # nas tabelas cruzadas (DS × faixa, ciclo × faixa) cada célula é menor: aviso abaixo de 100
 
@@ -309,7 +309,7 @@ def tabelas_analise(fato, dim_ovt, dim_edl, dim_ciclo):
                                "variacao_IDV_pct": 100 * (x.loc["depois", "IDV"] / x.loc["antes", "IDV"] - 1)})
     T["T12_antes_depois"] = pd.DataFrame(linhas)
 
-    # T13 DS × faixa · T14 ciclo × faixa · T15 bairro × ciclo (base dos mapas de calor) -----------
+    # T13 DS × faixa · T14 ciclo × faixa · T15 bairro × ciclo (base das barras com filtros) -----------
     def com_amostra(t: pd.DataFrame, minimo: int) -> pd.DataFrame:
         t = t.copy()
         t["amostra"] = np.where(t["A"] < minimo, f"pequena (< {minimo} armadilhas)", "ok")
@@ -404,7 +404,7 @@ LEIA_ME = [
     ("T02_por_ciclo", "A, P, O, IPO, IDO, IDV por ciclo (com a data do ciclo)."),
     ("T03_por_ds", "Indicadores por distrito sanitário, estações de EDL e % de OVTs a até 300/400 m."),
     ("T04_ds_x_ciclo", "DS × ciclo em formato longo (96 linhas), ideal para gráficos."),
-    ("T04b_matriz_IDV", "Matriz DS × ciclo do IDV, com escala de cor."),
+    ("T04b_matriz_IDV", "Matriz DS × ciclo do IDV (tabela simples, sem escala de cor)."),
     ("T05_por_bairro", "86 bairros: primeiro os de amostra adequada (IDV decrescente), depois os de amostra pequena (< 300 armadilhas); EDL ligadas pelo nome."),
     ("T06_por_faixa_dist", "Indicadores por faixa de distância até a EDL mais próxima (0–100 m … acima de 1.000 m)."),
     ("T07_dentro_fora_raio", "Dentro × fora de 300 m e de 400 m, Recife e cada DS, com a diferença do IDV."),
@@ -413,16 +413,15 @@ LEIA_ME = [
     ("T10_associacao_dist_IDV", "Correlação de Spearman entre a distância à EDL e o IDV de cada OVT (Recife e por DS; só OVTs com ao menos uma leitura válida)."),
     ("T11_qualidade_edl", "Origem da posição e da data de instalação das EDL, por DS."),
     ("T12_antes_depois", "IDV antes × depois da instalação da EDL mais próxima, dentro × fora do raio."),
-    ("T13_ds_x_faixa", "Indicadores por DS × faixa de distância (base do mapa de calor g10)."),
-    ("T14_ciclo_x_faixa", "Indicadores por ciclo × faixa de distância (base do mapa de calor g11)."),
-    ("T15_bairro_x_ciclo", "Indicadores por bairro × ciclo (base do mapa de calor g12); células pequenas, use para ver padrões."),
+    ("T13_ds_x_faixa", "Indicadores por DS × faixa de distância (mesmos números do gráfico V1, barras_com_filtros.html)."),
+    ("T14_ciclo_x_faixa", "Indicadores por ciclo × faixa de distância (mesmos números do gráfico V2)."),
+    ("T15_bairro_x_ciclo", "Indicadores por bairro × ciclo (mesmos números do gráfico V4); recortes pequenos, leia com cuidado."),
     ("D_ovt, D_edl, D_ciclo", "Dimensões do modelo (OVT, local de EDL, ciclo). A tabela fato_leitura fica em tabelas/fato_leitura.csv."),
-    ("Gráficos", "Pasta graficos/: 12 PNGs (g1 a g12, barras e mapas de calor) e todos_os_graficos.pdf."),
+    ("Gráficos", "Pasta graficos/: PNGs g1, g2, g4 a g7 e g9, todos_os_graficos.pdf e barras_com_filtros.html (6 gráficos com filtro por distrito, ciclo e bairro, inclusive a linha do tempo antes × depois das instalações; abra no navegador)."),
 ]
 
 
 def salvar_excel(T, dim_ovt, dim_edl, dim_ciclo):
-    from openpyxl.formatting.rule import ColorScaleRule
     from openpyxl.styles import Alignment, Font, PatternFill
     from openpyxl.utils import get_column_letter
 
@@ -472,9 +471,6 @@ def salvar_excel(T, dim_ovt, dim_edl, dim_ciclo):
                     for x in ws[get_column_letter(j)][1:]:
                         x.number_format = f
         ws = xw.sheets["T04b_matriz_IDV"]
-        ws.conditional_formatting.add(f"B2:{get_column_letter(ws.max_column)}{ws.max_row}",
-                                      ColorScaleRule(start_type="min", start_color="FFF7E0", mid_type="percentile", mid_value=50,
-                                                     mid_color="F6B26B", end_type="max", end_color="B7410E"))
         for row in ws.iter_rows(min_row=2, min_col=2):           # matriz: colunas se chamam "1".."12", sem formato por nome
             for c in row:
                 c.number_format = "0"
@@ -501,78 +497,7 @@ def salvar_excel(T, dim_ovt, dim_edl, dim_ciclo):
 
 
 # ----------------------------------------------------------------------------
-# 4. MongoDB (JSON Lines no formato Extended JSON: datas viram {"$date": ...})
-# ----------------------------------------------------------------------------
-def _limpo(v):
-    """Tira vazios (None/NaN) para o documento não carregar campos nulos."""
-    if isinstance(v, dict):
-        d = {k: _limpo(x) for k, x in v.items()}
-        return {k: x for k, x in d.items() if x is not None and x != {} and x != []}
-    if isinstance(v, list):
-        return [_limpo(x) for x in v]
-    if isinstance(v, (float, np.floating)):
-        return None if np.isnan(v) else (int(v) if float(v).is_integer() and abs(v) < 1e15 else float(v))
-    if isinstance(v, (np.integer,)):
-        return int(v)
-    if isinstance(v, (np.bool_,)):
-        return bool(v)
-    if v is pd.NaT:
-        return None
-    if isinstance(v, pd.Timestamp):
-        return {"$date": v.strftime("%Y-%m-%dT00:00:00Z")}
-    return v
-
-
-def _ponto(lat, lon, valido=True):
-    if not valido or pd.isna(lat) or pd.isna(lon):
-        return None
-    return {"type": "Point", "coordinates": [round(float(lon), 6), round(float(lat), 6)]}
-
-
-def gerar_mongo(fato, dim_ovt, dim_edl, T):
-    MONGO.mkdir(exist_ok=True)
-    f = fato.sort_values(["id_ovt", "ciclo"])
-    leituras = {}
-    for r in f.itertuples(index=False):
-        leituras.setdefault(r.id_ovt, []).append({
-            "ciclo": int(r.ciclo), "dt_coleta": r.dt_coleta, "situacao": r.situacao_coleta, "codigo_obs": r.codigo_obs,
-            "n_ovos": r.n_ovos, "preenchido_pela_media": bool(r.n_ovos_imputado), "A": int(r.A), "P": int(r.P), "O": int(r.O)})
-    edl_idx = dim_edl.set_index("id_edl")
-    docs = []
-    for r in dim_ovt.itertuples(index=False):
-        e = edl_idx.loc[r.id_edl_proxima] if r.id_edl_proxima in edl_idx.index else None
-        docs.append(_limpo({
-            "_id": r.id_ovt, "ds": r.ds_observacao, "ds_cadastro": r.ds_cadastro, "bairro": r.bairro, "endereco": r.endereco,
-            "localizacao": _ponto(r.lat, r.lon), "fonte_coord": r.fonte_coord, "dt_instalacao": pd.to_datetime(r.dt_instalacao_ovt, errors="coerce"),
-            "edl_mais_proxima": {"id_edl": r.id_edl_proxima, "dist_m": r.dist_m, "faixa_dist": r.faixa_dist,
-                                 "dentro_300m": bool(r.dentro_300m), "dentro_400m": bool(r.dentro_400m),
-                                 "n_locais_ate_400m": r.n_locais_ate_400m,
-                                 "nome": None if e is None else e["nome"],
-                                 "dt_instalacao": None if e is None else pd.to_datetime(e["dt_instalacao"], errors="coerce")},
-            "leituras": leituras.get(r.id_ovt, [])}))
-    _jsonl(MONGO / "ovitrampas.jsonl", docs)
-
-    docs = [_limpo({"_id": r.id_edl, "ds": r.ds, "nome": r.nome, "tipo": r.tipo, "logradouro": r.logradouro, "bairro": r.bairro,
-                    "localizacao": _ponto(r.lat, r.lon, r.fonte_coord != "sem posição"), "fonte_coord": r.fonte_coord,
-                    "precisao_local": r.precisao_local, "qtd_edl": r.qtd_edl,
-                    "dt_instalacao": pd.to_datetime(r.dt_instalacao, errors="coerce"), "precisao_data": r.precisao_data})
-            for r in dim_edl.itertuples(index=False)]
-    _jsonl(MONGO / "edl_locais.jsonl", docs)
-
-    t = T["T04_ds_x_ciclo"]
-    docs = [_limpo({"_id": f"{r.ds}-{int(r.ciclo)}", "ds": r.ds, "ciclo": int(r.ciclo), "A": int(r.A), "P": int(r.P), "O": int(r.O),
-                    "IPO": r.IPO, "IDO": r.IDO, "IDV": r.IDV}) for r in t.itertuples(index=False)]
-    _jsonl(MONGO / "indicadores_ds_ciclo.jsonl", docs)
-
-
-def _jsonl(caminho: Path, docs: list[dict]):
-    with open(caminho, "w", encoding="utf-8") as fh:
-        for d in docs:
-            fh.write(json.dumps(d, ensure_ascii=False) + "\n")
-
-
-# ----------------------------------------------------------------------------
-# 5. gráficos
+# 4. gráficos
 # ----------------------------------------------------------------------------
 def graficos(T):
     import matplotlib
@@ -625,20 +550,6 @@ def graficos(T):
     fig.text(.01, .01, nota, fontsize=8, color=CZ)
     fig.tight_layout(rect=(0, .04, 1, 1)); fig.savefig(GRAF / "g2_idv_por_faixa.png"); plt.close(fig)
 
-    # 3. mapa de calor DS × ciclo
-    m = T["T04b_matriz_IDV"].set_index("ds")
-    fig, ax = plt.subplots(figsize=(8, 3.9))
-    im = ax.imshow(m.values, aspect="auto", cmap="YlOrBr")
-    ax.set_xticks(range(m.shape[1]), [str(c) for c in m.columns]); ax.set_yticks(range(m.shape[0]), m.index)
-    ax.set_xlabel("ciclo"); ax.set_ylabel("distrito sanitário")
-    for i in range(m.shape[0]):
-        for j in range(m.shape[1]):
-            v = m.values[i, j]
-            ax.text(j, i, f"{v:.0f}", ha="center", va="center", fontsize=7, color="white" if v > np.nanmedian(m.values) * 1.25 else "#222")
-    ax.set_title("IDV por distrito sanitário e ciclo", loc="left", fontweight="bold")
-    fig.colorbar(im, ax=ax, shrink=.85, label="IDV")
-    fig.tight_layout(); fig.savefig(GRAF / "g3_idv_ds_x_ciclo.png"); plt.close(fig)
-
     # 4. dentro × fora de 400 m, por DS
     t = T["T07_dentro_fora_raio"].query("raio_m == 400")
     t = t.set_index("ds").reindex(["Todos"] + ORDEM_DS)
@@ -655,7 +566,7 @@ def graficos(T):
         fig.text(.01, .01, "* um dos lados com menos de 300 armadilhas examinadas: leia com cautela", fontsize=8, color=CZ)
     fig.tight_layout(rect=(0, .04, 1, 1)); fig.savefig(GRAF / "g4_dentro_fora_por_ds.png"); plt.close(fig)
 
-    # ---------------- gráficos 5 a 12: mais barras e mapas de calor ----------------
+    # ---------------- gráficos 5 a 9: mais barras ----------------
     t02 = T["T02_por_ciclo"]
     idv_geral = t02["O"].sum() / t02["A"].sum()
     PERIGO = "#B7410E"
@@ -707,20 +618,6 @@ def graficos(T):
     rodape(fig, "azul = maior dentro do raio · laranja = menor dentro do raio · * um dos lados com < 300 armadilhas")
     fig.tight_layout(rect=(0, .04, 1, 1)); fig.savefig(GRAF / "g7_diferenca_dentro_fora_ds.png"); plt.close(fig)
 
-    # 8. antes × depois da instalação da EDL mais próxima
-    t = T["T12_antes_depois"].copy()
-    x = np.arange(len(t)); fig, ax = plt.subplots(figsize=(8, 3.8))
-    ax.bar(x - .2, t["IDV_antes"], .4, color=CZ, label="antes da instalação")
-    ax.bar(x + .2, t["IDV_depois"], .4, color=AZ, label="depois da instalação")
-    for i, (a, d) in enumerate(zip(t["IDV_antes"], t["IDV_depois"])):
-        ax.text(i - .2, a + 3, f"{a:.0f}", ha="center", fontsize=8); ax.text(i + .2, d + 3, f"{d:.0f}", ha="center", fontsize=8)
-    ax.set_xticks(x, [f"{g}\n(n = {int(n)} OVTs)" for g, n in zip(t["grupo"], t["n_ovts"])], fontsize=8)
-    ax.set_ylim(0, max(t["IDV_antes"].max(), t["IDV_depois"].max()) * 1.25); ax.set_ylabel("IDV")
-    ax.legend(frameon=False, ncol=2, loc="upper center")
-    ax.set_title("IDV antes × depois da instalação da EDL mais próxima", loc="left", fontweight="bold", pad=12)
-    rodape(fig, "só locais com data de instalação · a diferença é pequena e não separa efeito da EDL de sazonalidade")
-    fig.tight_layout(rect=(0, .04, 1, 1)); fig.savefig(GRAF / "g8_antes_depois.png"); plt.close(fig)
-
     # 9. % de leituras sem resultado por ciclo
     t = T["T09_situacao_coleta"]
     fig, ax = plt.subplots(figsize=(8, 3.6))
@@ -732,54 +629,108 @@ def graficos(T):
     ax.set_title("Leituras sem resultado por ciclo (F, E, R, D e REC)", loc="left", fontweight="bold")
     fig.tight_layout(); fig.savefig(GRAF / "g9_sem_resultado_por_ciclo.png"); plt.close(fig)
 
-    # ---- mapas de calor ----
-    def calor(matriz, amostras, titulo, arq, xlabel, ylabel, figsize, minimo, nota, cmap="YlOrBr", fmt="{:.0f}", fs=8):
-        vals = np.ma.masked_invalid(matriz.values.astype(float))
-        fig, ax = plt.subplots(figsize=figsize)
-        im = ax.imshow(vals, aspect="auto", cmap=cmap)
-        ax.set_xticks(range(matriz.shape[1]), [str(c).replace("acima de ", ">") for c in matriz.columns]); ax.set_yticks(range(matriz.shape[0]), matriz.index)
-        ax.set_xlabel(xlabel); ax.set_ylabel(ylabel)
-        lim = np.nanmedian(matriz.values.astype(float)) * 1.2
-        for i in range(matriz.shape[0]):
-            for j in range(matriz.shape[1]):
-                v = matriz.values[i, j]
-                if pd.isna(v):
-                    continue
-                pouca = amostras.values[i, j] < minimo
-                txt = fmt.format(v) + ("*" if pouca else "")
-                ax.text(j, i, txt, ha="center", va="center", fontsize=fs, color="white" if v > lim else "#222",
-                        fontstyle="italic" if pouca else "normal")
-        ax.set_title(titulo, loc="left", fontweight="bold")
-        fig.colorbar(im, ax=ax, shrink=.85, label="IDV")
-        fig.text(.01, .01, nota, fontsize=8, color=CZ)
-        fig.tight_layout(rect=(0, .04, 1, 1)); fig.savefig(GRAF / arq); plt.close(fig)
-
-    nota_cel = f"* itálico com asterisco = célula com menos de {AMOSTRA_CELULA} armadilhas examinadas: leia com cautela"
-    t13 = T["T13_ds_x_faixa"].assign(faixa_dist=lambda d: d["faixa_dist"].astype(str))
-    calor(t13.pivot(index="ds", columns="faixa_dist", values="IDV").reindex(index=ORDEM_DS, columns=[str(f) for f in FAIXAS]),
-          t13.pivot(index="ds", columns="faixa_dist", values="A").reindex(index=ORDEM_DS, columns=[str(f) for f in FAIXAS]),
-          "IDV por distrito sanitário e distância até a EDL mais próxima", "g10_heatmap_ds_x_faixa.png",
-          "distância até a EDL mais próxima", "distrito sanitário", (8.6, 4.2), AMOSTRA_CELULA, nota_cel, fs=8)
-    t14 = T["T14_ciclo_x_faixa"].assign(faixa_dist=lambda d: d["faixa_dist"].astype(str))
-    calor(t14.pivot(index="ciclo", columns="faixa_dist", values="IDV").reindex(columns=[str(f) for f in FAIXAS]),
-          t14.pivot(index="ciclo", columns="faixa_dist", values="A").reindex(columns=[str(f) for f in FAIXAS]),
-          "IDV por ciclo e distância até a EDL mais próxima", "g11_heatmap_ciclo_x_faixa.png",
-          "distância até a EDL mais próxima", "ciclo", (8.6, 5.4), AMOSTRA_CELULA, nota_cel, fs=8)
-
-    # 12. bairro × ciclo (bairros com ≥ 300 armadilhas no ano; ordenados pelo IDV do ano)
-    b = T["T15_bairro_x_ciclo"].query("amostra_bairro == 'ok'")
-    ordem = (b.groupby("bairro")[["O", "A"]].sum().assign(IDV=lambda d: d["O"] / d["A"]).sort_values("IDV", ascending=False).index)
-    mi = b.pivot(index="bairro", columns="ciclo", values="IDV").reindex(ordem)
-    ma = b.pivot(index="bairro", columns="ciclo", values="A").reindex(ordem)
-    mi.index = [x.title() for x in mi.index]; ma.index = mi.index
-    calor(mi, ma, f"IDV por bairro e ciclo ({len(mi)} bairros com ≥ 300 armadilhas no ano)", "g12_heatmap_bairro_x_ciclo.png",
-          "ciclo", "bairro (do maior para o menor IDV no ano)", (9, 8.6), 30,
-          "exploratório: cada célula tem poucas armadilhas (mediana ≈ 50) · * = menos de 30 armadilhas", fs=7)
-
     # PDF com todos os gráficos
     from PIL import Image
     imgs = [Image.open(p).convert("RGB") for p in sorted(GRAF.glob("g*.png"), key=lambda p: int(re.match(r"g(\d+)_", p.name).group(1)))]
     imgs[0].save(GRAF / "todos_os_graficos.pdf", save_all=True, append_images=imgs[1:], resolution=130)
+
+
+# ----------------------------------------------------------------------------
+# 5. barras com filtros (HTML interativo, no lugar dos mapas de calor)
+# ----------------------------------------------------------------------------
+def _nome(b) -> str:
+    """Nome de bairro em caixa de título, com de/da/do/dos/das/e em minúscula (Linha do Tiro)."""
+    ps = str(b).title().split()
+    return " ".join(p.lower() if i and p.lower() in ("de", "da", "do", "dos", "das", "e") else p for i, p in enumerate(ps))
+
+
+def _linhas(df: pd.DataFrame, col: str, categorias: list, extra: dict | None = None) -> list[dict]:
+    """Uma linha por categoria (mesmo as vazias), com A, P, O e nº de OVTs. Os indicadores saem no navegador (soma e depois divide)."""
+    g = df.groupby(col, observed=True)[["A", "P", "O"]].sum()
+    n = df.groupby(col, observed=True)["id_ovt"].nunique()
+    out = []
+    for c in categorias:
+        r = {"k": str(c), "A": int(g.loc[c, "A"]) if c in g.index else 0, "P": int(g.loc[c, "P"]) if c in g.index else 0,
+             "O": int(g.loc[c, "O"]) if c in g.index else 0, "ovts": int(n.get(c, 0))}
+        if extra:
+            r.update(extra[c])
+        out.append(r)
+    return out
+
+
+def grafico_interativo(fato: pd.DataFrame, dim_edl: pd.DataFrame, dim_ciclo: pd.DataFrame) -> None:
+    ok = fato[fato["dist_m"].notna()].copy()
+    ok["faixa_dist"] = ok["faixa_dist"].astype(str)
+    ciclos = sorted(int(c) for c in fato["ciclo"].unique())
+    faixas = [{"k": f.replace(" m", "").replace("acima de ", ">"), "dentro": i < 4} for i, f in enumerate(FAIXAS)]
+    por_faixa = {f: {"k": faixas[i]["k"], "dentro": faixas[i]["dentro"]} for i, f in enumerate(FAIXAS)}
+
+    c1 = {"Todos": _linhas(ok, "faixa_dist", FAIXAS, por_faixa)}
+    for d in ORDEM_DS:
+        c1[d] = _linhas(ok[ok["ds"] == d], "faixa_dist", FAIXAS, por_faixa)
+    c2 = {"Todos": _linhas(ok, "faixa_dist", FAIXAS, por_faixa)}
+    for c in ciclos:
+        c2[str(c)] = _linhas(ok[ok["ciclo"] == c], "faixa_dist", FAIXAS, por_faixa)
+    c3 = {"Todos": _linhas(fato, "ciclo", ciclos)}
+    for d in ORDEM_DS:
+        c3[d] = _linhas(fato[fato["ds"] == d], "ciclo", ciclos)
+
+    bairros, c4 = {}, {}
+    comb = fato[fato["bairro"].notna()]
+    total = comb.groupby("bairro")["A"].sum()
+    ds_do_bairro = comb.groupby("bairro")["ds"].agg(lambda x: x.value_counts().index[0])
+    for i, b in enumerate(sorted(total.index, key=lambda x: (-total[x], x))):
+        bid = f"b{i}"
+        bairros[bid] = {"nome": _nome(b), "rot": f"{_nome(b)} (DS {ds_do_bairro[b]})",
+                        "adequada": bool(total[b] >= AMOSTRA_MIN), "A": int(total[b])}
+        c4[bid] = _linhas(comb[comb["bairro"] == b], "ciclo", ciclos)
+    # a lista do menu: adequados primeiro (do maior para o menor nº de armadilhas), depois os pequenos
+
+    # V5: ranking de bairros (uma linha por bairro), todo o Recife ou um DS
+    def _rank(df, ds_fixo=None):
+        g = df.groupby("bairro", observed=True)[["A", "P", "O"]].sum()
+        n = df.groupby("bairro", observed=True)["id_ovt"].nunique()
+        return [{"k": _nome(b), "ds": ds_fixo or str(ds_do_bairro[b]), "A": int(g.loc[b, "A"]), "P": int(g.loc[b, "P"]),
+                 "O": int(g.loc[b, "O"]), "ovts": int(n[b])} for b in g.index]
+    c5 = {"Todos": _rank(comb)}
+    for d in ORDEM_DS:
+        c5[d] = _rank(comb[comb["ds"] == d], d)
+
+    # V6: série por ciclo, dentro (≤ 400 m) × fora, com o período das instalações das EDL (só datas com dia exato)
+    fv = fato.copy(); fv["dentro"] = fv["dist_m"] <= RAIO_M
+    def _serie(df):
+        out = {}
+        for nome, flag in (("d", True), ("f", False)):
+            out[nome] = _linhas(df[df["dentro"] == flag], "ciclo", ciclos)
+            for r in out[nome]:
+                r.pop("k"); r.pop("ovts")
+        return out
+    c6 = {"s": {"Todos": _serie(fv)}, "inst": {}, "so_mes": {}, "sem_data": {}}
+    for d in ORDEM_DS:
+        c6["s"][d] = _serie(fv[fv["ds"] == d])
+    dia = dim_edl[(dim_edl["precisao_data"] == "dia") & dim_edl["dt_instalacao"].notna()]
+    for nome, e in [("Todos", dim_edl)] + [(d, dim_edl[dim_edl["ds"] == d]) for d in ORDEM_DS]:
+        c6["inst"][nome] = pd.to_datetime(dia.loc[dia.index.isin(e.index), "dt_instalacao"]).dt.strftime("%Y-%m-%d").tolist()
+        c6["so_mes"][nome] = int((e["precisao_data"] == "mes").sum())
+        c6["sem_data"][nome] = int(e["dt_instalacao"].isna().sum())
+    c6["datas_ciclo"] = pd.to_datetime(dim_ciclo.sort_values("ciclo")["data_ciclo"]).dt.strftime("%Y-%m-%d").tolist()
+    assert sum(r["O"] for r in c6["s"]["Todos"]["d"] + c6["s"]["Todos"]["f"]) == int(fato["O"].sum())
+    assert sum(r["A"] for d in ORDEM_DS for g in "df" for r in c6["s"][d][g]) == int(fato["A"].sum())
+    assert len(c6["inst"]["Todos"]) == int((dim_edl["precisao_data"] == "dia").sum())
+
+    dados = {"raio": 400, "ordem_ds": ORDEM_DS, "ciclos": ciclos, "faixas": faixas, "c1": c1, "c2": c2, "c3": c3, "c4": c4, "c5": c5, "c6": c6, "bairros": bairros}
+    # conferência: as somas do HTML batem com as tabelas (T13, T14, T15)
+    assert sum(r["O"] for d in ORDEM_DS for r in c1[d]) == int(ok["O"].sum())
+    assert sum(r["A"] for c in ciclos for r in c2[str(c)]) == int(ok["A"].sum())
+    assert sum(r["O"] for r in c3["Todos"]) == int(fato["O"].sum())
+    assert sum(r["O"] for b in c4 for r in c4[b]) == int(comb["O"].sum())
+    assert sum(r["O"] for r in c5["Todos"]) == int(comb["O"].sum()) and sum(r["A"] for d in ORDEM_DS for r in c5[d]) == int(comb["A"].sum())
+
+    modelo = (RAIZ / "modelo_barras_interativas.html").read_text(encoding="utf-8")
+    js = json.dumps(dados, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    GRAF.mkdir(exist_ok=True)
+    (GRAF / "barras_com_filtros.html").write_text(modelo.replace("__DADOS__", js), encoding="utf-8")
+
 
 
 def main():
@@ -788,8 +739,8 @@ def main():
     T = tabelas_analise(fato, dim_ovt, dim_edl, dim_ciclo)
     salvar_csv(fato, dim_ovt, dim_edl, dim_ciclo, T)
     salvar_excel(T, dim_ovt, dim_edl, dim_ciclo)
-    gerar_mongo(fato, dim_ovt, dim_edl, T)
     graficos(T)
+    grafico_interativo(fato, dim_edl, dim_ciclo)
     falhas = T["T00_conferencias"].query("resultado == 'FALHOU'")
     print(f"{len(T)} tabelas de análise, fato_leitura com {len(fato)} linhas.")
     print("conferências internas:", "todas OK" if falhas.empty else f"FALHARAM:\n{falhas}")
