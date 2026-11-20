@@ -9,7 +9,7 @@ O repositório tem três partes independentes:
 | Parte | Pasta | O que faz |
 | --- | --- | --- |
 | **Pipeline ETL** | `main.py`, `src/` | Baixa as planilhas da GEVACZ de um bucket S3, limpa os dados e grava em SQLite (e, se configurado, no Postgres do Neon) |
-| **Análise** | `argos-analise/` | Lê o banco já limpo e gera as tabelas de análise, o modelo dimensional, as coleções do MongoDB e os gráficos (Python e R) |
+| **Análise** | `argos-analise/` | Lê o banco já limpo e gera as tabelas de análise, o modelo dimensional e os gráficos (PNG, HTML com filtros e R) |
 | **Frontend** | `frontend/` | Protótipo web para cadastrar OVT e EDL, registrar coletas e contagens de ovos |
 
 ```
@@ -25,7 +25,7 @@ planilhas .xlsx (bucket S3 do Neon)
  saida/*.db (SQLite)  ──►  Neon/Postgres (opcional)
         │
         ▼
- argos-analise/gerar_tabelas.py  ──►  CSV · Excel · JSONL (Mongo) · gráficos PNG/PDF
+ argos-analise/gerar_tabelas.py  ──►  CSV · Excel · gráficos PNG/PDF · HTML com filtros
 ```
 
 ---
@@ -151,25 +151,44 @@ Depois de rodar o `main.py`, confira os bancos com `sqlite3 saida/total_ovt.db "
 
 ## 2. Análise (`argos-analise/`)
 
-`gerar_tabelas.py` lê o banco limpo `argos-analise/dados/argos.db`, que já está no repositório, e gera:
+`gerar_tabelas.py` lê o banco limpo `argos-analise/dados/argos.db`, que já está no repositório (tabelas `ovt`, `ovt_cadastro`, `ovt_proximidade` e `edl_local`), e executa:
 
-- `tabelas/`: o modelo em estrela (`fato_leitura`, `dim_ovt`, `dim_edl`, `dim_ciclo`) e as tabelas de análise T00–T15 em CSV;
-- `ARGOS_tabelas_de_analise.xlsx`: as mesmas tabelas num único Excel;
-- `mongo/*.jsonl`: coleções para o MongoDB Atlas;
-- `graficos/`: 12 gráficos em PNG e um PDF com todos.
+1. **`carregar` → `modelar`**: monta o modelo em estrela. `fato_leitura` tem uma linha por OVT e ciclo, com `A`, `P` e `O` já calculados e a distância até a EDL mais próxima. As dimensões são `dim_ovt`, `dim_edl` e `dim_ciclo`.
+2. **`tabelas_analise`**: gera as tabelas T00 a T15 (por ciclo, por DS, por bairro, por faixa de distância, dentro × fora de 300/400 m, antes × depois da instalação, Spearman e outras). A T00 traz conferências internas, como "soma dos grupos = total".
+3. **`salvar_csv` / `salvar_excel`**: grava `tabelas/*.csv` e `ARGOS_tabelas_de_analise.xlsx`.
+4. **`graficos`**: gera os PNGs em `graficos/` (g1, g2, g4–g7 e g9) e `todos_os_graficos.pdf`.
+5. **`grafico_interativo`**: preenche o modelo `modelo_barras_interativas.html` com os dados em JSON e grava `graficos/barras_com_filtros.html`. É uma página que funciona offline e tem seis gráficos (V1–V6) com filtros por DS, ciclo e bairro, incluindo um ranking de bairros e a linha do tempo das instalações. Antes de gravar, o script confere com `assert` se as somas do HTML batem com as tabelas.
 
 Os indicadores seguem a Nota Técnica nº 3/2025:
 `A` = armadilhas examinadas, `P` = positivas, `O` = ovos; **IPO = P/A·100**, **IDO = O/P**, **IDV = O/A**. Os valores são sempre somados no grupo antes da divisão; o script nunca tira média de taxas.
 
+> O MongoDB foi removido do projeto: não existe mais a pasta `mongo/`, e os mapas de calor foram substituídos pelas barras com filtros.
+
+### Como executar e testar
+
 ```bash
 cd argos-analise
-pip install -r requirements.txt
+pip install -r requirements.txt     # pandas, numpy, scipy, openpyxl, matplotlib
 python gerar_tabelas.py
 ```
 
-**Como testar:** a aba/arquivo `t00_conferencias.csv` traz conferências internas, como "soma por grupo = total", e deve sair sem divergências. Para rodar as consultas do Mongo sem servidor, use `python mongo/consultas_agregacao.py --simulado` (usa `mongomock`). As consultas 1 a 5 devem dar os mesmos números das tabelas. A versão em R está em `r/analise_argos.R` (`Rscript r/analise_argos.R`, precisa do `tidyverse`).
+Saída esperada:
 
-Os detalhes, os resultados e os cuidados com os dados estão em [`argos-analise/README.md`](argos-analise/README.md).
+```
+17 tabelas de análise, fato_leitura com 31455 linhas.
+conferências internas: todas OK
+```
+
+O script funciona como teste de si mesmo:
+- se alguma conferência da T00 falhar, a segunda linha mostra `FALHARAM:` e as linhas com problema;
+- se as somas do HTML interativo não baterem com as tabelas, um `assert` interrompe a execução;
+- para conferir visualmente, abra `graficos/barras_com_filtros.html` no navegador, troque os filtros e use **"Ver tabela equivalente"** para comparar os números com os CSVs de `tabelas/`.
+
+> `gerar_tabelas.py` sobrescreve os arquivos versionados (CSV, Excel, PNG, HTML). Rode com o git limpo e use `git diff --stat` para ver o que mudou.
+
+A versão em R está em `r/analise_argos.R` (`Rscript r/analise_argos.R`, precisa do `tidyverse`) e gera `graficos_r/`.
+
+Os detalhes de cada tabela e gráfico, os resultados e os cuidados com os dados estão em [`argos-analise/README.md`](argos-analise/README.md).
 
 ---
 
