@@ -4,13 +4,13 @@ Projeto do Grupo 4 (Análise de Dados, CESAR School 2026.2) com a GEVACZ, a Vigi
 
 A pergunta central do projeto é: **as Estações Disseminadoras de Larvicida (EDL) reduzem a quantidade de ovos de *Aedes aegypti* nas ovitrampas (OVT) instaladas num raio de 300 a 400 m?** Os termos usados no projeto estão em [`GLOSSARIO.md`](GLOSSARIO.md), e o planejamento CRISP-DM está em [`docs/planejamento-crispdm.md`](docs/planejamento-crispdm.md).
 
-O repositório tem três partes independentes:
+O repositório tem três partes. A aplicação web conecta a análise histórica com uma base operacional própria:
 
 | Parte | Pasta | O que faz |
 | --- | --- | --- |
 | **Pipeline ETL** | `main.py`, `src/` | Baixa as planilhas da GEVACZ de um bucket S3, limpa os dados e grava em SQLite (e, se configurado, no Postgres do Neon) |
 | **Análise** | `argos-analise/` | Lê o banco já limpo e gera as tabelas de análise, o modelo dimensional e os gráficos (PNG, HTML com filtros e R) |
-| **Frontend** | `frontend/` | Protótipo web para cadastrar OVT e EDL, registrar coletas e contagens de ovos |
+| **Aplicação web** | frontend/ | Login, SQLite operacional, cadastros, campo, laboratório, mapas e relatórios |
 
 ```
 planilhas .xlsx (bucket S3 do Neon)
@@ -192,32 +192,20 @@ Os detalhes de cada tabela e gráfico, os resultados e os cuidados com os dados 
 
 ---
 
-## 3. Frontend (`frontend/`)
+## 3. Aplicação web integrada
 
-Protótipo em HTML/JS puro, sem dependências, com quatro fluxos:
+A aplicação frontend/ oferece login por perfil, persistência SQLite e integração com os dados e gráficos de argos-analise/. Requer Node.js 22.13 ou superior.
 
-1. **Cadastro de OVT** e 2. **Cadastro de EDL**: código (`OVT-…`/`EDL-…`), distrito, bairro (lista em `territorios.json`), coordenadas dentro do Recife, data de instalação e situação. A EDL também tem data de manutenção.
-3. **Coleta de campo**: só para OVT ativa. Não é possível repetir a mesma OVT no mesmo ciclo e ano. O calendário sugere a próxima coleta a cada 15 dias.
-4. **Contagem de ovos**: uma leitura por coleta. Zero ovos significa "examinada e sem ovos"; "Não examinada" deixa a contagem vazia e exige um motivo.
+    cd frontend
+    npm ci
+    npm start
+    npm test
 
-Organização do código:
-- `model.mjs`: regras de negócio puras, sem DOM. `validate`/`makeRecord` validam e montam os registros, `parseState` valida o que está no `localStorage`, `csvCell` exporta o CSV e neutraliza fórmulas (`=`, `+`, `-`, `@`), e `nextCollectionDate` calcula o calendário de 15 dias.
-- `app.js`: interface que liga os formulários ao `model.mjs` e salva os dados no `localStorage` do navegador.
-- `server.mjs`: servidor estático mínimo em `127.0.0.1:8090` que só entrega a lista fixa de arquivos do front.
+Abra http://127.0.0.1:8090. No login local, escolha Gestão, Laboratório, Agente de Campo ou Diretoria. A gestão também pode criar contas com senha. A senha administrativa inicial é mostrada no terminal na primeira criação do banco.
 
-### Como executar e testar
+As novas operações ficam em frontend/runtime/operacional.db, ignorado pelo Git. O banco histórico é aberto somente para leitura. O sistema diferencia dados observados de leituras preenchidas por média. A análise por EDL usa a data real de coleta em uma janela de 28 dias de cada lado da instalação.
 
-Requer Node.js 18 ou superior.
-
-```bash
-cd frontend
-npm start        # abra http://127.0.0.1:8090 (para outra porta: node server.mjs 3000)
-npm test         # roda tests/fluxo.test.mjs com o node:test
-```
-
-`npm test` executa 6 testes das regras do `model.mjs`: código duplicado, coordenada fora do Recife, EDL sem contagem de ovos, coleta repetida no ciclo, distinção entre zero e "não examinada", leitura sem coleta ou com data incoerente e escape do CSV. O resultado esperado é `# pass 6` e `# fail 0`.
-
-Para o teste manual, siga o roteiro de [`frontend/README.md`](frontend/README.md): cadastre uma OVT, registre uma coleta, abra o calendário e lance a contagem. Use dados fictícios. Tudo fica no navegador, e o botão **Exportar CSV** baixa os registros.
+Veja a organização das pastas, as regras e o roteiro completo em [frontend/README.md](frontend/README.md).
 
 ---
 

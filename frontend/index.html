@@ -1,88 +1,480 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#061b2d">
-  <title>Cadastros e leituras | ARGOS</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <script type="module" src="app.js"></script>
-</head>
-<body>
-<a class="skip" href="#main">Pular para o conteúdo</a>
-<aside class="sidebar">
-  <a class="brand" href="./" aria-label="ARGOS início"><img class="brand-logo" src="logo-argos-clean.png" alt="" width="74" height="74"><span><strong>ARGOS</strong><small>GeoVigilância <b>GEVACZ</b></small></span></a>
-  <div class="nav-caption">Área operacional</div>
-  <nav aria-label="Navegação principal">
-    <button class="nav-item active" type="button" data-view="ovt" aria-controls="panel-ovt" title="Cadastro de OVT" aria-current="page"><span class="nav-icon" data-icon="ovitrap"></span><span class="nav-label">Cadastro de OVT</span><span class="nav-dot" aria-hidden="true"></span></button>
-    <button class="nav-item" type="button" data-view="edl" aria-controls="panel-edl" title="Cadastro de EDL"><span class="nav-icon" data-icon="station"></span><span class="nav-label">Cadastro de EDL</span><span class="nav-dot" aria-hidden="true"></span></button>
-    <button class="nav-item" type="button" data-view="collection" aria-controls="panel-collection" title="Coleta de campo"><span class="nav-icon" data-icon="field"></span><span class="nav-label">Coleta de campo</span><span class="nav-dot" aria-hidden="true"></span></button>
-    <button class="nav-item" type="button" data-view="calendar" aria-controls="collection-calendar" title="Calendário de coletas"><span class="nav-icon" data-icon="calendar"></span><span class="nav-label">Calendário de coletas</span><span class="nav-dot" aria-hidden="true"></span></button>
-    <button class="nav-item" type="button" data-view="reading" aria-controls="panel-reading" title="Contagem de ovos"><span class="nav-icon" data-icon="microscope"></span><span class="nav-label">Contagem de ovos</span><span class="nav-dot" aria-hidden="true"></span></button>
-  </nav>
-  <div class="signature"><strong>RECIFE</strong><span>VIGILÂNCIA AMBIENTAL</span><p>Vigilância hoje.<br>Saúde amanhã.</p></div>
-</aside>
-<div class="workspace">
-<header class="topbar"><h1>Vigilância entomológica</h1><div class="institution">Secretaria de Saúde<small>Prefeitura do Recife · GEVACZ</small></div><span class="prototype"><i></i>Protótipo local</span></header>
-<main id="main">
-  <div class="storage-error" id="storage-error" role="alert" hidden></div>
-  <div class="entry-layout">
-    <div id="form-panels"></div>
-    <aside class="entry-aside">
-      <section class="panel summary"><div class="aside-heading"><span data-icon="clipboard"></span><h3>Resumo do registro</h3><span class="live-dot" title="Atualiza conforme o preenchimento"></span></div><div class="summary-code"><span id="summary-type">OVITRAMPA</span><strong id="summary-code">Nova OVT</strong><small id="summary-subtitle">Preencha os dados para começar</small></div><dl id="summary-fields"></dl><div class="summary-state"><span data-icon="edit"></span>Em preenchimento</div></section>
-    </aside>
-  </div>
-  <section class="panel collection-calendar" id="collection-calendar" aria-labelledby="collection-calendar-title" hidden>
-    <header class="form-heading">
-      <span class="heading-icon" data-icon="calendar"></span>
-      <div><h2 id="collection-calendar-title" tabindex="-1">Calendário de coletas</h2><p>Datas previstas a cada 15 dias por ovitrampa.</p></div>
-      <button class="button secondary calendar-shortcut" type="button" data-view="collection"><span data-icon="field"></span>Registrar coleta</button>
-    </header>
-    <div class="calendar-layout">
-      <div class="calendar-context">
-        <label class="field" id="calendar-ovt-field" hidden>
-          <span>Ovitrampa</span>
-          <select id="calendar-ovt"></select>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#061b2d" />
+    <title>ARGOS · GeoVigilância GEVACZ</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/vendor/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="workspace.css" />
+    <script src="/vendor/leaflet/leaflet.js" defer></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Pular para o conteúdo</a>
+    <section class="login-screen" id="login-screen">
+      <div class="login-brand">
+        <img
+          src="logo-argos-clean.png"
+          alt="Símbolo oficial do ARGOS"
+          width="320"
+          height="320"
+        />
+        <h1>ARGOS</h1>
+        <p>
+          GeoVigilância GEVACZ<br />Campo, laboratório e análise territorial
+        </p>
+        <p class="login-signature">
+          Prefeitura do Recife<br />Secretaria de Saúde
+        </p>
+      </div>
+      <div class="login-card">
+        <h2>Acesso ao sistema</h2>
+        <p>Entre com sua conta para continuar.</p>
+        <div class="auth-error" id="login-error" role="alert" hidden></div>
+        <form id="login-form">
+          <label
+            >E-mail<input
+              name="email"
+              type="email"
+              autocomplete="username"
+              required /></label
+          ><label
+            >Senha<input
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required /></label
+          ><button class="button primary" type="submit">Entrar no ARGOS</button>
+        </form>
+        <div id="demo-access" hidden>
+          <div class="login-divider">Demonstração local</div>
+          <div class="demo-profiles">
+            <button type="button" class="button secondary" data-demo="gestao">
+              Gestão<small>Todas as áreas</small>
+            </button>
+            <button
+              type="button"
+              class="button secondary"
+              data-demo="laboratorio"
+            >
+              Laboratório<small>Leituras e validação</small>
+            </button>
+            <button type="button" class="button secondary" data-demo="campo">
+              Agente de Campo<small>Coletas e devolutivas</small>
+            </button>
+            <button
+              type="button"
+              class="button secondary"
+              data-demo="diretoria"
+            >
+              Diretoria<small>Consulta e análise</small>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="application" hidden>
+      <aside class="sidebar">
+        <a class="brand" href="./" aria-label="ARGOS início"
+          ><img
+            class="brand-logo"
+            src="logo-argos-clean.png"
+            alt=""
+            width="74"
+            height="74"
+          /><span
+            ><strong>ARGOS</strong
+            ><small>GeoVigilância <b>GEVACZ</b></small></span
+          ></a
+        >
+        <button
+          class="button secondary"
+          id="menu-toggle"
+          type="button"
+          aria-controls="main-navigation"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+        <div class="nav-caption">Navegação</div>
+        <nav id="main-navigation" aria-label="Navegação principal">
+          <button
+            class="nav-item"
+            type="button"
+            data-view="dashboard"
+            aria-controls="workspace-panel"
+          >
+            <span class="nav-icon" data-icon="dashboard"></span
+            ><span class="nav-label">Visão geral</span>
+          </button>
+          <button
+            class="nav-item"
+            type="button"
+            data-view="ovt"
+            aria-controls="panel-ovt"
+          >
+            <span class="nav-icon" data-icon="ovitrap"></span
+            ><span class="nav-label">Cadastro de OVT</span>
+          </button>
+          <button
+            class="nav-item"
+            type="button"
+            data-view="edl"
+            aria-controls="panel-edl"
+          >
+            <span class="nav-icon" data-icon="station"></span
+            ><span class="nav-label">Cadastro de EDL</span>
+          </button>
+          <button
+            class="nav-item"
+            type="button"
+            data-view="collection"
+            aria-controls="panel-collection"
+          >
+            <span class="nav-icon" data-icon="field"></span
+            ><span class="nav-label">Coleta de campo</span>
+          </button>
+          <button
+            class="nav-item"
+            type="button"
+            data-view="calendar"
+            aria-controls="collection-calendar"
+          >
+            <span class="nav-icon" data-icon="calendar"></span
+            ><span class="nav-label">Calendário</span>
+          </button>
+          <button
+            class="nav-item"
+            type="button"
+            data-view="reading"
+            aria-controls="panel-reading"
+          >
+            <span class="nav-icon" data-icon="microscope"></span
+            ><span class="nav-label">Laboratório</span>
+          </button>
+          <button
+            class="nav-item"
+            type="button"
+            data-view="map"
+            aria-controls="workspace-panel"
+          >
+            <span class="nav-icon" data-icon="map"></span
+            ><span class="nav-label">Mapa territorial</span>
+          </button>
+          <button
+            class="nav-item"
+            type="button"
+            data-view="reports"
+            aria-controls="workspace-panel"
+          >
+            <span class="nav-icon" data-icon="chart"></span
+            ><span class="nav-label">Relatórios</span>
+          </button>
+          <button
+            class="nav-item"
+            type="button"
+            data-view="analysis"
+            aria-controls="workspace-panel"
+          >
+            <span class="nav-icon" data-icon="analysis"></span
+            ><span class="nav-label">Análise por EDL</span>
+          </button>
+          <button
+            class="nav-item"
+            type="button"
+            data-view="priority"
+            aria-controls="workspace-panel"
+          >
+            <span class="nav-icon" data-icon="layers"></span
+            ><span class="nav-label">Priorização</span>
+          </button>
+          <button
+            class="nav-item"
+            type="button"
+            data-view="alerts"
+            aria-controls="workspace-panel"
+          >
+            <span class="nav-icon" data-icon="bell"></span
+            ><span class="nav-label">Alertas</span>
+          </button>
+          <button
+            class="nav-item"
+            type="button"
+            data-view="settings"
+            aria-controls="workspace-panel"
+          >
+            <span class="nav-icon" data-icon="settings"></span
+            ><span class="nav-label">Configurações</span>
+          </button>
+        </nav>
+        <div class="signature">
+          <strong>RECIFE</strong><span>VIGILÂNCIA AMBIENTAL</span>
+          <p>Vigilância hoje.<br />Saúde amanhã.</p>
+        </div>
+      </aside>
+      <div class="workspace">
+        <header class="topbar">
+          <h1>GeoVigilância GEVACZ</h1>
+          <div class="user-access">
+            <div>
+              <strong id="user-name"></strong><small id="user-role"></small>
+            </div>
+            <button class="button secondary" type="button" id="refresh-data">
+              Atualizar</button
+            ><button class="button secondary" type="button" id="logout">
+              Sair
+            </button>
+          </div>
+        </header>
+        <main id="main">
+          <div
+            class="storage-error"
+            id="storage-error"
+            role="alert"
+            hidden
+          ></div>
+          <section id="workspace-panel" hidden></section>
+          <div class="entry-layout">
+            <div id="form-panels"></div>
+            <aside class="entry-aside">
+              <section class="panel summary">
+                <div class="aside-heading">
+                  <span data-icon="clipboard"></span>
+                  <h3>Resumo do registro</h3>
+                  <span
+                    class="live-dot"
+                    title="Atualiza conforme o preenchimento"
+                  ></span>
+                </div>
+                <div class="summary-code">
+                  <span id="summary-type">OVITRAMPA</span
+                  ><strong id="summary-code">Nova OVT</strong
+                  ><small id="summary-subtitle"
+                    >Preencha os dados para começar</small
+                  >
+                </div>
+                <dl id="summary-fields"></dl>
+                <div class="summary-state">
+                  <span data-icon="edit"></span>Em preenchimento
+                </div>
+              </section>
+            </aside>
+          </div>
+          <section
+            class="panel collection-calendar"
+            id="collection-calendar"
+            aria-labelledby="collection-calendar-title"
+            hidden
+          >
+            <header class="form-heading">
+              <span class="heading-icon" data-icon="calendar"></span>
+              <div>
+                <h2 id="collection-calendar-title" tabindex="-1">
+                  Calendário de coletas
+                </h2>
+                <p>Datas previstas a cada 15 dias por ovitrampa.</p>
+              </div>
+              <button
+                class="button secondary calendar-shortcut"
+                type="button"
+                data-view="collection"
+              >
+                <span data-icon="field"></span>Registrar coleta
+              </button>
+            </header>
+            <div class="calendar-layout">
+              <div class="calendar-context">
+                <label class="field" id="calendar-ovt-field" hidden>
+                  <span>Ovitrampa</span>
+                  <select id="calendar-ovt"></select>
+                </label>
+                <p class="calendar-description" id="calendar-description">
+                  Informe uma data em Coleta de campo para gerar as previsões.
+                </p>
+                <div
+                  class="calendar-next"
+                  id="calendar-next"
+                  hidden
+                  aria-live="polite"
+                >
+                  <span id="calendar-next-label">Próxima coleta prevista</span>
+                  <strong id="calendar-next-date"></strong>
+                </div>
+              </div>
+              <div class="calendar-month" id="calendar-month" hidden>
+                <div class="calendar-controls">
+                  <button
+                    type="button"
+                    class="icon-button"
+                    id="calendar-prev"
+                    aria-label="Mês anterior"
+                  >
+                    <span data-icon="chevronLeft"></span>
+                  </button>
+                  <h4 id="calendar-month-title" aria-live="polite"></h4>
+                  <button
+                    type="button"
+                    class="icon-button"
+                    id="calendar-forward"
+                    aria-label="Próximo mês"
+                  >
+                    <span data-icon="chevronRight"></span>
+                  </button>
+                </div>
+                <table
+                  class="calendar-grid"
+                  aria-labelledby="calendar-month-title"
+                >
+                  <thead>
+                    <tr>
+                      <th scope="col" aria-label="Domingo">Dom</th>
+                      <th scope="col" aria-label="Segunda-feira">Seg</th>
+                      <th scope="col" aria-label="Terça-feira">Ter</th>
+                      <th scope="col" aria-label="Quarta-feira">Qua</th>
+                      <th scope="col" aria-label="Quinta-feira">Qui</th>
+                      <th scope="col" aria-label="Sexta-feira">Sex</th>
+                      <th scope="col" aria-label="Sábado">Sáb</th>
+                    </tr>
+                  </thead>
+                  <tbody id="calendar-days"></tbody>
+                </table>
+                <div class="calendar-legend">
+                  <span class="calendar-reference">Data de referência</span>
+                  <span class="calendar-planned">Coleta prevista</span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="panel records" aria-labelledby="records-title">
+            <div class="records-heading">
+              <h2 id="records-title">
+                Registros recentes <span id="records-count">0</span>
+              </h2>
+              <button class="button secondary" type="button" id="export">
+                <span data-icon="download"></span>Exportar CSV
+              </button>
+            </div>
+            <div class="record-tools">
+              <label class="search"
+                ><span data-icon="search"></span
+                ><input
+                  id="search"
+                  type="search"
+                  aria-label="Buscar por código, bairro ou responsável"
+                  placeholder="Buscar registro…"
+              /></label>
+              <select id="record-filter" aria-label="Filtrar registros">
+                <option value="all">Todos os tipos</option>
+                <option value="ovt">OVTs</option>
+                <option value="edl">EDLs</option>
+                <option value="collection">Coletas</option>
+                <option value="reading">Leituras</option>
+              </select>
+            </div>
+            <div
+              class="table-wrap"
+              role="region"
+              aria-label="Tabela de registros"
+              tabindex="0"
+            >
+              <table>
+                <thead>
+                  <tr>
+                    <th>Registro</th>
+                    <th>Tipo</th>
+                    <th>Território</th>
+                    <th>Data</th>
+                    <th>Situação</th>
+                    <th><span class="sr-only">Detalhes</span></th>
+                  </tr>
+                </thead>
+                <tbody id="records-body"></tbody>
+              </table>
+            </div>
+            <div class="empty" id="empty">
+              <span data-icon="layers"></span>
+              <h4>Nenhum registro por aqui ainda</h4>
+              <p>
+                Comece cadastrando uma OVT ou uma EDL.<br />Seus registros
+                aparecerão nesta lista.
+              </p>
+            </div>
+            <div class="table-footer">
+              <span id="records-footer">Nenhum registro salvo</span
+              ><span>Banco operacional SQLite</span>
+            </div>
+          </section>
+          <section class="panel" id="catalog-section" hidden>
+            <header class="form-heading"><h2 id="catalog-title"></h2></header>
+            <div class="form-body">
+              <input
+                id="catalog-filter"
+                type="search"
+                aria-label="Buscar no catálogo"
+                placeholder="Buscar código, local ou bairro"
+              />
+              <div class="table-wrap" id="catalog-list" tabindex="0"></div>
+              <div class="form-footer">
+                <button
+                  class="button secondary"
+                  type="button"
+                  id="catalog-prev"
+                >
+                  Anterior</button
+                ><span id="catalog-page"></span
+                ><button
+                  class="button secondary"
+                  type="button"
+                  id="catalog-next"
+                >
+                  Próxima
+                </button>
+              </div>
+            </div>
+          </section>
+          <footer class="page-footer">
+            <span>ARGOS <span>·</span> GeoVigilância GEVACZ</span
+            ><span>Sistema integrado · v0.2</span>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <dialog id="details-dialog" aria-labelledby="detail-title">
+      <div class="dialog-heading">
+        <div>
+          <span class="eyebrow" id="detail-type"></span>
+          <h2 id="detail-title"></h2>
+        </div>
+        <button
+          class="icon-button"
+          id="close-dialog"
+          aria-label="Fechar detalhes"
+        >
+          ×
+        </button>
+      </div>
+      <dl id="detail-fields"></dl>
+      <div id="detail-actions"></div>
+      <button class="button secondary" id="dialog-done">Fechar detalhes</button>
+    </dialog>
+    <dialog id="review-dialog" aria-labelledby="review-title">
+      <h2 id="review-title">Solicitar revisão da leitura</h2>
+      <form id="review-form">
+        <label
+          >Motivo<textarea name="note" maxlength="500" required></textarea>
         </label>
-        <p class="calendar-description" id="calendar-description">Informe uma data em Coleta de campo para gerar as previsões.</p>
-        <div class="calendar-next" id="calendar-next" hidden aria-live="polite">
-          <span id="calendar-next-label">Próxima coleta prevista</span>
-          <strong id="calendar-next-date"></strong>
+        <p id="review-error" role="alert"></p>
+        <div class="inline-actions">
+          <button class="button primary">Enviar revisão</button
+          ><button class="button secondary" type="button" id="review-cancel">
+            Cancelar
+          </button>
         </div>
-      </div>
-      <div class="calendar-month" id="calendar-month" hidden>
-        <div class="calendar-controls">
-          <button type="button" class="icon-button" id="calendar-prev" aria-label="Mês anterior"><span data-icon="chevronLeft"></span></button>
-          <h4 id="calendar-month-title" aria-live="polite"></h4>
-          <button type="button" class="icon-button" id="calendar-forward" aria-label="Próximo mês"><span data-icon="chevronRight"></span></button>
-        </div>
-        <table class="calendar-grid" aria-labelledby="calendar-month-title">
-          <thead><tr><th scope="col" aria-label="Domingo">Dom</th><th scope="col" aria-label="Segunda-feira">Seg</th><th scope="col" aria-label="Terça-feira">Ter</th><th scope="col" aria-label="Quarta-feira">Qua</th><th scope="col" aria-label="Quinta-feira">Qui</th><th scope="col" aria-label="Sexta-feira">Sex</th><th scope="col" aria-label="Sábado">Sáb</th></tr></thead>
-          <tbody id="calendar-days"></tbody>
-        </table>
-        <div class="calendar-legend">
-          <span class="calendar-reference">Data de referência</span>
-          <span class="calendar-planned">Coleta prevista</span>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="panel records" aria-labelledby="records-title">
-    <div class="records-heading">
-      <h2 id="records-title">Registros recentes <span id="records-count">0</span></h2>
-      <button class="button secondary" type="button" id="export"><span data-icon="download"></span>Exportar CSV</button>
-    </div>
-    <div class="record-tools">
-      <label class="search"><span data-icon="search"></span><input id="search" type="search" aria-label="Buscar por código, bairro ou responsável" placeholder="Buscar registro…"></label>
-      <select id="record-filter" aria-label="Filtrar registros"><option value="all">Todos os tipos</option><option value="ovt">OVTs</option><option value="edl">EDLs</option><option value="collection">Coletas</option><option value="reading">Leituras</option></select>
-    </div>
-    <div class="table-wrap" role="region" aria-label="Tabela de registros" tabindex="0"><table><thead><tr><th>Registro</th><th>Tipo</th><th>Território</th><th>Data</th><th>Situação</th><th><span class="sr-only">Detalhes</span></th></tr></thead><tbody id="records-body"></tbody></table></div>
-    <div class="empty" id="empty"><span data-icon="layers"></span><h4>Nenhum registro por aqui ainda</h4><p>Comece cadastrando uma OVT ou uma EDL.<br>Seus registros aparecerão nesta lista.</p></div>
-    <div class="table-footer"><span id="records-footer">Nenhum registro salvo</span><span>Armazenamento local <i></i></span></div>
-  </section>
-  <footer class="page-footer"><span>ARGOS <span>·</span> GeoVigilância GEVACZ</span><span>Protótipo de cadastro e operação · v0.1</span></footer>
-</main>
-</div>
-<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-<dialog id="details-dialog" aria-labelledby="detail-title"><div class="dialog-heading"><div><span class="eyebrow" id="detail-type"></span><h2 id="detail-title"></h2></div><button class="icon-button" id="close-dialog" aria-label="Fechar detalhes">×</button></div><dl id="detail-fields"></dl><button class="button secondary" id="dialog-done">Fechar detalhes</button></dialog>
-</body></html>
+      </form>
+    </dialog>
+  </body>
+</html>
